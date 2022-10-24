@@ -26,9 +26,15 @@ contract Swap is Ownable {
         uint256[] ordersQueue;
     }
 
+    struct Market {
+        OrderBook buyOrderBook;
+        OrderBook sellOrderBook;
+    }
+
     mapping(uint8 => Token) tokenInfo;
     mapping(uint8 => IERC20) tokens;
     mapping(address => mapping(uint8 => uint256)) tokenBalanceForAddress;
+    mapping(uint8 => mapping(uint8 => Market)) ExchangeMarket;
     uint8 tokenIndex;
 
     constructor() {
@@ -43,12 +49,14 @@ contract Swap is Ownable {
         uint256 amount,
         uint256 timestamp
     );
+
     event LogWithdrawToken(
         string symbolName,
         address accountAddress,
         uint256 amount,
         uint256 timestamp
     );
+
     event LogAddToken(
         uint256 tokenIndex,
         string symbolName,
@@ -64,6 +72,7 @@ contract Swap is Ownable {
         address buyer,
         uint256 timestamp
     );
+
     event LogSellToken(
         string symbolName1,
         string symbolName2,
@@ -81,6 +90,7 @@ contract Swap is Ownable {
         address buyer,
         uint256 timestamp
     );
+
     event LogCreateSellOrder(
         string symbolName1,
         string symbolName2,
@@ -98,6 +108,7 @@ contract Swap is Ownable {
         uint256 amount,
         uint256 timestamp
     );
+
     event LogFulfilSellOrder(
         string symbolName1,
         string symbolName2,
