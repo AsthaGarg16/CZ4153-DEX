@@ -35,12 +35,14 @@ contract Swap is Ownable {
     mapping(uint8 => Token) tokenInfo;
     mapping(uint8 => IERC20) tokens;
     mapping(address => mapping(uint8 => uint256)) tokenBalanceForAddress;
-    mapping(uint8 => mapping(string => string)) buyToSell;
+    mapping(uint8 => string[]) buyToSell;
     mapping(uint8 => Market) ExchangeMarket;
     uint8 tokenIndex;
+    uint8 marketIndex;
 
     constructor() {
         tokenIndex = 0;
+        marketIndex = 0;
         Token ethToken = Token({contractAddress: "0x0", symbolName: "ETH"});
         tokenInfo.push(0, ethToken);
     }
@@ -67,6 +69,8 @@ contract Swap is Ownable {
         address EC20TokenAddress,
         uint256 timestamp
     );
+
+    event LogAddMarket(uint256 marketIndex, string symbolName, uint256 timestamp);
 
     event LogBuyToken(
         string symbolName1,
@@ -148,6 +152,21 @@ contract Swap is Ownable {
         tokens[tokenIndex] = IERC20(tokenInfo[tokenIndex].contractAddress);
 
         emit LogAddToken(tokenIndex, symbolName, EC20TokenAddress, block.timestamp);
+
+        addMarket(symbolName);
+    }
+
+    function addMarket(string memory symbolName) public onlyOwner {
+        require(!hasToken(symbolName));
+        require(marketIndex + 1 >= marketIndex);
+
+        for (uint256 i = 0; i < tokenIndex; i++) {
+            marketIndex++;
+            string memory toAdd = [symbolName, tokenInfo[i].symbolName];
+            buyToSell[marketIndex].push(toAdd);
+        }
+
+        emit LogAddMarket(marketIndex, symbolName, block.timestamp);
     }
 
     // Address's Tokens account management
@@ -183,16 +202,19 @@ contract Swap is Ownable {
     //doing beyond this
 
     function createBuyOrder(
-        string memory symbolName,
-        uint256 priceInWei,
-        uint256 amount,
+        string memory buySymbolName,
+        string memory sellSymbolName,
+        uint256 price,
+        uint256 quantity,
         address buyer
     ) private {
-        require(hasToken(symbolName));
+        require(hasToken(buySymbolName));
+        require(hasToken(sellSymbolName));
 
-        uint8 _tokenIndex = getTokenIndex(symbolName);
+        uint8 _buyTokenIndex = getTokenIndex(buySymbolName);
+        uint8 _sellTokenIndex = getTokenIndex(sellSymbolName);
 
-        uint256 _buy_amount_balance = amount;
+        uint256 _buy_qty_balance = quantity;
         // fulfil buyOrder by checking against which sell orders can be fulfil
         if (ExchangeMarket[_tokenIndex].sellOrderBook.ordersCount > 0) {
             _buy_amount_balance = fulfilBuyOrder(symbolName, _buy_amount_balance, priceInWei);
@@ -357,4 +379,10 @@ contract Swap is Ownable {
         }
         return 0;
     }
+
+    function getMarketIndex(string memory buySymbolName, string memory sellSymbolName)
+        public
+        view
+        returns (uint8)
+    {}
 }
