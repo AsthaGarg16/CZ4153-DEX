@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import FloatingNav from "../components/FloatingNav";
 import OrderBook from "../Components/OrderBook"
 import CreateOrder from "../Components/CreateOrder"
+import Balances from "../Components/Balances"
 import {MoralisProvider} from 'react-moralis'
 
 function MyApp({ Component, pageProps }) {
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }) {
         </div>
         <div className='threerow2'>
         <h3>Balances</h3>
+        <Balances/>
         </div>
       </div>
     </div>

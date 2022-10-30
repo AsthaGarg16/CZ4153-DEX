@@ -38,7 +38,7 @@ export default function OrderBook() {
       sx={{ bgcolor: 'background.paper' }}
     >
       <FixedSizeList
-        height={265}
+        height={260}
         width={280}
         itemSize={46}
         itemCount={priceList.length}
