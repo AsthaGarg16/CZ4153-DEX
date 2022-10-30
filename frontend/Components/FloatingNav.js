@@ -26,7 +26,7 @@ const FloatingNav = () => {
       <div className="widthgap"></div>
       <h3>Market:</h3>
       <div className="widthgap"></div>
-      <div class="dropdown">
+      <div className="dropdown">
       <div>
           <select value={value} onChange={handleChange} className="button-81">
             <option value="A/B">A/B</option>
