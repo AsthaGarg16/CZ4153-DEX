@@ -1,7 +1,8 @@
 import '../styles/globals.css'
 import Navbar from "../components/Navbar";
 import FloatingNav from "../components/FloatingNav";
-import VirtualizedList from "../components/VirtualizedList"
+import OrderBook from "../Components/OrderBook"
+import CreateOrder from "../Components/CreateOrder"
 import {MoralisProvider} from 'react-moralis'
 
 function MyApp({ Component, pageProps }) {
@@ -9,16 +10,23 @@ function MyApp({ Component, pageProps }) {
   <MoralisProvider initializeOnMount={false}>
     <Navbar />
     {/* <Component {...pageProps} /> */}
-    <div class="wrapper">
-      <div class="one"><FloatingNav /></div>
-      <div class="two">
+    <div className="wrapper">
+      <div className="one"><FloatingNav /></div>
+      <div className="two">
         <h3>Order Book</h3>
         <h4 className='customh4buy'>Buy</h4>
-        <VirtualizedList/>
+        <OrderBook/>
         <h4 className='customh4sell'>Sell</h4>
-        <VirtualizedList/>
+        <OrderBook/>
       </div>
-      <div class="three">Three</div>
+      <div className="three">
+        <div className='threerow1'>
+        <CreateOrder/>
+        </div>
+        <div className='threerow2'>
+        <h3>Balances</h3>
+        </div>
+      </div>
     </div>
   </MoralisProvider>
   )

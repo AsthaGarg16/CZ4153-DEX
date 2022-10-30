@@ -25,7 +25,7 @@ function renderRow(props) {
   );
 }
 
-export default function VirtualizedList() {
+export default function OrderBook() {
   const [priceList, setPriceList] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   return (
     <div>

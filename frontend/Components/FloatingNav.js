@@ -24,6 +24,7 @@ const FloatingNav = () => {
       <div className="gap"></div>
       <div className="floatingnav">
       <div className="widthgap"></div>
+      <div className="widthgap"></div>
       <h3>Market:</h3>
       <div className="widthgap"></div>
       <div className="dropdown">
