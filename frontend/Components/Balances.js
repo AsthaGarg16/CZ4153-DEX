@@ -32,25 +32,7 @@ const Balances = () => {
         <ToggleButton value="Deposit"><h6>Deposit</h6></ToggleButton>
         <ToggleButton value="Withdraw"><h6>Withdraw</h6></ToggleButton>
         </ToggleButtonGroup>
-        {/* <p>{`You selected ${alignment}`}</p> */}
       </div>
-      {/* <div>
-        <Box
-            component="form"
-            sx={{
-                '& > :not(style)': { m: 1, width: '26ch', backgroundColor: "#d3b7ff", borderRadius: '5px' },
-            }}
-            noValidate
-            autoComplete="off"
-            >
-            <TextField onChange={(newValue) => setTFValue1(newValue.target.value)} value={tfValue1} type="number" id="outlined-basic" label="Price" variant="outlined" />
-            <TextField onChange={(newValue) => setTFValue2(newValue.target.value)} value={tfValue2} type="number" id="outlined-basic" label="Quantity" variant="outlined" />
-        </Box>
-      </div>
-      <h5>{`Total: ${tfValue1*tfValue2}`}</h5>
-      <div className="centertext">
-      <button className="button-33" onClick={onClickPlaceOrder}>Place Order!</button>
-      </div> */}
     </div>
   )
 };

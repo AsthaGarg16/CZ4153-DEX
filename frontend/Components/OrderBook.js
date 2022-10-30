@@ -35,7 +35,7 @@ export default function OrderBook() {
       <h4 className='customh4'>Total</h4>
     </div>
     <Box
-      sx={{ bgcolor: 'background.paper' }}
+      sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
     >
       <FixedSizeList
         height={260}

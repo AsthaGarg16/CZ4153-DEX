@@ -28,7 +28,7 @@ h3 {
   text-shadow: 1px 1px 2px #00ddff; 
   align-items: center;
   padding-top:5px;
-    padding-bottom:5px;
+  padding-bottom:5px;
 }
 
   h4 { 
@@ -86,6 +86,19 @@ h3 {
     /* padding-right:10px; */
     padding-left:12px;
   }
+  .customh4new { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 60px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:12px;
+  }
   .customh4sell { 
     color: #ca0c0c; 
     font-family: 'Georgia'; 
@@ -123,6 +136,15 @@ h3 {
 .row1{
   display: flex;
   flex-direction: row;
+  align-items: top;
+  /* justify-content: center; */
+}
+.row11{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center; 
 }
 .one {
   width: 60%;
@@ -165,6 +187,25 @@ h3 {
   grid-row:2/2;
   padding: 3px;
   margin: 20px 20px 20px 10px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+
+.onerow1 {
+  height: 35%;
+  grid-row: 1/2;
+  padding: 3px;
+  margin: 20px 20px 20px 20px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+.onerow2 {
+  height: 44%;
+  grid-row:2/2;
+  padding: 3px;
+  margin: 20px 20px 20px 20px; 
   border-radius: 10px;
   background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
   /* grid-template-rows: repeat(2, 1fr); */
@@ -270,7 +311,7 @@ nav{
 @media (min-width: 768px) {
   .button-81 {
     font-size: 1.125rem;
-    padding: 1rem 2rem;
+    padding: 0.7rem 0.7rem;
   }
 }
 
@@ -308,7 +349,45 @@ nav{
 @media (min-width: 768px) {
   .button-85 {
     font-size: 1.125rem;
-    padding: 1rem 1rem;
+    padding: 0.7rem 0.7rem;
+  }
+}
+
+.button-89 {
+  width:200px;
+  
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 5px;
+  font-weight: 600;
+  line-height: 1;
+  /* padding: 0.5rem 1.6rem; */
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: #7700ff;
+  color: #fff;
+}
+
+.button-89:hover {
+  background-color: #fff;
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .button-89 {
+    font-size: 1.125rem;
+    padding: 0.7rem 0.7rem;
   }
 }
 
@@ -349,6 +428,12 @@ nav{
   }
 }
 
+.widthgapnewnew{
+  width: 335px;
+}
+.widthgapnewnewnew{
+  width: 125px;
+}
 .widthgap{
   width: 20px;
 }
@@ -567,7 +652,7 @@ nav{
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 6px 20px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;

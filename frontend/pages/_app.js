@@ -4,6 +4,7 @@ import FloatingNav from "../components/FloatingNav";
 import OrderBook from "../Components/OrderBook"
 import CreateOrder from "../Components/CreateOrder"
 import Balances from "../Components/Balances"
+import HistoryTable from "../Components/HistoryTable"
 import {MoralisProvider} from 'react-moralis'
 
 function MyApp({ Component, pageProps }) {
@@ -12,7 +13,15 @@ function MyApp({ Component, pageProps }) {
     <Navbar />
     {/* <Component {...pageProps} /> */}
     <div className="wrapper">
-      <div className="one"><FloatingNav /></div>
+      <div className="one">
+        <FloatingNav />
+        <div className='onerow1'>
+
+        </div>
+        <div className='onerow2'>
+          <HistoryTable/>
+        </div>
+      </div>
       <div className="two">
         <h3>Order Book</h3>
         <h4 className='customh4buy'>BUY</h4>
