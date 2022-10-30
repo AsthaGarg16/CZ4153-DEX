@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 
 contract Swap is Ownable {
-    //for ETH-address=0, symbol="ETH"
     struct Token {
         address contractAddress;
         string symbolName;
