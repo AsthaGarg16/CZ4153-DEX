@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+// import Moralis from "moralis-v1";
 import React from "react";
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { useState, useEffect } from "react";
@@ -7,11 +8,13 @@ import { useState, useEffect } from "react";
 const Navbar = () => {
   const [hasMetamask, setHasMetamask] = useState(false);
   const {enableWeb3, isWeb3Enabled} = useMoralis();
+  // console.log(useMoralis.get('ethAddress'))
   useEffect(() => {
     if (typeof window.ethereum !== "undefined") {
       setHasMetamask(true);
     }
   });
+
   return (
     <header>
       <nav className={`nav`}>

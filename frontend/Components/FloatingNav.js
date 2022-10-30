@@ -1,7 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FloatingNav = () => {
+  const [marketPrice, setMarketPrice] = useState(0);
+
   const getInitialState = () => {
     const value = "A/B";
     return value;
@@ -12,10 +14,16 @@ const FloatingNav = () => {
     setOption(e.target.value);
   };
 
+  const handleChangeMP = (e) => {
+    setMarketPrice(marketPrice); // from backend
+    // console.log(marketPrice)
+  };
+
   return (
     <div>
       <div className="gap"></div>
       <div className="floatingnav">
+      <div className="widthgap"></div>
       <h3>Market:</h3>
       <div className="widthgap"></div>
       <div class="dropdown">
@@ -28,12 +36,10 @@ const FloatingNav = () => {
           {/* <p>{`You selected ${value}`}</p> */}
       </div>
       </div>
-      <div className="widthgap"></div>
-      <div className="widthgap"></div>
-      <h3>Token:</h3>
-
       <div className="widthgapnew"></div>
-      <h3>Last Market Price:</h3>
+      <h3>Last Market Price: </h3>
+      <h4>{marketPrice} ETH</h4>
+      {/* <button onClick={handleChangeMP}>blabla</button> */}
       </div>
     </div>
   )
