@@ -18,7 +18,6 @@ contract Swap is Ownable {
         bytes2 status;
     }
 
-    //depending on the implementation will have to update the structure
     struct OrderBook {
         uint256 orderIndex;
         mapping(uint256 => Order) orders;
@@ -175,12 +174,12 @@ contract Swap is Ownable {
         returns (uint256 tokenBalance)
     {
         require(hasToken(symbolName));
-        require(getBalanceForToken(symbolName) + amount >= getBalanceForToken(symbolName));
+        require(getTokenBalanceForUser(symbolName) + amount >= getTokenBalanceForUser(symbolName));
         uint8 _tokenIndex = getTokenIndex(symbolName);
         tokenBalanceForAddress[msg.sender][_tokenIndex] += amount;
         require(tokens[_tokenIndex].transferFrom(msg.sender, address(this), amount) == true);
         emit LogDepositToken(symbolName, msg.sender, amount, block.timestamp);
-        return getBalanceForToken(symbolName);
+        return getTokenBalanceForUser(symbolName);
     }
 
     function withdrawToken(string memory symbolName, uint256 amount)
@@ -188,14 +187,14 @@ contract Swap is Ownable {
         returns (uint256 tokenBalance)
     {
         require(hasToken(symbolName));
-        require(amount <= getBalanceForToken(symbolName));
+        require(amount <= getTokenBalanceForUser(symbolName));
 
         uint8 _tokenIndex = getTokenIndex(symbolName);
         tokenBalanceForAddress[msg.sender][_tokenIndex] -= amount;
         require(tokens[_tokenIndex].transfer(msg.sender, amount) == true);
 
         emit LogWithdrawToken(symbolName, msg.sender, amount, block.timestamp);
-        return getBalanceForToken(symbolName);
+        return getTokenBalanceForUser(symbolName);
     }
 
     function createBuyOrder(
@@ -224,11 +223,7 @@ contract Swap is Ownable {
             );
         }
         if (_buy_qty_balance > 0) {
-            (
-                uint256[] memory indexes,
-                uint256[] memory prices,
-                uint256[] memory amounts
-            ) = getBuyOrderBook(buySymbolName, sellSymbolName);
+            (, uint256[] memory prices, ) = getBuyOrderBook(buySymbolName, sellSymbolName);
 
             uint256 _newOrderIndex = ++ExchangeMarket[_marketIndex].buyOrderBook.orderIndex;
             uint256[] memory _newOrdersQueue = new uint256[](_newOrderIndex);
@@ -393,11 +388,7 @@ contract Swap is Ownable {
         // check if buyOrder is fully fulfiled
         if (_sell_qty_balance > 0) {
             // Update ordersQueue of OrderBook
-            (
-                uint256[] memory indexes,
-                uint256[] memory prices,
-                uint256[] memory amounts
-            ) = getSellOrderBook(sellTokenSymbol, buyTokenSymbol);
+            (, uint256[] memory prices, ) = getSellOrderBook(sellTokenSymbol, buyTokenSymbol);
             uint256 _newOrderIndex = ++ExchangeMarket[_marketIndex].sellOrderBook.orderIndex;
             uint256[] memory _newOrdersQueue = new uint256[](_newOrderIndex);
 
@@ -709,7 +700,7 @@ contract Swap is Ownable {
             uint256[] memory
         )
     {
-        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);
+        uint8 _marketIndex = getMarketIndex(sellTokenSymbol, buyTokenSymbol);
 
         uint256[] memory indexes = new uint256[](
             ExchangeMarket[_marketIndex].sellOrderBook.ordersCount
@@ -731,10 +722,6 @@ contract Swap is Ownable {
         }
 
         return (indexes, prices, quantity);
-    }
-
-    function getBalanceForToken(string memory symbolName) public view returns (uint256) {
-        return tokenBalanceForAddress[msg.sender][getTokenIndex(symbolName)];
     }
 
     function getTokenAddress(string memory symbolName) public view returns (address) {
@@ -770,5 +757,99 @@ contract Swap is Ownable {
             }
         }
         return 0;
+    }
+
+    function getTokenBalanceForUser(string memory symbolName) public view returns (uint256) {
+        return tokenBalanceForAddress[msg.sender][getTokenIndex(symbolName)];
+    }
+
+    function getAllTokenBalanceForUser() public view returns (string[] memory, uint256[] memory) {
+        string[] memory symbolNames = new string[](tokenIndex - 1);
+        uint256[] memory balances = new uint256[](tokenIndex - 1);
+        for (uint8 i = 1; i <= tokenIndex; i++) {
+            symbolNames[i - 1] = tokenInfo[i].symbolName;
+            balances[i - 1] = getTokenBalanceForUser(tokenInfo[i].symbolName);
+        }
+        return (symbolNames, balances);
+    }
+
+    //orderIndex, buy/sell tokensymbol, buy or sell, price, quantity
+    function getOpenOrdersForUser()
+        public
+        view
+        returns (
+            uint256[] memory, /*orderIndex*/
+            string[] memory, /*buy/sell tokensymbol*/
+            string[] memory, /*buy/sell tokensymbol*/
+            string[] memory, /*buy or sell*/
+            uint256[] memory, /*price*/
+            uint256[] memory, /*quantity*/
+            uint8
+        )
+    {
+        uint256[] memory orderIndexes = new uint256[](20); /*orderIndex*/
+        string[] memory buySymbols = new string[](20); /*buy/sell tokensymbol*/
+        string[] memory sellSymbols = new string[](20); /*buy/sell tokensymbol*/
+        string[] memory types = new string[](20); /*buy or sell*/
+        uint256[] memory prices = new uint256[](20); /*price*/
+        uint256[] memory quantities = new uint256[](20); /*quantity*/
+        uint8 count = 0;
+
+        for (uint8 i = 1; i <= marketIndex; i++) {
+            for (uint256 j = 1; j <= ExchangeMarket[i].sellOrderBook.ordersCount; j++) {
+                Order memory _order = ExchangeMarket[i].sellOrderBook.orders[
+                    ExchangeMarket[i].sellOrderBook.ordersQueue[j - 1]
+                ];
+                if (_order.user == msg.sender) {
+                    count++;
+                    orderIndexes[count - 1] = ExchangeMarket[i].sellOrderBook.ordersQueue[j - 1];
+                    buySymbols[count - 1] = tokenInfo[buyToSell[i][0]].symbolName;
+                    sellSymbols[count - 1] = tokenInfo[buyToSell[i][1]].symbolName;
+                    types[count - 1] = "sell";
+                    prices[count - 1] = _order.price;
+                    quantities[count - 1] = _order.quantity;
+                }
+            }
+            for (uint256 j = 1; j <= ExchangeMarket[i].buyOrderBook.ordersCount; j++) {
+                Order memory _order = ExchangeMarket[i].buyOrderBook.orders[
+                    ExchangeMarket[i].buyOrderBook.ordersQueue[j - 1]
+                ];
+                if (_order.user == msg.sender) {
+                    count++;
+                    orderIndexes[count - 1] = ExchangeMarket[i].buyOrderBook.ordersQueue[j - 1];
+                    buySymbols[count - 1] = tokenInfo[buyToSell[i][0]].symbolName;
+                    sellSymbols[count - 1] = tokenInfo[buyToSell[i][1]].symbolName;
+                    types[count - 1] = "buy";
+                    prices[count - 1] = _order.price;
+                    quantities[count - 1] = _order.quantity;
+                }
+            }
+        }
+
+        return (orderIndexes, buySymbols, sellSymbols, types, prices, quantities, count);
+    }
+
+    function getAllTokens() public view returns (string[] memory, address[] memory) {
+        string[] memory symbolNames = new string[](tokenIndex - 1);
+        address[] memory addresses = new address[](tokenIndex - 1);
+
+        for (uint8 i = 1; i <= tokenIndex; i++) {
+            symbolNames[i - 1] = tokenInfo[i].symbolName;
+            addresses[i - 1] = tokenInfo[i].contractAddress;
+        }
+
+        return (symbolNames, addresses);
+    }
+
+    function getAllMarkets() public view returns (string[] memory, string[] memory) {
+        string[] memory buySymbols = new string[](marketIndex - 1);
+        string[] memory sellSymbols = new string[](marketIndex - 1);
+
+        for (uint8 i = 1; i <= marketIndex; i++) {
+            buySymbols[i - 1] = tokenInfo[buyToSell[i][0]].symbolName;
+            sellSymbols[i - 1] = tokenInfo[buyToSell[i][1]].symbolName;
+        }
+
+        return (buySymbols, sellSymbols);
     }
 }
