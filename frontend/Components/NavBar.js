@@ -3,15 +3,18 @@ import Image from "next/image";
 import React from "react";
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { useState, useEffect } from "react";
+import { ConnectButton } from "web3uikit"
 
 const Navbar = () => {
   const [hasMetamask, setHasMetamask] = useState(false);
   const {enableWeb3, isWeb3Enabled} = useMoralis();
+  // console.log(useMoralis.get('ethAddress'))
   useEffect(() => {
     if (typeof window.ethereum !== "undefined") {
       setHasMetamask(true);
     }
   });
+
   return (
     <header>
       <nav className={`nav`}>
@@ -19,7 +22,7 @@ const Navbar = () => {
       <div></div>
       <div><h1 >BlockByBlock DEX</h1></div>
       <div>
-        {hasMetamask ? (
+        {/* {hasMetamask ? (
             isWeb3Enabled ? (
             <button class="button-34" role="button">Wallet Connected!</button>
             ) : (
@@ -27,7 +30,8 @@ const Navbar = () => {
             )
         ) : (
             "Please install metamask"
-        )}
+        )} */}
+        <ConnectButton class="button-35" moralisAuth={false} />
       </div>
       </nav>
     </header>
