@@ -40,6 +40,18 @@ h3 {
     align-items: center;
     padding-right:10px;
   }
+  h5 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 18px; 
+    font-weight: normal; 
+    line-height: 15px; 
+    margin: 0 0 0 0px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+  }
   .centertext{
     display: flex;
   justify-content: center;
@@ -59,7 +71,7 @@ h3 {
     padding-left:12px;
   }
   .customh4sell { 
-    color: #ac0000; 
+    color: #ca0c0c; 
     font-family: 'Georgia'; 
     font-size: 22px; 
     font-weight: normal; 
@@ -211,11 +223,9 @@ nav{
 
 .button-81 {
   width:120px;
-  background-color: #fff;
   border: 0 solid #e2e8f0;
   border-radius: 1.5rem;
   box-sizing: border-box;
-  color: #000000;
   cursor: pointer;
   display: inline-block;
   font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -231,11 +241,13 @@ nav{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  background-color: #7700ff;
+  color: #fff;
 }
 
 .button-81:hover {
-  background-color: #7700ff;
-  color: #fff;
+  background-color: #fff;
+  color: #000000;
 }
 
 @media (min-width: 768px) {
@@ -247,11 +259,11 @@ nav{
 
 .button-85 {
   width:250px;
-  background-color: #fff;
+  
   border: 0 solid #e2e8f0;
   border-radius: 1.5rem;
   box-sizing: border-box;
-  color: #000000;
+  
   cursor: pointer;
   display: inline-block;
   font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -267,11 +279,13 @@ nav{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  background-color: #7700ff;
+  color: #fff;
 }
 
 .button-85:hover {
-  background-color: #7700ff;
-  color: #fff;
+  background-color: #fff;
+  color: #000000;
 }
 
 @media (min-width: 768px) {
@@ -508,7 +522,7 @@ nav{
   } 
 
 .button-33 {
-  margin: 0 0 0 740px; 
+  margin: 0 0 0 0px; 
   background-color: #fbc2c2;
   border-radius: 100px;
   box-shadow: rgba(187, 44, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 44, 44, 0.15) 0 1px 2px,rgba(187, 44, 44, 0.15) 0 2px 4px,rgba(187, 44, 44, 0.15) 0 4px 8px,rgba(187, 44, 44, 0.15) 0 8px 16px,rgba(187, 44, 44, 0.15) 0 16px 32px;
@@ -527,21 +541,21 @@ nav{
   touch-action: manipulation;
 }
 
-.button-34 {     
+.button-33 {     
   background-color: #c2fbd7;
-  margin: 0 0 0 700px; 
+  margin: 10px 0 0 0px; 
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: green;
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
+  padding: 6px 20px;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
   border: 0;
-  font-size: 25px;
+  font-size: 20px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;   

@@ -14,9 +14,9 @@ function MyApp({ Component, pageProps }) {
       <div className="one"><FloatingNav /></div>
       <div className="two">
         <h3>Order Book</h3>
-        <h4 className='customh4buy'>Buy</h4>
+        <h4 className='customh4buy'>BUY</h4>
         <OrderBook/>
-        <h4 className='customh4sell'>Sell</h4>
+        <h4 className='customh4sell'>SELL</h4>
         <OrderBook/>
       </div>
       <div className="three">
