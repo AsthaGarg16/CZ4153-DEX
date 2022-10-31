@@ -5,6 +5,7 @@ import OrderBook from "../Components/OrderBook"
 import CreateOrder from "../Components/CreateOrder"
 import Balances from "../Components/Balances"
 import HistoryTable from "../Components/HistoryTable"
+import DepositWithdraw from "../Components/DepositWithdraw"
 import {MoralisProvider} from 'react-moralis'
 
 function MyApp({ Component, pageProps }) {
@@ -24,8 +25,11 @@ function MyApp({ Component, pageProps }) {
       </div>
       <div className="two">
         <h3>Order Book</h3>
+        <div className="heightgap"></div>
         <h4 className='customh4buy'>BUY</h4>
         <OrderBook/>
+        <div className="heightgap"></div>
+        <div className="heightgap"></div>
         <h4 className='customh4sell'>SELL</h4>
         <OrderBook/>
       </div>
@@ -36,6 +40,9 @@ function MyApp({ Component, pageProps }) {
         <div className='threerow2'>
         <h3>Balances</h3>
         <Balances/>
+        </div>
+        <div className='threerow3'>
+        <DepositWithdraw/>
         </div>
       </div>
     </div>

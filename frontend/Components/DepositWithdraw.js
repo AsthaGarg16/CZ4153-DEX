@@ -5,9 +5,9 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const CreateOrder = () => {
+const DepositWithdraw = () => {
   const getInitialState = () => {
-    const value = "Create Market Order";
+    const value = "Token A";
     return value;
   };
   const [value, setOption] = useState(getInitialState);
@@ -17,27 +17,18 @@ const CreateOrder = () => {
   const [tfValue1, setTFValue1] = useState("");
   const [tfValue2, setTFValue2] = useState("");
 
-  const [alignment, setAlignment] = React.useState('Buy');
+  const [alignment, setAlignment] = React.useState('Deposit');
   
   const handleChangeButton = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-  const onClickPlaceOrder = () => {
-    return console.log(value.slice(7,-6), alignment, tfValue1*tfValue2);
+  const onClickSubmit = () => {
+    return console.log(value, alignment, tfValue2);
   };
 
   return (
     <div>
-      {/* <div className="heightgapnew"></div> */}
-      <div className="dropdown">
-      <div>
-          <select value={value} onChange={handleChange} className="button-85">
-            <option value="Create Market Order">Create Market Order</option>
-            <option value="Create Limit Order">Create Limit Order</option>
-          </select>
-          {/* <p>{`You selected ${value}`}</p> */}
-      </div>
-      </div>
+      <div className="heightgap"></div>
       <div className="centertext">
       <ToggleButtonGroup
         color="standard"
@@ -46,11 +37,12 @@ const CreateOrder = () => {
         onChange={handleChangeButton}
         aria-label="Platform"
         >
-        <ToggleButton value="Buy"><h4>Buy</h4></ToggleButton>
-        <ToggleButton value="Sell"><h4>Sell</h4></ToggleButton>
+        <ToggleButton value="Deposit"><h6>Deposit</h6></ToggleButton>
+        <ToggleButton value="Withdraw"><h6>Withdraw</h6></ToggleButton>
         </ToggleButtonGroup>
         {/* <p>{`You selected ${alignment}`}</p> */}
       </div>
+      
       <div>
         <Box
             component="form"
@@ -61,18 +53,26 @@ const CreateOrder = () => {
             autoComplete="off"
             >
             <div className='row11'>
-              <TextField sx={{ backgroundColor: "#d3b7ff", borderRadius: '5px' }} onChange={(newValue) => setTFValue1(newValue.target.value)} value={tfValue1} type="number" id="outlined-basic" label="Price" variant="outlined" />
+            <div className="dropdown">
+                <div>
+                    <select value={value} onChange={handleChange} className="button-81">
+                        <option value="Token A">Token A</option>
+                        <option value="Token B">Token B</option>
+                        <option value="Token C">Token C</option>
+                    </select>
+                    {/* <p>{`You selected ${value}`}</p> */}
+                </div>
+                </div>
               <div className="widthgap"></div>
               <TextField sx={{ backgroundColor: "#d3b7ff", borderRadius: '5px' }} onChange={(newValue) => setTFValue2(newValue.target.value)} value={tfValue2} type="number" id="outlined-basic" label="Quantity" variant="outlined" />
             </div>
         </Box>
       </div>
-      <h5>{`Total: ${tfValue1*tfValue2}`}</h5>
       <div className="centertext">
-      <button className="button-33" onClick={onClickPlaceOrder}>Place Order!</button>
+      <button className="button-33" onClick={onClickSubmit}>Submit!</button>
       </div>
     </div>
   )
 };
 
-export default CreateOrder;
+export default DepositWithdraw;

@@ -34,11 +34,12 @@ export default function OrderBook() {
       <h4 className='customh4'>Qty</h4>
       <h4 className='customh4'>Total</h4>
     </div>
+    <div className="heightgapnew"></div>
     <Box
       sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
     >
       <FixedSizeList
-        height={260}
+        height={240}
         width={280}
         itemSize={46}
         itemCount={priceList.length}
