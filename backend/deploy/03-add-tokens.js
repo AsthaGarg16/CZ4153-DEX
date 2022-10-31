@@ -8,10 +8,11 @@ module.exports = async ({ getNamedAccounts }) => {
     const arkToken = await ethers.getContract("ArkToken", deployer)
     const karToken = await ethers.getContract("KarToken", deployer)
     const rakToken = await ethers.getContract("RakToken", deployer)
+    console.log(`Getting tokens`)
 
     //swap
     const exchange = await ethers.getContract("Swap", deployer)
-
+    console.log(`Getting swap`)
     const token1Tx = await exchange.addToken("ARK", arkToken.address)
     await token1Tx.wait(1)
     console.log(`ArkToken added`)

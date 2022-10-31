@@ -139,8 +139,8 @@ contract Swap is Ownable {
 
     // Owner's AddToken ability
     function addToken(string memory symbolName, address EC20TokenAddress) public onlyOwner {
-        require(!hasToken(symbolName));
-        require(tokenIndex + 1 >= tokenIndex);
+        require(!hasToken(symbolName), "Token already exists");
+        require(tokenIndex + 1 >= tokenIndex, "Token Index overflow");
 
         tokenIndex++;
         tokenInfo[tokenIndex].symbolName = symbolName;
@@ -153,7 +153,6 @@ contract Swap is Ownable {
     }
 
     function addMarket(string memory symbolName, uint8 _tokenIndex) public onlyOwner {
-        require(!hasToken(symbolName));
         require(marketIndex + 1 >= marketIndex);
 
         for (uint8 i = 1; i < tokenIndex; i++) {
