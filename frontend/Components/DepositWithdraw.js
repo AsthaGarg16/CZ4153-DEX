@@ -23,7 +23,7 @@ const DepositWithdraw = () => {
     setAlignment(newAlignment);
   };
   const onClickSubmit = () => {
-    return console.log(value, alignment, tfValue2);
+    return console.log(value, alignment, tfValue2*1);
   };
 
   return (

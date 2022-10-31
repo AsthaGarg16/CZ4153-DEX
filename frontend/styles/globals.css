@@ -112,6 +112,46 @@ h3 {
     /* padding-right:10px; */
     padding-left:18px;
   }
+  .customh4newnew { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 60px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:12px;
+  }
+  .customh4newnewnew1 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 60px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:0px;
+  }
+  .customh4newnewnew2 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 0px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff;  
+    /* text-shadow: 1px 1px 2px #fab4b4;   */
+    align-items: center;
+    padding-right:10px;
+    /* padding-left:12px; */
+  }
   .customh4sell { 
     color: #ca0c0c; 
     font-family: 'Georgia'; 
@@ -125,6 +165,7 @@ h3 {
     /* padding-right:10px; */
     padding-left:15px;
   }
+  
   .customh4buy { 
     color: #03ac00; 
     font-family: 'Georgia'; 

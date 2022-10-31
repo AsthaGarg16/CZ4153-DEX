@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@lab49/react-order-book": "^0.1.2",
+    "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "@walletconnect/web3-provider": "^1.8.0",
     "big.js": "^6.2.1",

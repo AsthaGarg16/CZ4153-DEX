@@ -13,6 +13,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList } from 'react-window';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 // import * as React from 'react';
 // import { pink } from '@mui/material/colors';
@@ -43,6 +45,7 @@ import { FixedSizeList } from 'react-window';
 
 
 function TabPanel(props) {
+
   const { children, value, index} = props;
 
   return (
@@ -80,15 +83,22 @@ function renderRowOpenOrder(props) {
     const [typeList, setTypeList] = useState(['Buy', 'Sell', 'Buy', 'Sell', 'Buy', 'Sell']);
     const [priceList, setPriceList] = useState([2,0,0,0,0,0]);
     const [qtyList, setQtyList] = useState([3,0,0,0,0,0]);
+
+    const onClickSubmit = (market, type, price, qty) => {
+      return console.log(market, type, price, qty);
+    };
   
     return (
       <div>
         <ListItem style={style} key={index} component="div" disablePadding>
-          <ListItemButton>
+          <ListItemButton >
             <ListItemText className='centertext' primary={`${marketList[index]}`} />
             <ListItemText className='centertext' primary={`${typeList[index]}`} />
             <ListItemText className='centertext' primary={`${priceList[index]}`} />
             <ListItemText className='centertext' primary={`${qtyList[index]}`} />
+            <IconButton onClick={onClickSubmit(marketList[index], typeList[index], priceList[index], qtyList[index])} sx={{ backgroundColor: '#fab4b4'}} edge="end" aria-label="delete">
+                    <DeleteIcon/>
+            </IconButton>
           </ListItemButton>
         </ListItem>
       </div>
@@ -141,6 +151,7 @@ function renderRowOpenOrder(props) {
   }
 
 export default function HistoryTable() {
+  
     const [priceList, setPriceList] = useState([2,0,0,0,0,0]);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -202,10 +213,11 @@ export default function HistoryTable() {
             >
                 <TabPanel value={value} index={0} dir={theme.direction}>
                     <div className='row1'>
-                        <h4 className='customh4new'>Market</h4>
-                        <h4 className='customh4new'>Type</h4>
-                        <h4 className='customh4new'>Price</h4>
-                        <h4 className='customh4new'>Qty</h4>
+                        <h4 className='customh4newnew'>Market</h4>
+                        <h4 className='customh4newnew'>Type</h4>
+                        <h4 className='customh4newnew'>Price</h4>
+                        <h4 className='customh4newnew'>Qty</h4>
+                        <h4 className='customh4newnewnew2'>Cancel</h4>
                     </div>
                     <Box
                     sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
