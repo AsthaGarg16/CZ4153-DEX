@@ -97,7 +97,7 @@ h3 {
     text-shadow: 1px 1px 2px #00ddff; 
     align-items: center;
     /* padding-right:10px; */
-    padding-left:12px;
+    padding-left:18px;
   }
   .customh4sell { 
     color: #ca0c0c; 
@@ -193,7 +193,7 @@ h3 {
 }
 
 .onerow1 {
-  height: 35%;
+  height: 40%;
   grid-row: 1/2;
   padding: 3px;
   margin: 20px 20px 20px 20px; 
@@ -202,7 +202,7 @@ h3 {
   /* grid-template-rows: repeat(2, 1fr); */
 }
 .onerow2 {
-  height: 44%;
+  height: 40%;
   grid-row:2/2;
   padding: 3px;
   margin: 20px 20px 20px 20px; 
@@ -441,6 +441,9 @@ nav{
 .widthgapnew{
   width: 170px;
 }
+.widthgapneww{
+  width: 650px;
+}
 
 .dropdown {
   margin: 5px 0;
@@ -604,7 +607,7 @@ nav{
   /* <!-- HTML !-->
   <button class="button-33" role="button">Button 33</button> */
   .button-35 {
-    margin: 0 0 0 690px; 
+    margin: 0 0 0 0px; 
     /* background-color: #fbc2c2; */
     /* border-radius: 100px; */
     /* box-shadow: rgba(187, 44, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 44, 44, 0.15) 0 1px 2px,rgba(187, 44, 44, 0.15) 0 2px 4px,rgba(187, 44, 44, 0.15) 0 4px 8px,rgba(187, 44, 44, 0.15) 0 8px 16px,rgba(187, 44, 44, 0.15) 0 16px 32px;

@@ -15,7 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { FixedSizeList } from 'react-window';
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index} = props;
 
   return (
     <div
@@ -23,10 +23,9 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
-      {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 1 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -47,7 +46,51 @@ function a11yProps(index) {
   };
 }
 
-function renderRow(props) {
+function renderRowOpenOrder(props) {
+    const { index, style } = props;
+    const [marketList, setMarketList] = useState(['A/B', 'C/A', 'A/B', 'A/B', 'B/C', 'A/B']);
+    const [typeList, setTypeList] = useState(['Buy', 'Sell', 'Buy', 'Sell', 'Buy', 'Sell']);
+    const [priceList, setPriceList] = useState([2,0,0,0,0,0]);
+    const [qtyList, setQtyList] = useState([3,0,0,0,0,0]);
+  
+    return (
+      <div>
+        <ListItem style={style} key={index} component="div" disablePadding>
+          <ListItemButton>
+            <ListItemText className='centertext' primary={`${marketList[index]}`} />
+            <ListItemText className='centertext' primary={`${typeList[index]}`} />
+            <ListItemText className='centertext' primary={`${priceList[index]}`} />
+            <ListItemText className='centertext' primary={`${qtyList[index]}`} />
+          </ListItemButton>
+        </ListItem>
+      </div>
+      
+    );
+  }
+
+  function renderRowCancelledOrder(props) {
+    const { index, style } = props;
+    const [marketList, setMarketList] = useState(['A/B', 'C/A', 'A/B', 'A/B', 'B/C', 'A/B']);
+    const [typeList, setTypeList] = useState(['Buy', 'Sell', 'Buy', 'Sell', 'Buy', 'Sell']);
+    const [priceList, setPriceList] = useState([2,0,0,0,0,0]);
+    const [qtyList, setQtyList] = useState([3,0,0,0,0,0]);
+  
+    return (
+      <div>
+        <ListItem style={style} key={index} component="div" disablePadding>
+          <ListItemButton>
+            <ListItemText className='centertext' primary={`${marketList[index]}`} />
+            <ListItemText className='centertext' primary={`${typeList[index]}`} />
+            <ListItemText className='centertext' primary={`${priceList[index]}`} />
+            <ListItemText className='centertext' primary={`${qtyList[index]}`} />
+          </ListItemButton>
+        </ListItem>
+      </div>
+      
+    );
+  }
+
+  function renderRowTradeHistory(props) {
     const { index, style } = props;
     const [marketList, setMarketList] = useState(['A/B', 'C/A', 'A/B', 'A/B', 'B/C', 'A/B']);
     const [typeList, setTypeList] = useState(['Buy', 'Sell', 'Buy', 'Sell', 'Buy', 'Sell']);
@@ -93,111 +136,109 @@ export default function HistoryTable() {
 
   return (
     <div>
-    <div className='row11'>
-    <div className='widthgapnewnew'></div>
-    <h3>All Markets</h3>
-    <div className='widthgapnewnewnew'></div>
-    <div className="dropdown">
-      <div>
-          <select value={valueOrderType} onChange={handleChangeOrderType} className="button-89">
-            <option value="Market Orders">Market Orders</option>
-            <option value="Limit Orders">Limit Orders</option>
-          </select>
-          {/* <p>{`You selected ${value}`}</p> */}
-      </div>
-      </div>
-      </div>
-    <Box sx={{ bgcolor: 'background.paper', width: 800, borderRadius: '10px'}}>
-      <AppBar position="static" sx={{ bgcolor: '#7700ff', width: 800, borderRadius: '10px'}}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          textColor="inherit"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab sx={{ fontSize: '16px'}} label="Open Orders" {...a11yProps(0)} />
-          <Tab sx={{ fontSize: '16px'}} label="Cancelled Orders" {...a11yProps(1)} />
-          <Tab sx={{ fontSize: '16px'}} label="Trade History" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-        <div>
-        <div className='row1'>
-            <h4 className='customh4new'>Market</h4>
-            <h4 className='customh4new'>Type</h4>
-            <h4 className='customh4new'>Price</h4>
-            <h4 className='customh4new'>Qty</h4>
+        <div className='row11'>
+            <div className='widthgapnewnew'></div>
+            <div>
+                <h3>All Markets</h3>
             </div>
-            <Box
-            sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
-            >
-            <FixedSizeList
-                height={130}
-                width={750}
-                itemSize={46}
-                itemCount={priceList.length}
-                overscanCount={5}
-            >
-                {renderRow}
-            </FixedSizeList>
-            </Box>
+            <div className='widthgapnewnewnew'></div>
+            <div className="dropdown">
+                <div>
+                    <select value={valueOrderType} onChange={handleChangeOrderType} className="button-89">
+                        <option value="Market Orders">Market Orders</option>
+                        <option value="Limit Orders">Limit Orders</option>
+                    </select>
+                    {/* <p>{`You selected ${value}`}</p> */}
+                </div>
             </div>
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-        <div>
-        <div className='row1'>
-            <h4 className='customh4new'>Market</h4>
-            <h4 className='customh4new'>Type</h4>
-            <h4 className='customh4new'>Price</h4>
-            <h4 className='customh4new'>Qty</h4>
-            </div>
-            <Box
-            sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
+        </div>
+        <Box sx={{ bgcolor: 'background.paper', width: 800, borderRadius: '10px'}}>
+            <AppBar position="static" sx={{ bgcolor: '#7700ff', width: 800, borderRadius: '10px'}}>
+                <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="secondary"
+                textColor="inherit"
+                variant="fullWidth"
+                aria-label="full width tabs example"
+                >
+                    <Tab sx={{ fontSize: '16px'}} label="Open Orders" {...a11yProps(0)} />
+                    <Tab sx={{ fontSize: '16px'}} label="Cancelled Orders" {...a11yProps(1)} />
+                    <Tab sx={{ fontSize: '16px'}} label="Trade History" {...a11yProps(2)} />
+                </Tabs>
+            </AppBar>
+            <SwipeableViews
+            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+            index={value}
+            onChangeIndex={handleChangeIndex}
             >
-            <FixedSizeList
-                height={130}
-                width={750}
-                itemSize={46}
-                itemCount={priceList.length}
-                overscanCount={5}
-            >
-                {renderRow}
-            </FixedSizeList>
-            </Box>
-            </div>
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-        <div>
-        <div className='row1'>
-            <h4 className='customh4new'>Market</h4>
-            <h4 className='customh4new'>Type</h4>
-            <h4 className='customh4new'>Price</h4>
-            <h4 className='customh4new'>Qty</h4>
-            </div>
-            <Box
-            sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
-            >
-            <FixedSizeList
-                height={130}
-                width={750}
-                itemSize={46}
-                itemCount={priceList.length}
-                overscanCount={5}
-            >
-                {renderRow}
-            </FixedSizeList>
-            </Box>
-            </div>
-        </TabPanel>
-      </SwipeableViews>
-    </Box>
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                    <div className='row1'>
+                        <h4 className='customh4new'>Market</h4>
+                        <h4 className='customh4new'>Type</h4>
+                        <h4 className='customh4new'>Price</h4>
+                        <h4 className='customh4new'>Qty</h4>
+                    </div>
+                    <Box
+                    sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
+                    >
+                        <FixedSizeList
+                        height={130}
+                        width={780}
+                        itemSize={46}
+                        itemCount={priceList.length}
+                        overscanCount={5}
+                        >
+                            {renderRowOpenOrder}
+                        </FixedSizeList>
+                    </Box>
+                </TabPanel>
+
+                <TabPanel value={value} index={1} dir={theme.direction}>
+                    <div className='row1'>
+                        <h4 className='customh4new'>Market</h4>
+                        <h4 className='customh4new'>Type</h4>
+                        <h4 className='customh4new'>Price</h4>
+                        <h4 className='customh4new'>Qty</h4>
+                    </div>
+                    <Box
+                    sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
+                    >
+                        <FixedSizeList
+                        height={130}
+                        width={780}
+                        itemSize={46}
+                        itemCount={priceList.length}
+                        overscanCount={5}
+                        >
+                            {renderRowCancelledOrder}
+                        </FixedSizeList>
+                    </Box>
+                </TabPanel>
+
+                <TabPanel value={value} index={2} dir={theme.direction}>
+                    <div className='row1'>
+                        <h4 className='customh4new'>Market</h4>
+                        <h4 className='customh4new'>Type</h4>
+                        <h4 className='customh4new'>Price</h4>
+                        <h4 className='customh4new'>Qty</h4>
+                    </div>
+                    <Box
+                    sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
+                    >
+                        <FixedSizeList
+                        height={130}
+                        width={780}
+                        itemSize={46}
+                        itemCount={priceList.length}
+                        overscanCount={5}
+                        >
+                            {renderRowTradeHistory}
+                        </FixedSizeList>
+                    </Box>
+                </TabPanel>
+            </SwipeableViews>
+        </Box>
     </div>
   );
 }

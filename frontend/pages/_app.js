@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
       <div className="one">
         <FloatingNav />
         <div className='onerow1'>
-
+          hi
         </div>
         <div className='onerow2'>
           <HistoryTable/>
