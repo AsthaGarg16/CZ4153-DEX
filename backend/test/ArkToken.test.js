@@ -11,7 +11,7 @@ describe("ArkToken Unit Test", function () {
         deployer = accounts.deployer
         user1 = accounts.user1
 
-        await deployments.fixture("all")
+        await deployments.fixture("tokens")
         ourToken = await ethers.getContract("ArkToken", deployer)
     })
     it("was deployed", async () => {
