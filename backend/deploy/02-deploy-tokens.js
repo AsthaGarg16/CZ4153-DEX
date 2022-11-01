@@ -1,5 +1,6 @@
-const { network } = require("hardhat")
+const { getNamedAccounts, deployments, network } = require("hardhat")
 const {
+    networkConfig,
     developmentChains,
     VERIFICATION_BLOCK_CONFIRMATIONS,
     INITIAL_SUPPLY,
@@ -19,7 +20,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         from: deployer,
         args: [INITIAL_SUPPLY],
         log: true,
-        waitConfirmations: waitBlockConfirmations,
+        waitConfirmations: network.config.blockConfirmations || 1,
     })
     log("ArkToken deployed")
     const karToken = await deploy("KarToken", {

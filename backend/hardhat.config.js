@@ -18,19 +18,19 @@ module.exports = {
     networks: {
         hardhat: {
             chainId: 1337,
-            timeout: 80000,
+            // timeout: 80000,
         },
         localhost: {
             chainId: 1337,
-            timeout: 80000,
+            // timeout: 80000,
         },
         goerli: {
             url: GOERLI_RPC_URL,
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             chainId: 5,
-            blockConfirmations: 6,
+            // blockConfirmations: 6,
             saveDeployments: true,
-            timeout: 80000,
+            // timeout: 80000,
         },
         mainnet: {
             url: process.env.MAINNET_RPC_URL,
