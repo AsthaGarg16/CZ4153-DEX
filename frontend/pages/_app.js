@@ -1,19 +1,15 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import FloatingNav from "../components/FloatingNav";
-import OrderBook from "../Components/OrderBook"
-import CreateOrder from "../Components/CreateOrder"
-import Balances from "../Components/Balances"
-import HistoryTable from "../Components/HistoryTable"
-import DepositWithdraw from "../Components/DepositWithdraw"
-import {MoralisProvider} from 'react-moralis'
+import { MoralisProvider } from "react-moralis";
 
 function MyApp({ Component, pageProps }) {
   return (
-  <MoralisProvider initializeOnMount={false}>
-    <Navbar />
-    {/* <Component {...pageProps} /> */}
-    <div className="wrapper">
+    <MoralisProvider initializeOnMount={false}>
+      <Navbar />
+      <FloatingNav />
+      {/* <Component {...pageProps} /> */}
+      {/* <div className="wrapper">
       <div className="one">
         <FloatingNav />
         <div className='onerow1'>
@@ -45,11 +41,9 @@ function MyApp({ Component, pageProps }) {
         <DepositWithdraw/>
         </div>
       </div>
-    </div>
-  </MoralisProvider>
-  )
+    </div> */}
+    </MoralisProvider>
+  );
 }
 
-export default MyApp
-
-
+export default MyApp;
