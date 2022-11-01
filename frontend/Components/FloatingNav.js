@@ -11,7 +11,8 @@ import Balances from "../Components/Balances";
 import HistoryTable from "../Components/HistoryTable";
 import DepositWithdraw from "../Components/DepositWithdraw";
 
-const FloatingNav = (swapAddress) => {
+const FloatingNav = (props) => {
+  const { swap_address } = props;
   const { isWeb3Enabled, account } = useMoralis();
   const [marketPrice, setMarketPrice] = useState(0);
   const [listofMarkets, setMarketList] = useState(["A/B", "B/C", "C/A"]); //to update
@@ -33,7 +34,7 @@ const FloatingNav = (swapAddress) => {
 
   const { runContractFunction: getAllMarkets } = useWeb3Contract({
     abi: swapAbi,
-    contractAddress: swapAddress,
+    contractAddress: swap_address,
     functionName: "getAllMarkets",
     params: {},
   });
@@ -101,7 +102,7 @@ const FloatingNav = (swapAddress) => {
         <div className="onerow1">hi</div>
         <div className="onerow2">
           <HistoryTable
-            swapAddress="0x00" //to Update
+            swapAddress={swap_address} //to Update
           />
         </div>
       </div>
@@ -110,7 +111,7 @@ const FloatingNav = (swapAddress) => {
         <div className="heightgap"></div>
         <h4 className="customh4buy">BUY</h4>
         <OrderBookBuy
-          swapAddress="0x00" //to Update
+          swapAddress={swap_address}
           buySymbol={value.split("/")[0]}
           sellSymbol={value.split("/")[1]}
         />
@@ -118,7 +119,7 @@ const FloatingNav = (swapAddress) => {
         <div className="heightgap"></div>
         <h4 className="customh4sell">SELL</h4>
         <OrderBookSell
-          swapAddress="0x00" //to Update
+          swapAddress={swap_address}
           buySymbol={value.split("/")[0]}
           sellSymbol={value.split("/")[1]}
         />
@@ -126,7 +127,7 @@ const FloatingNav = (swapAddress) => {
       <div className="three">
         <div className="threerow1">
           <CreateOrder
-            swapAddress="0x00" //to Update
+            swapAddress={swap_address}
             buySymbol={value.split("/")[0]}
             sellSymbol={value.split("/")[1]}
           />
@@ -137,7 +138,7 @@ const FloatingNav = (swapAddress) => {
         </div>
         <div className="threerow3">
           <DepositWithdraw
-            swapAddress="0x00" //to Update
+            swapAddress={swap_address}
             tokensList={["ARK", "KAR", "RAK"]}
           />
         </div>
