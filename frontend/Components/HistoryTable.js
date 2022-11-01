@@ -77,26 +77,27 @@ function a11yProps(index) {
   };
 }
 
-function renderRowOpenOrder(props) {
+const renderRowOpenOrder = (props) => {
     const { index, style } = props;
+    console.log('props',props);
     const [marketList, setMarketList] = useState(['A/B', 'C/A', 'A/B', 'A/B', 'B/C', 'A/B']);
     const [typeList, setTypeList] = useState(['Buy', 'Sell', 'Buy', 'Sell', 'Buy', 'Sell']);
     const [priceList, setPriceList] = useState([2,0,0,0,0,0]);
     const [qtyList, setQtyList] = useState([3,0,0,0,0,0]);
 
     const onClickSubmit = (market, type, price, qty) => {
-      return console.log(market, type, price, qty);
+      console.log(market, type, price, qty);
     };
-  
+  //key={index} 
     return (
       <div>
-        <ListItem style={style} key={index} component="div" disablePadding>
-          <ListItemButton >
+        <ListItem style={style} component="div" disablePadding>
+        <ListItemButton>
             <ListItemText className='centertext' primary={`${marketList[index]}`} />
             <ListItemText className='centertext' primary={`${typeList[index]}`} />
             <ListItemText className='centertext' primary={`${priceList[index]}`} />
             <ListItemText className='centertext' primary={`${qtyList[index]}`} />
-            <IconButton onClick={onClickSubmit(marketList[index], typeList[index], priceList[index], qtyList[index])} sx={{ backgroundColor: '#fab4b4'}} edge="end" aria-label="delete">
+            <IconButton onClick={()=>onClickSubmit(marketList[index], typeList[index], priceList[index], qtyList[index])} sx={{ backgroundColor: '#fab4b4'}} edge="end" aria-label="delete">
                     <DeleteIcon/>
             </IconButton>
           </ListItemButton>
