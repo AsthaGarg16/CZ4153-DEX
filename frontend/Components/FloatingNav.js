@@ -100,7 +100,9 @@ const FloatingNav = (swapAddress) => {
         </div>
         <div className="onerow1">hi</div>
         <div className="onerow2">
-          <HistoryTable />
+          <HistoryTable
+            swapAddress="0x00" //to Update
+          />
         </div>
       </div>
       <div className="two">
@@ -123,7 +125,11 @@ const FloatingNav = (swapAddress) => {
       </div>
       <div className="three">
         <div className="threerow1">
-          <CreateOrder />
+          <CreateOrder
+            swapAddress="0x00" //to Update
+            buySymbol={value.split("/")[0]}
+            sellSymbol={value.split("/")[1]}
+          />
         </div>
         <div className="threerow2">
           <h3>Balances</h3>
