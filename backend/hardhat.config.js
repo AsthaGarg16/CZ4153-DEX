@@ -17,10 +17,12 @@ module.exports = {
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
-            chainId: 31337,
+            chainId: 1337,
+            timeout: 80000,
         },
         localhost: {
-            chainId: 31337,
+            chainId: 1337,
+            timeout: 80000,
         },
         goerli: {
             url: GOERLI_RPC_URL,
@@ -28,6 +30,7 @@ module.exports = {
             chainId: 5,
             blockConfirmations: 6,
             saveDeployments: true,
+            timeout: 80000,
         },
         mainnet: {
             url: process.env.MAINNET_RPC_URL,

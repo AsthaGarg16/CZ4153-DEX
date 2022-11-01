@@ -2,7 +2,7 @@ const networkConfig = {
     default: {
         name: "hardhat",
     },
-    31337: {
+    1337: {
         name: "localhost",
     },
     5: {

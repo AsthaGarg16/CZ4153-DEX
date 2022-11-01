@@ -3,7 +3,6 @@ const { getNamedAccounts, deployments, ethers } = require("hardhat")
 const { INITIAL_SUPPLY } = require("../helper-hardhat-config")
 
 describe("ArkToken Unit Test", function () {
-    //Multipler is used to make reading the math easier because of the 18 decimal points
     const multiplier = 10 ** 18
     let ourToken, deployer, user1
     beforeEach(async function () {
@@ -65,8 +64,6 @@ describe("ArkToken Unit Test", function () {
                 expect(await ourToken1.balanceOf(user1)).to.equal(tokensToSpend)
             })
             it("doesn't allow an unnaproved member to do transfers", async () => {
-                //Deployer is approving that user1 can spend 20 of their precious OT's
-
                 await expect(playerToken.transferFrom(deployer, user1, amount)).to.be.revertedWith(
                     "ERC20: insufficient allowance"
                 )
