@@ -1,5 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import swapAbi from "../constants/Swap.json"
+import { ethers } from "ethers"
+import { useWeb3Contract, useMoralis } from "react-moralis"
 
 const FloatingNav = () => {
   const [marketPrice, setMarketPrice] = useState(0);
