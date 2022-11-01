@@ -1,7 +1,11 @@
 import '../styles/globals.css'
 import Navbar from "../components/Navbar";
 import FloatingNav from "../components/FloatingNav";
-import VirtualizedList from "../components/VirtualizedList"
+import OrderBook from "../Components/OrderBook"
+import CreateOrder from "../Components/CreateOrder"
+import Balances from "../Components/Balances"
+import HistoryTable from "../Components/HistoryTable"
+import DepositWithdraw from "../Components/DepositWithdraw"
 import {MoralisProvider} from 'react-moralis'
 
 function MyApp({ Component, pageProps }) {
@@ -9,16 +13,38 @@ function MyApp({ Component, pageProps }) {
   <MoralisProvider initializeOnMount={false}>
     <Navbar />
     {/* <Component {...pageProps} /> */}
-    <div class="wrapper">
-      <div class="one"><FloatingNav /></div>
-      <div class="two">
-        <h3>Order Book</h3>
-        <h4 className='customh4buy'>Buy</h4>
-        <VirtualizedList/>
-        <h4 className='customh4sell'>Sell</h4>
-        <VirtualizedList/>
+    <div className="wrapper">
+      <div className="one">
+        <FloatingNav />
+        <div className='onerow1'>
+          hi
+        </div>
+        <div className='onerow2'>
+          <HistoryTable/>
+        </div>
       </div>
-      <div class="three">Three</div>
+      <div className="two">
+        <h3>Order Book</h3>
+        <div className="heightgap"></div>
+        <h4 className='customh4buy'>BUY</h4>
+        <OrderBook/>
+        <div className="heightgap"></div>
+        <div className="heightgap"></div>
+        <h4 className='customh4sell'>SELL</h4>
+        <OrderBook/>
+      </div>
+      <div className="three">
+        <div className='threerow1'>
+        <CreateOrder/>
+        </div>
+        <div className='threerow2'>
+        <h3>Balances</h3>
+        <Balances/>
+        </div>
+        <div className='threerow3'>
+        <DepositWithdraw/>
+        </div>
+      </div>
     </div>
   </MoralisProvider>
   )

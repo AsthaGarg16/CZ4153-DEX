@@ -23,10 +23,13 @@ h3 {
   font-size: 25px; 
   font-weight: normal; 
   line-height: 30px; 
-  margin: 0 0 0 15px; 
+  margin: 0 0 0 0; 
   text-align: center; 
   text-shadow: 1px 1px 2px #00ddff; 
-  align-items: center;}
+  align-items: center;
+  padding-top:5px;
+  padding-bottom:5px;
+}
 
   h4 { 
     color: #000000; 
@@ -39,6 +42,31 @@ h3 {
     text-shadow: 1px 1px 2px #00ddff; 
     align-items: center;
     padding-right:10px;
+  }
+  h5 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 18px; 
+    font-weight: normal; 
+    line-height: 15px; 
+    margin: 0 0 0 0px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+  }
+  h6 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 18px; 
+    font-weight: normal; 
+    line-height: 15px; 
+    margin: 0 0 0 0px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    padding-top:5px;
+    padding-bottom:5px;
   }
   .centertext{
     display: flex;
@@ -58,26 +86,93 @@ h3 {
     /* padding-right:10px; */
     padding-left:12px;
   }
-  .customh4sell { 
-    color: #ac0000; 
+  .customh4balance { 
+    color: #000000; 
     font-family: 'Georgia'; 
     font-size: 22px; 
     font-weight: normal; 
     line-height: 30px; 
-    margin: 0 0 0 15px; 
+    margin: 0 0 0 23px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:17px;
+  }
+  .customh4new { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 60px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:18px;
+  }
+  .customh4newnew { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 60px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:12px;
+  }
+  .customh4newnewnew1 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 60px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff; 
+    align-items: center;
+    /* padding-right:10px; */
+    padding-left:0px;
+  }
+  .customh4newnewnew2 { 
+    color: #000000; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 43px 0 0px; 
+    text-align: center; 
+    text-shadow: 1px 1px 2px #00ddff;  
+    /* text-shadow: 1px 1px 2px #fab4b4;   */
+    align-items: center;
+    padding-right:10px;
+    /* padding-left:12px; */
+  }
+  .customh4sell { 
+    color: #ca0c0c; 
+    font-family: 'Georgia'; 
+    font-size: 22px; 
+    font-weight: normal; 
+    line-height: 30px; 
+    margin: 0 0 0 0px; 
     text-align: center; 
     text-shadow: 1px 1px 2px #00ddff; 
     align-items: center;
     /* padding-right:10px; */
     padding-left:15px;
   }
+  
   .customh4buy { 
     color: #03ac00; 
     font-family: 'Georgia'; 
     font-size: 22px; 
     font-weight: normal; 
     line-height: 30px; 
-    margin: 0 0 0 15px; 
+    margin: 0 0 0 0px; 
     text-align: center; 
     text-shadow: 1px 1px 2px #00ddff; 
     align-items: center;
@@ -95,6 +190,15 @@ h3 {
 .row1{
   display: flex;
   flex-direction: row;
+  align-items: top;
+  /* justify-content: center; */
+}
+.row11{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center; 
 }
 .one {
   width: 60%;
@@ -117,7 +221,60 @@ h3 {
 .three {
   width: 20%;
   grid-column: 3/3;
+  /* padding: 3px; */
+  /* margin: 20px 20px 20px 10px;  */
+  /* border-radius: 10px; */
+  /* background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255)); */
+  grid-template-rows: repeat(3, 1fr);
 }
+.threerow1 {
+  height: 34.5%;
+  grid-row: 1/3;
+  padding: 2px;
+  margin: 20px 20px 20px 10px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+.threerow2 {
+  height: 29%;
+  grid-row:2/3;
+  padding: 2px;
+  margin: 20px 20px 20px 10px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+
+.threerow3 {
+  height: 25%;
+  grid-row:3/3;
+  padding: 2px;
+  margin: 20px 20px 20px 10px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+
+.onerow1 {
+  height: 40%;
+  grid-row: 1/2;
+  padding: 3px;
+  margin: 20px 20px 20px 20px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+.onerow2 {
+  height: 40%;
+  grid-row:2/2;
+  padding: 3px;
+  margin: 20px 20px 20px 20px; 
+  border-radius: 10px;
+  background-image: linear-gradient(to right,  #affff8, rgb(194, 165, 255));
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+
 /* .four {
   grid-column: 3;
   grid-row: 3;
@@ -187,12 +344,10 @@ nav{
 }
 
 .button-81 {
-  width:120px;
-  background-color: #fff;
+  width:110px;
   border: 0 solid #e2e8f0;
   border-radius: 1.5rem;
   box-sizing: border-box;
-  color: #000000;
   cursor: pointer;
   display: inline-block;
   font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -208,17 +363,95 @@ nav{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  background-color: #7700ff;
+  color: #fff;
 }
 
 .button-81:hover {
-  background-color: #7700ff;
-  color: #fff;
+  background-color: #fff;
+  color: #000000;
 }
 
 @media (min-width: 768px) {
   .button-81 {
     font-size: 1.125rem;
-    padding: 1rem 2rem;
+    padding: 0.7rem 0.7rem;
+  }
+}
+
+.button-85 {
+  width:250px;
+  
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 5px;
+  font-weight: 600;
+  line-height: 1;
+  /* padding: 0.5rem 1.6rem; */
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: #7700ff;
+  color: #fff;
+}
+
+.button-85:hover {
+  background-color: #fff;
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .button-85 {
+    font-size: 1.125rem;
+    padding: 0.7rem 0.7rem;
+  }
+}
+
+.button-89 {
+  width:200px;
+  
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 5px;
+  font-weight: 600;
+  line-height: 1;
+  /* padding: 0.5rem 1.6rem; */
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  background-color: #7700ff;
+  color: #fff;
+}
+
+.button-89:hover {
+  background-color: #fff;
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .button-89 {
+    font-size: 1.125rem;
+    padding: 0.7rem 0.7rem;
   }
 }
 
@@ -259,12 +492,26 @@ nav{
   }
 }
 
+.widthgapnewnew{
+  width: 335px;
+}
+.widthgapnewnewnew{
+  width: 125px;
+}
 .widthgap{
   width: 20px;
 }
-
+.heightgap{
+  height: 7px;
+}
+.heightgapnew{
+  height: 4px;
+}
 .widthgapnew{
   width: 170px;
+}
+.widthgapneww{
+  width: 650px;
 }
 
 .dropdown {
@@ -429,7 +676,7 @@ nav{
   /* <!-- HTML !-->
   <button class="button-33" role="button">Button 33</button> */
   .button-35 {
-    margin: 0 0 0 690px; 
+    margin: 0 0 0 0px; 
     /* background-color: #fbc2c2; */
     /* border-radius: 100px; */
     /* box-shadow: rgba(187, 44, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 44, 44, 0.15) 0 1px 2px,rgba(187, 44, 44, 0.15) 0 2px 4px,rgba(187, 44, 44, 0.15) 0 4px 8px,rgba(187, 44, 44, 0.15) 0 8px 16px,rgba(187, 44, 44, 0.15) 0 16px 32px;
@@ -448,8 +695,8 @@ nav{
     touch-action: manipulation;
   } 
 
-.button-33 {
-  margin: 0 0 0 740px; 
+/* .button-33 {
+  margin: 0 0 0 0px; 
   background-color: #fbc2c2;
   border-radius: 100px;
   box-shadow: rgba(187, 44, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 44, 44, 0.15) 0 1px 2px,rgba(187, 44, 44, 0.15) 0 2px 4px,rgba(187, 44, 44, 0.15) 0 4px 8px,rgba(187, 44, 44, 0.15) 0 8px 16px,rgba(187, 44, 44, 0.15) 0 16px 32px;
@@ -466,23 +713,23 @@ nav{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
+} */
 
-.button-34 {     
+.button-33 {     
   background-color: #c2fbd7;
-  margin: 0 0 0 700px; 
+  margin: 7px 0 0 0px; 
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: green;
   cursor: pointer;
   display: inline-block;
   font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
+  padding: 6px 20px;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
   border: 0;
-  font-size: 25px;
+  font-size: 20px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;   

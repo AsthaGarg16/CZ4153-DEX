@@ -25,7 +25,7 @@ function renderRow(props) {
   );
 }
 
-export default function VirtualizedList() {
+export default function OrderBook() {
   const [priceList, setPriceList] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   return (
     <div>
@@ -34,11 +34,12 @@ export default function VirtualizedList() {
       <h4 className='customh4'>Qty</h4>
       <h4 className='customh4'>Total</h4>
     </div>
+    <div className="heightgapnew"></div>
     <Box
-      sx={{ bgcolor: 'background.paper' }}
+      sx={{ bgcolor: 'background.paper', borderRadius: '10px'}}
     >
       <FixedSizeList
-        height={265}
+        height={240}
         width={280}
         itemSize={46}
         itemCount={priceList.length}

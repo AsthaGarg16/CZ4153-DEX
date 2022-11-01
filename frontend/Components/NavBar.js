@@ -18,13 +18,12 @@ const Navbar = () => {
   return (
     <header>
       <nav className={`nav`}>
-        <div className="logo-image"></div>
-        <div></div>
-        <div>
-          <h1>BlockByBlock DEX</h1>
-        </div>
-        <div>
-          {/* {hasMetamask ? (
+      <div className="logo-image"></div>
+      {/* <div></div> */}
+      <div><h1 >BlockByBlock DEX</h1></div>
+      <div className="widthgapneww"></div>
+      <div >
+        {/* {hasMetamask ? (
             isWeb3Enabled ? (
             <button class="button-34" role="button">Wallet Connected!</button>
             ) : (
