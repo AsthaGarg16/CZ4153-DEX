@@ -79,7 +79,6 @@ function a11yProps(index) {
 
 const renderRowOpenOrder = (props) => {
     const { index, style } = props;
-    console.log('props',props);
     const [marketList, setMarketList] = useState(['A/B', 'C/A', 'A/B', 'A/B', 'B/C', 'A/B']);
     const [typeList, setTypeList] = useState(['Buy', 'Sell', 'Buy', 'Sell', 'Buy', 'Sell']);
     const [priceList, setPriceList] = useState([2,0,0,0,0,0]);
