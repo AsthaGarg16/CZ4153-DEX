@@ -130,7 +130,10 @@ const FloatingNav = (swapAddress) => {
           <Balances />
         </div>
         <div className="threerow3">
-          <DepositWithdraw />
+          <DepositWithdraw
+            swapAddress="0x00" //to Update
+            tokensList={["ARK", "KAR", "RAK"]}
+          />
         </div>
       </div>
     </div>
