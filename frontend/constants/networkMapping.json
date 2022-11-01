@@ -1,0 +1,9 @@
+{
+  "5": {
+    "Infura": [],
+    "Swap": ["0xf51fa38c9d379f12bcfbb1fa1b80cc1479ad2e79"],
+    "ArkToken": ["0x91ae32a15e56809630c303cb8a5cb23a92ee0d36"],
+    "KarToken": ["0x1f00c85d95f85cf1cf11232ffb29827413bb04d6"],
+    "RakToken": ["0x4009d9ccc002ff40fe1ae672393b27102c99ae92"]
+  }
+}
