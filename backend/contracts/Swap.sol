@@ -208,7 +208,6 @@ contract Swap is Ownable {
         uint8 _sellTokenIndex = getTokenIndex(sellSymbolName);
         require(tokenBalanceForAddress[msg.sender][_sellTokenIndex] >= price * quantity);
 
-        tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= price * quantity; //will have to adjust in case thereéis price difference between sell and buy
         uint8 _marketIndex = getMarketIndex(buySymbolName, sellSymbolName);
         uint256 _buy_qty_balance = quantity;
 
@@ -260,6 +259,7 @@ contract Swap is Ownable {
                 status: "A"
             });
         }
+        tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= price * _buy_qty_balance;
 
         // fire event
         emit LogCreateBuyOrder(
@@ -369,7 +369,6 @@ contract Swap is Ownable {
 
         uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);
         require(tokenBalanceForAddress[msg.sender][_sellTokenIndex] >= price * quantity);
-        tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= price * quantity; //will have to adjust in case thereéis price difference between sell and buy
 
         uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);
         uint256 _sell_qty_balance = quantity;
@@ -424,17 +423,19 @@ contract Swap is Ownable {
             ExchangeMarket[_marketIndex].sellOrderBook.orders[_newOrderIndex] = Order({
                 timestamp: block.timestamp,
                 price: price,
-                quantity: quantity,
+                quantity: _sell_qty_balance,
                 user: msg.sender,
                 status: "A"
             });
+
+            tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= price * _sell_qty_balance;
 
             // fire event
             emit LogCreateSellOrder(
                 sellTokenSymbol,
                 buyTokenSymbol,
                 price,
-                quantity,
+                _sell_qty_balance,
                 seller,
                 block.timestamp
             );
