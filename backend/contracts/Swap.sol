@@ -5,11 +5,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 
 contract Swap is Ownable {
+    //custom data structures for implementing features
+
+    //To store token details
     struct Token {
         address contractAddress;
         string symbolName;
     }
 
+    //to store individual order details
     struct Order {
         uint256 quantity;
         uint256 price;
@@ -18,6 +22,7 @@ contract Swap is Ownable {
         bytes2 status;
     }
 
+    //to store the whole list of specific types of orders for each market
     struct OrderBook {
         uint256 orderIndex;
         mapping(uint256 => Order) orders;
@@ -25,18 +30,21 @@ contract Swap is Ownable {
         uint256[] ordersQueue;
     }
 
+    //Each market is made of corresponding buy orderbook and sell orderbook
     struct Market {
         OrderBook buyOrderBook;
         OrderBook sellOrderBook;
     }
 
+    //Mapping for storage
+
     mapping(uint8 => Token) tokenInfo;
     mapping(uint8 => IERC20) tokens;
     mapping(address => mapping(uint8 => uint256)) tokenBalanceForAddress;
-    mapping(uint8 => uint8[]) buyToSell;
+    mapping(uint8 => uint8[]) buyToSell; //mapping of market index to the corresponding buy and sell token for that market
     mapping(uint8 => Market) ExchangeMarket;
-    uint8 tokenIndex;
-    uint8 marketIndex;
+    uint8 tokenIndex; //total types of tokens available
+    uint8 marketIndex; //total types of markets
 
     constructor() {
         tokenIndex = 0;
@@ -137,6 +145,8 @@ contract Swap is Ownable {
         uint256 timestamp
     );
 
+    /* FUNCTIONS TO PROVIDE FEATURES */
+
     // Owner's AddToken ability
     function addToken(string memory symbolName, address EC20TokenAddress) public onlyOwner {
         require(!hasToken(symbolName), "Token already exists");
@@ -152,6 +162,7 @@ contract Swap is Ownable {
         addMarket(symbolName, tokenIndex);
     }
 
+    //A Market is added with combination with previous tokens so all exchanges are available
     function addMarket(string memory symbolName, uint8 _tokenIndex) public onlyOwner {
         require(marketIndex + 1 >= marketIndex);
 
@@ -166,8 +177,7 @@ contract Swap is Ownable {
         emit LogAddMarket(marketIndex, symbolName, block.timestamp);
     }
 
-    // Address's Tokens account management
-
+    // Address's Tokens account management - ability to deposit tokens
     function depositToken(string memory symbolName, uint256 amount)
         public
         returns (uint256 tokenBalance)
@@ -181,6 +191,7 @@ contract Swap is Ownable {
         return getTokenBalanceForUser(symbolName);
     }
 
+    // Address's Tokens account management - ability to withdraw tokens
     function withdrawToken(string memory symbolName, uint256 amount)
         public
         returns (uint256 tokenBalance)
@@ -196,6 +207,7 @@ contract Swap is Ownable {
         return getTokenBalanceForUser(symbolName);
     }
 
+    //User submits market buy order
     function createBuyOrder(
         string memory buySymbolName,
         string memory sellSymbolName,
@@ -272,6 +284,7 @@ contract Swap is Ownable {
         );
     }
 
+    //Try if buy order can be immediately fulfilled even if partially
     function fulfilBuyOrder(
         string memory buyTokenSymbol,
         string memory sellTokenSymbol,
@@ -527,6 +540,7 @@ contract Swap is Ownable {
         return _sell_qty_balance;
     }
 
+    //User's ability to cancel orders that were placed
     function cancelBuyOrder(
         string memory buyTokenSymbol,
         string memory sellTokenSymbol,
@@ -645,7 +659,8 @@ contract Swap is Ownable {
         );
     }
 
-    //Helper functions
+    /* HELPER FUNCTION */
+
     function hasToken(string memory symbolName) public view returns (bool) {
         for (uint8 i = 1; i <= tokenIndex; i++) {
             if (
@@ -657,6 +672,8 @@ contract Swap is Ownable {
         }
         return false;
     }
+
+    /* GETTER FUNCTIONS */
 
     function getBuyOrderBook(string memory buyTokenSymbol, string memory sellTokenSymbol)
         public
