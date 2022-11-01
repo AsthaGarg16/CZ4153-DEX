@@ -208,6 +208,183 @@ contract Swap is Ownable {
     }
 
     //User submits market buy order
+    function buyMarketOrder(
+        string memory buyTokenSymbol,
+        string memory sellTokenSymbol,
+        uint256 quantity
+    ) private {
+        require(hasToken(buyTokenSymbol));
+        require(hasToken(sellTokenSymbol));
+
+        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);
+        uint8 _buyTokenIndex = getTokenIndex(buyTokenSymbol);
+        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);
+        require(ExchangeMarket[_marketIndex].sellOrderBook.ordersCount > 0, "Cannot place request");
+        uint256 _buy_qty_balance = quantity;
+        uint256 _currSellOrdersCount = ExchangeMarket[_marketIndex].sellOrderBook.ordersCount;
+
+        uint256 _countSellOrderFulfiled = 0;
+        for (uint256 i = 0; i < _currSellOrdersCount; i++) {
+            if (_buy_qty_balance == 0) break;
+
+            uint256 _orderIndex = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[i];
+            uint256 _orderPrice = ExchangeMarket[_marketIndex]
+                .sellOrderBook
+                .orders[_orderIndex]
+                .price;
+            uint256 _orderAmount = ExchangeMarket[_marketIndex]
+                .sellOrderBook
+                .orders[_orderIndex]
+                .quantity;
+            address _orderOwner = ExchangeMarket[_marketIndex]
+                .sellOrderBook
+                .orders[_orderIndex]
+                .user;
+            if (_buy_qty_balance >= _orderAmount) {
+                _buy_qty_balance -= _orderAmount;
+
+                ExchangeMarket[_marketIndex].sellOrderBook.orders[_orderIndex].quantity = 0;
+                _countSellOrderFulfiled++;
+                emit LogFulfilSellOrder(
+                    sellTokenSymbol,
+                    buyTokenSymbol,
+                    _orderIndex,
+                    _orderPrice,
+                    _orderAmount,
+                    block.timestamp
+                );
+                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= _orderPrice * _orderAmount;
+                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += _orderPrice * _orderAmount;
+                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _orderAmount;
+            } else {
+                ExchangeMarket[_marketIndex]
+                    .sellOrderBook
+                    .orders[_orderIndex]
+                    .quantity -= _buy_qty_balance;
+                emit LogFulfilSellOrder(
+                    sellTokenSymbol,
+                    buyTokenSymbol,
+                    _orderIndex,
+                    _orderPrice,
+                    _orderAmount,
+                    block.timestamp
+                );
+
+                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -=
+                    _orderPrice *
+                    _buy_qty_balance;
+                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] +=
+                    _orderPrice *
+                    _buy_qty_balance;
+                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _buy_qty_balance;
+
+                _buy_qty_balance = 0;
+            }
+        }
+
+        // update sellOrderBook - ordersBook and ordersCount
+        uint256 _newSellOrdersCount = _currSellOrdersCount - _countSellOrderFulfiled;
+
+        uint256[] memory _newSellOrdersQueue = new uint256[](_newSellOrdersCount);
+        for (uint256 i = 0; i < _newSellOrdersCount; i++) {
+            _newSellOrdersQueue[i] = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[
+                i + _countSellOrderFulfiled
+            ];
+        }
+
+        ExchangeMarket[_marketIndex].sellOrderBook.ordersCount = _newSellOrdersCount;
+        ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue = _newSellOrdersQueue;
+    }
+
+    function sellMarketOrder(
+        string memory buyTokenSymbol,
+        string memory sellTokenSymbol,
+        uint256 quantity
+    ) private {
+        require(hasToken(buyTokenSymbol));
+        require(hasToken(sellTokenSymbol));
+
+        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);
+        uint8 _buyTokenIndex = getTokenIndex(buyTokenSymbol);
+        uint8 _marketIndex = getMarketIndex(sellTokenSymbol, buyTokenSymbol);
+        require(ExchangeMarket[_marketIndex].buyOrderBook.ordersCount > 0, "Cannot place request");
+        uint256 _sell_qty_balance = quantity;
+        uint256 _currBuyOrdersCount = ExchangeMarket[_marketIndex].buyOrderBook.ordersCount;
+
+        uint256 _countBuyOrderFulfiled = 0;
+        for (uint256 i = 0; i < _currBuyOrdersCount; i++) {
+            if (_sell_qty_balance == 0) break;
+
+            uint256 _orderIndex = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[i];
+            uint256 _orderPrice = ExchangeMarket[_marketIndex]
+                .buyOrderBook
+                .orders[_orderIndex]
+                .price;
+            uint256 _orderAmount = ExchangeMarket[_marketIndex]
+                .buyOrderBook
+                .orders[_orderIndex]
+                .quantity;
+            address _orderOwner = ExchangeMarket[_marketIndex]
+                .buyOrderBook
+                .orders[_orderIndex]
+                .user;
+            if (_sell_qty_balance >= _orderAmount) {
+                _sell_qty_balance -= _orderAmount;
+
+                ExchangeMarket[_marketIndex].buyOrderBook.orders[_orderIndex].quantity = 0;
+                _countBuyOrderFulfiled++;
+                emit LogFulfilBuyOrder(
+                    sellTokenSymbol,
+                    buyTokenSymbol,
+                    _orderIndex,
+                    _orderPrice,
+                    _orderAmount,
+                    block.timestamp
+                );
+                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= _orderPrice * _orderAmount;
+                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += _orderPrice * _orderAmount;
+                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _orderAmount;
+            } else {
+                ExchangeMarket[_marketIndex]
+                    .buyOrderBook
+                    .orders[_orderIndex]
+                    .quantity -= _sell_qty_balance;
+                emit LogFulfilBuyOrder(
+                    sellTokenSymbol,
+                    buyTokenSymbol,
+                    _orderIndex,
+                    _orderPrice,
+                    _orderAmount,
+                    block.timestamp
+                );
+
+                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -=
+                    _orderPrice *
+                    _sell_qty_balance;
+                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] +=
+                    _orderPrice *
+                    _sell_qty_balance;
+                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _sell_qty_balance;
+
+                _sell_qty_balance = 0;
+            }
+        }
+
+        // update sellOrderBook - ordersBook and ordersCount
+        uint256 _newBuyOrdersCount = _currBuyOrdersCount - _countBuyOrderFulfiled;
+
+        uint256[] memory _newBuyOrdersQueue = new uint256[](_newBuyOrdersCount);
+        for (uint256 i = 0; i < _newBuyOrdersCount; i++) {
+            _newBuyOrdersQueue[i] = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[
+                i + _countBuyOrderFulfiled
+            ];
+        }
+
+        ExchangeMarket[_marketIndex].buyOrderBook.ordersCount = _newBuyOrdersCount;
+        ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue = _newBuyOrdersQueue;
+    }
+
+    //User submits limit buy order
     function createBuyOrder(
         string memory buySymbolName,
         string memory sellSymbolName,
