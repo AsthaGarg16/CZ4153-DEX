@@ -27,6 +27,18 @@ async function updateAbi() {
     `${frontEndAbiLocation}ArkToken.json`,
     arkToken.interface.format(ethers.utils.FormatTypes.json)
   );
+
+  const karToken = await ethers.getContract("KarToken");
+  fs.writeFileSync(
+    `${frontEndAbiLocation}KarToken.json`,
+    arkToken.interface.format(ethers.utils.FormatTypes.json)
+  );
+
+  const rakToken = await ethers.getContract("RakToken");
+  fs.writeFileSync(
+    `${frontEndAbiLocation}RakToken.json`,
+    arkToken.interface.format(ethers.utils.FormatTypes.json)
+  );
 }
 
 async function updateContractAddresses() {

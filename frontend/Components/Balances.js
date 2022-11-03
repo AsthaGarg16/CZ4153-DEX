@@ -14,7 +14,6 @@ function renderRow(props) {
   const { data, index, style } = props;
   const [tokenList, setTokenList] = useState(data.tokenList);
   const [qtyList, setQtyList] = useState(data.qtyList);
-  console.log("Balances: ", tokenList, qtyList);
 
   return (
     <div>
@@ -31,22 +30,32 @@ function renderRow(props) {
   );
 }
 
-const Balances = (swapAddress) => {
+const Balances = (props) => {
+  const { swapAddress } = props;
   const { isWeb3Enabled, account } = useMoralis();
   const [tokenList, setTokenList] = useState(["A", "B", "C"]);
   const [qtyList, setQtyList] = useState([1, 2, 3]);
 
-  const { runContractFunction: getAllTokenBalancesForUser } = useWeb3Contract({
+  const tokenAmountInUnitsToBigNumber = (amount, decimals) => {
+    const decimalsPerToken = new BigNumber(10).pow(decimals);
+    return amount.div(decimalsPerToken);
+  };
+
+  const { runContractFunction: getAllTokenBalanceForUser } = useWeb3Contract({
     abi: swapAbi,
     contractAddress: swapAddress,
-    functionName: "getAllTokenBalancesForUser",
+    functionName: "getAllTokenBalanceForUser",
     params: {},
   });
 
   async function updateUI() {
-    var nb = await getAllTokenBalancesForUser();
+    var nb = await getAllTokenBalanceForUser();
+    var qList = [];
     console.log("getAllTokenBalancesForUser are ", nb);
     if (nb) {
+      // nb[1].forEach((item) => {
+      //   qList.push(tokenAmountInUnitsToBigNumber(item, 18));
+      // });
       setTokenList(nb[0]);
       setQtyList(nb[1]);
     }
@@ -54,6 +63,7 @@ const Balances = (swapAddress) => {
 
   useEffect(() => {
     if (isWeb3Enabled) {
+      console.log("in use effect web3 ", isWeb3Enabled);
       updateUI();
     }
   }, [isWeb3Enabled]);

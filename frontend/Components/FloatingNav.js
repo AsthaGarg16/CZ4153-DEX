@@ -16,7 +16,8 @@ const FloatingNav = (props) => {
   const { Moralis, isWeb3Enabled, chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex);
   const swap_address =
-    chainId in networkMapping ? networkMapping[chainId][0] : null;
+    chainId in networkMapping ? networkMapping[chainId]["Swap"][0] : null;
+  console.log("Swap address ", swap_address);
   const [marketPrice, setMarketPrice] = useState(0);
   const [listofMarkets, setMarketList] = useState(["A/B", "B/C", "C/A"]); //to update
 
@@ -139,7 +140,7 @@ const FloatingNav = (props) => {
         </div>
         <div className="threerow2">
           <h3>Balances</h3>
-          <Balances />
+          <Balances swapAddress={swap_address} />
         </div>
         <div className="threerow3">
           <DepositWithdraw

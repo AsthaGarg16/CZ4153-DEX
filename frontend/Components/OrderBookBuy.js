@@ -47,6 +47,7 @@ export default function OrderBookBuy(props) {
 
   useEffect(() => {
     if (sellToken !== sellSymbol && buyToken !== buySymbol) {
+      console.log("Symbols are ", buySymbol, sellSymbol);
       setBuyToken(buySymbol);
       setSellToken(sellSymbol);
       updateUI();
@@ -58,8 +59,8 @@ export default function OrderBookBuy(props) {
     contractAddress: swapAddress,
     functionName: "getBuyOrderBook",
     params: {
-      buyTokenSymbol: buyToken,
-      sellTokenSymbol: sellToken,
+      buyTokenSymbol: buySymbol,
+      sellTokenSymbol: sellSymbol,
     },
   });
 
@@ -68,6 +69,7 @@ export default function OrderBookBuy(props) {
     var pl = [];
     var ql = [];
     if (ob) {
+      console.log("Got order book ", ob[0], ob[1], ob[2]);
       var queue = ob[0];
       var prices = ob[1];
       var qty = ob[2];

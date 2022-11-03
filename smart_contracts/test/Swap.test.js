@@ -33,5 +33,8 @@ describe("Swap Unit Test", function () {
       assert(exchange.hasToken("KAR"));
       assert(exchange.hasToken("RAK"));
     });
+    it("Should have added 3 markets", async () => {
+      assert(exchange.marketIndex == 3);
+    });
   });
 });

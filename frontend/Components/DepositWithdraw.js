@@ -26,12 +26,14 @@ const DepositWithdraw = (props) => {
 
   async function updateBalances(align) {
     if (align == "Deposit") {
+      console.log("Depositing");
       const res = await depositToken();
       if (res) {
         //trigger balances update
         setTFValue2(0);
       }
     } else {
+      console.log("Withdrawing");
       const res = await withdrawToken();
       if (res) {
         //trigger balances update
@@ -40,7 +42,7 @@ const DepositWithdraw = (props) => {
     }
   }
   const onClickSubmit = () => {
-    updateBalances();
+    updateBalances(alignment);
     return console.log(value, alignment, tfValue2 * 1);
   };
 
