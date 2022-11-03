@@ -12,9 +12,13 @@ const networkConfig = {
 const INITIAL_SUPPLY = "1000000000000000000000000";
 
 const developmentChains = ["hardhat", "localhost"];
+const frontEndContractsFile = "../frontend/constants/networkMapping.json";
+const frontEndAbiLocation = "../frontend/constants/";
 
 module.exports = {
   networkConfig,
   developmentChains,
   INITIAL_SUPPLY,
+  frontEndContractsFile,
+  frontEndAbiLocation,
 };
