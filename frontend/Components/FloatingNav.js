@@ -10,6 +10,7 @@ import CreateOrder from "../Components/CreateOrder";
 import Balances from "../Components/Balances";
 import HistoryTable from "../Components/HistoryTable";
 import DepositWithdraw from "../Components/DepositWithdraw";
+import TrendChart from "../Components/TrendChart";
 
 const FloatingNav = (props) => {
   const { Moralis, isWeb3Enabled, chainId: chainIdHex } = useMoralis();
@@ -101,7 +102,9 @@ const FloatingNav = (props) => {
             {/* <button onClick={handleChangeMP}>blabla</button> */}
           </div>
         </div>
-        <div className="onerow1">hi</div>
+        <div className="onerow1">
+          <TrendChart />
+        </div>
         <div className="onerow2">
           <HistoryTable
             swapAddress={swap_address} //to Update
