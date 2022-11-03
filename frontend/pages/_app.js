@@ -5,14 +5,10 @@ import { MoralisProvider, useMoralis, useWeb3Contract } from "react-moralis";
 import networkMapping from "../constants/networkMapping.json";
 
 function MyApp({ Component, pageProps }) {
-  const { Moralis, isWeb3Enabled, chainId: chainIdHex } = useMoralis();
-  const chainId = parseInt(chainIdHex);
-  const address =
-    chainId in contractAddresses ? contractAddresses[chainId][0] : null;
   return (
     <MoralisProvider initializeOnMount={false}>
       <Navbar />
-      <FloatingNav swap_address={address} />
+      <FloatingNav />
       {/* <Component {...pageProps} /> */}
       {/* <div className="wrapper">
       <div className="one">

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import swapAbi from "../constants/Swap.json";
-// import networkMapping from "../constants/networkMapping.json";
+import networkMapping from "../constants/networkMapping.json";
 import { ethers } from "ethers";
 import { useWeb3Contract, useMoralis } from "react-moralis";
 import OrderBookBuy from "../Components/OrderBookBuy";
@@ -12,8 +12,10 @@ import HistoryTable from "../Components/HistoryTable";
 import DepositWithdraw from "../Components/DepositWithdraw";
 
 const FloatingNav = (props) => {
-  const { swap_address } = props;
-  const { isWeb3Enabled, account } = useMoralis();
+  const { Moralis, isWeb3Enabled, chainId: chainIdHex } = useMoralis();
+  const chainId = parseInt(chainIdHex);
+  const swap_address =
+    chainId in networkMapping ? networkMapping[chainId][0] : null;
   const [marketPrice, setMarketPrice] = useState(0);
   const [listofMarkets, setMarketList] = useState(["A/B", "B/C", "C/A"]); //to update
 

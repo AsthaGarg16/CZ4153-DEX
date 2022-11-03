@@ -1,0 +1,1257 @@
+{
+  "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "marketIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogAddMarket",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "EC20TokenAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogAddToken",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogBuyToken",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "orderIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogCancelBuyOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "orderIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogCancelSellOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogCreateBuyOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogCreateSellOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "accountAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogDepositToken",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "orderIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogFulfilBuyOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "orderIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogFulfilSellOrder",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogSellToken",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "accountAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogWithdrawToken",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_tokenIndex",
+          "type": "uint8"
+        }
+      ],
+      "name": "addMarket",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "EC20TokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "addToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "buyTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sellTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "orderIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelBuyOrder",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "buyTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sellTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "orderIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelSellOrder",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "depositToken",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenBalance",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllMarkets",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllTokenBalanceForUser",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllTokens",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        },
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "buyTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sellTokenSymbol",
+          "type": "string"
+        }
+      ],
+      "name": "getBuyOrderBook",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "buyTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sellTokenSymbol",
+          "type": "string"
+        }
+      ],
+      "name": "getMarketIndex",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOpenOrdersForUser",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "sellTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "buyTokenSymbol",
+          "type": "string"
+        }
+      ],
+      "name": "getSellOrderBook",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        }
+      ],
+      "name": "getTokenAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        }
+      ],
+      "name": "getTokenBalanceForUser",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        }
+      ],
+      "name": "getTokenIndex",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        }
+      ],
+      "name": "hasToken",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "symbolName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawToken",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenBalance",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x01809f0d9d604c9dc04611b2dc8457c2cf923cd55a5d096531c6ea0105e9c827",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "transactionIndex": 0,
+    "gasUsed": "4255399",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000080000000000000000000000000000000001000000000000000000000000000000000001000000000000000000000000000000000000020000000000000100000800000000000000000000000000000000400000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000002000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x708fde2b8ed83bd5e9eb3c005723c3bca6a4dff287cb890eb0889fe63d52006f",
+    "transactionHash": "0x01809f0d9d604c9dc04611b2dc8457c2cf923cd55a5d096531c6ea0105e9c827",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 4,
+        "transactionHash": "0x01809f0d9d604c9dc04611b2dc8457c2cf923cd55a5d096531c6ea0105e9c827",
+        "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0x708fde2b8ed83bd5e9eb3c005723c3bca6a4dff287cb890eb0889fe63d52006f"
+      }
+    ],
+    "blockNumber": 4,
+    "cumulativeGasUsed": "4255399",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "b4b0af02ea243bb917eca0b64852b3ae",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"marketIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogAddMarket\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"EC20TokenAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogAddToken\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogBuyToken\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"orderIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogCancelBuyOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"orderIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"seller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogCancelSellOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogCreateBuyOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"seller\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogCreateSellOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"accountAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogDepositToken\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"orderIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogFulfilBuyOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"orderIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogFulfilSellOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName1\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName2\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogSellToken\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"accountAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"LogWithdrawToken\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"_tokenIndex\",\"type\":\"uint8\"}],\"name\":\"addMarket\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"EC20TokenAddress\",\"type\":\"address\"}],\"name\":\"addToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"buyTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"sellTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"orderIndex\",\"type\":\"uint256\"}],\"name\":\"cancelBuyOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"buyTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"sellTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"orderIndex\",\"type\":\"uint256\"}],\"name\":\"cancelSellOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"depositToken\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenBalance\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllMarkets\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllTokenBalanceForUser\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllTokens\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"buyTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"sellTokenSymbol\",\"type\":\"string\"}],\"name\":\"getBuyOrderBook\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"buyTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"sellTokenSymbol\",\"type\":\"string\"}],\"name\":\"getMarketIndex\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOpenOrdersForUser\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"sellTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"buyTokenSymbol\",\"type\":\"string\"}],\"name\":\"getSellOrderBook\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"}],\"name\":\"getTokenAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"}],\"name\":\"getTokenBalanceForUser\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"}],\"name\":\"getTokenIndex\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"}],\"name\":\"hasToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"symbolName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdrawToken\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenBalance\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Swap.sol\":\"Swap\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.7.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby removing any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673\",\"license\":\"MIT\"},\"@openzeppelin/contracts/interfaces/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (interfaces/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../token/ERC20/IERC20.sol\\\";\\n\",\"keccak256\":\"0x6ebf1944ab804b8660eb6fc52f9fe84588cee01c2566a69023e59497e7d27f45\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.6.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(\\n        address from,\\n        address to,\\n        uint256 amount\\n    ) external returns (bool);\\n}\\n\",\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"contracts/Swap.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\r\\npragma solidity ^0.8.9;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/interfaces/IERC20.sol\\\";\\r\\n\\r\\ncontract Swap is Ownable {\\r\\n    //custom data structures for implementing features\\r\\n\\r\\n    //To store token details\\r\\n    struct Token {\\r\\n        address contractAddress;\\r\\n        string symbolName;\\r\\n    }\\r\\n\\r\\n    //to store individual order details\\r\\n    struct Order {\\r\\n        uint256 quantity;\\r\\n        uint256 price;\\r\\n        uint256 timestamp;\\r\\n        address user;\\r\\n        bytes2 status;\\r\\n    }\\r\\n\\r\\n    //to store the whole list of specific types of orders for each market\\r\\n    struct OrderBook {\\r\\n        uint256 orderIndex;\\r\\n        mapping(uint256 => Order) orders;\\r\\n        uint256 ordersCount;\\r\\n        uint256[] ordersQueue;\\r\\n    }\\r\\n\\r\\n    //Each market is made of corresponding buy orderbook and sell orderbook\\r\\n    struct Market {\\r\\n        OrderBook buyOrderBook;\\r\\n        OrderBook sellOrderBook;\\r\\n    }\\r\\n\\r\\n    //Mapping for storage\\r\\n\\r\\n    mapping(uint8 => Token) tokenInfo;\\r\\n    mapping(uint8 => IERC20) tokens;\\r\\n    mapping(address => mapping(uint8 => uint256)) tokenBalanceForAddress;\\r\\n    mapping(uint8 => uint8[]) buyToSell; //mapping of market index to the corresponding buy and sell token for that market\\r\\n    mapping(uint8 => Market) ExchangeMarket;\\r\\n    uint8 tokenIndex; //total types of tokens available\\r\\n    uint8 marketIndex; //total types of markets\\r\\n\\r\\n    constructor() {\\r\\n        tokenIndex = 0;\\r\\n        marketIndex = 0;\\r\\n    }\\r\\n\\r\\n    /* EVENTS */\\r\\n\\r\\n    event LogDepositToken(\\r\\n        string symbolName,\\r\\n        address accountAddress,\\r\\n        uint256 amount,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogWithdrawToken(\\r\\n        string symbolName,\\r\\n        address accountAddress,\\r\\n        uint256 amount,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogAddToken(\\r\\n        uint256 tokenIndex,\\r\\n        string symbolName,\\r\\n        address EC20TokenAddress,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogAddMarket(uint256 marketIndex, string symbolName, uint256 timestamp);\\r\\n\\r\\n    event LogBuyToken(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 price,\\r\\n        uint256 amount,\\r\\n        address buyer,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogSellToken(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 price,\\r\\n        uint256 amount,\\r\\n        address buyer,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogCreateBuyOrder(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 price,\\r\\n        uint256 amount,\\r\\n        address buyer,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogCreateSellOrder(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 price,\\r\\n        uint256 amount,\\r\\n        address seller,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogFulfilBuyOrder(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 price,\\r\\n        uint256 orderIndex,\\r\\n        uint256 amount,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogFulfilSellOrder(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 price,\\r\\n        uint256 orderIndex,\\r\\n        uint256 amount,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    event LogCancelBuyOrder(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 orderIndex,\\r\\n        address buyer,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n    event LogCancelSellOrder(\\r\\n        string symbolName1,\\r\\n        string symbolName2,\\r\\n        uint256 orderIndex,\\r\\n        address seller,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n\\r\\n    /* FUNCTIONS TO PROVIDE FEATURES */\\r\\n\\r\\n    // Owner's AddToken ability\\r\\n    function addToken(string memory symbolName, address EC20TokenAddress) public onlyOwner {\\r\\n        require(!hasToken(symbolName), \\\"Token already exists\\\");\\r\\n        require(tokenIndex + 1 >= tokenIndex, \\\"Token Index overflow\\\");\\r\\n\\r\\n        tokenIndex++;\\r\\n        tokenInfo[tokenIndex].symbolName = symbolName;\\r\\n        tokenInfo[tokenIndex].contractAddress = EC20TokenAddress;\\r\\n        tokens[tokenIndex] = IERC20(tokenInfo[tokenIndex].contractAddress);\\r\\n\\r\\n        emit LogAddToken(tokenIndex, symbolName, EC20TokenAddress, block.timestamp);\\r\\n\\r\\n        addMarket(symbolName, tokenIndex);\\r\\n    }\\r\\n\\r\\n    //A Market is added with combination with previous tokens so all exchanges are available\\r\\n    function addMarket(string memory symbolName, uint8 _tokenIndex) public onlyOwner {\\r\\n        require(marketIndex + 1 >= marketIndex);\\r\\n\\r\\n        for (uint8 i = 1; i < tokenIndex; i++) {\\r\\n            marketIndex++;\\r\\n            uint8[] memory toAdd = new uint8[](2);\\r\\n            toAdd[0] = _tokenIndex;\\r\\n            toAdd[1] = i;\\r\\n            buyToSell[marketIndex] = toAdd;\\r\\n        }\\r\\n\\r\\n        emit LogAddMarket(marketIndex, symbolName, block.timestamp);\\r\\n    }\\r\\n\\r\\n    // Address's Tokens account management - ability to deposit tokens\\r\\n    function depositToken(string memory symbolName, uint256 amount)\\r\\n        public\\r\\n        returns (uint256 tokenBalance)\\r\\n    {\\r\\n        require(hasToken(symbolName));\\r\\n        require(getTokenBalanceForUser(symbolName) + amount >= getTokenBalanceForUser(symbolName));\\r\\n        uint8 _tokenIndex = getTokenIndex(symbolName);\\r\\n        tokenBalanceForAddress[msg.sender][_tokenIndex] += amount;\\r\\n        require(tokens[_tokenIndex].transferFrom(msg.sender, address(this), amount) == true);\\r\\n        emit LogDepositToken(symbolName, msg.sender, amount, block.timestamp);\\r\\n        return getTokenBalanceForUser(symbolName);\\r\\n    }\\r\\n\\r\\n    // Address's Tokens account management - ability to withdraw tokens\\r\\n    function withdrawToken(string memory symbolName, uint256 amount)\\r\\n        public\\r\\n        returns (uint256 tokenBalance)\\r\\n    {\\r\\n        require(hasToken(symbolName));\\r\\n        require(amount <= getTokenBalanceForUser(symbolName));\\r\\n\\r\\n        uint8 _tokenIndex = getTokenIndex(symbolName);\\r\\n        tokenBalanceForAddress[msg.sender][_tokenIndex] -= amount;\\r\\n        require(tokens[_tokenIndex].transfer(msg.sender, amount) == true);\\r\\n\\r\\n        emit LogWithdrawToken(symbolName, msg.sender, amount, block.timestamp);\\r\\n        return getTokenBalanceForUser(symbolName);\\r\\n    }\\r\\n\\r\\n    //User submits market buy order\\r\\n    function buyMarketOrder(\\r\\n        string memory buyTokenSymbol,\\r\\n        string memory sellTokenSymbol,\\r\\n        uint256 quantity\\r\\n    ) private {\\r\\n        require(hasToken(buyTokenSymbol));\\r\\n        require(hasToken(sellTokenSymbol));\\r\\n\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n        uint8 _buyTokenIndex = getTokenIndex(buyTokenSymbol);\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n        require(ExchangeMarket[_marketIndex].sellOrderBook.ordersCount > 0, \\\"Cannot place request\\\");\\r\\n        uint256 _buy_qty_balance = quantity;\\r\\n        uint256 _currSellOrdersCount = ExchangeMarket[_marketIndex].sellOrderBook.ordersCount;\\r\\n\\r\\n        uint256 _countSellOrderFulfiled = 0;\\r\\n        for (uint256 i = 0; i < _currSellOrdersCount; i++) {\\r\\n            if (_buy_qty_balance == 0) break;\\r\\n\\r\\n            uint256 _orderIndex = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[i];\\r\\n            uint256 _orderPrice = ExchangeMarket[_marketIndex]\\r\\n                .sellOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .price;\\r\\n            uint256 _orderAmount = ExchangeMarket[_marketIndex]\\r\\n                .sellOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .quantity;\\r\\n            address _orderOwner = ExchangeMarket[_marketIndex]\\r\\n                .sellOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .user;\\r\\n            if (_buy_qty_balance >= _orderAmount) {\\r\\n                _buy_qty_balance -= _orderAmount;\\r\\n\\r\\n                ExchangeMarket[_marketIndex].sellOrderBook.orders[_orderIndex].quantity = 0;\\r\\n                _countSellOrderFulfiled++;\\r\\n                emit LogFulfilSellOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    _orderPrice,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= _orderPrice * _orderAmount;\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += _orderPrice * _orderAmount;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _orderAmount;\\r\\n            } else {\\r\\n                ExchangeMarket[_marketIndex]\\r\\n                    .sellOrderBook\\r\\n                    .orders[_orderIndex]\\r\\n                    .quantity -= _buy_qty_balance;\\r\\n                emit LogFulfilSellOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    _orderPrice,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n\\r\\n                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -=\\r\\n                    _orderPrice *\\r\\n                    _buy_qty_balance;\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] +=\\r\\n                    _orderPrice *\\r\\n                    _buy_qty_balance;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _buy_qty_balance;\\r\\n\\r\\n                _buy_qty_balance = 0;\\r\\n            }\\r\\n        }\\r\\n\\r\\n        // update sellOrderBook - ordersBook and ordersCount\\r\\n        uint256 _newSellOrdersCount = _currSellOrdersCount - _countSellOrderFulfiled;\\r\\n\\r\\n        uint256[] memory _newSellOrdersQueue = new uint256[](_newSellOrdersCount);\\r\\n        for (uint256 i = 0; i < _newSellOrdersCount; i++) {\\r\\n            _newSellOrdersQueue[i] = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[\\r\\n                i + _countSellOrderFulfiled\\r\\n            ];\\r\\n        }\\r\\n\\r\\n        ExchangeMarket[_marketIndex].sellOrderBook.ordersCount = _newSellOrdersCount;\\r\\n        ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue = _newSellOrdersQueue;\\r\\n    }\\r\\n\\r\\n    function sellMarketOrder(\\r\\n        string memory buyTokenSymbol,\\r\\n        string memory sellTokenSymbol,\\r\\n        uint256 quantity\\r\\n    ) private {\\r\\n        require(hasToken(buyTokenSymbol));\\r\\n        require(hasToken(sellTokenSymbol));\\r\\n\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n        uint8 _buyTokenIndex = getTokenIndex(buyTokenSymbol);\\r\\n        uint8 _marketIndex = getMarketIndex(sellTokenSymbol, buyTokenSymbol);\\r\\n        require(ExchangeMarket[_marketIndex].buyOrderBook.ordersCount > 0, \\\"Cannot place request\\\");\\r\\n        uint256 _sell_qty_balance = quantity;\\r\\n        uint256 _currBuyOrdersCount = ExchangeMarket[_marketIndex].buyOrderBook.ordersCount;\\r\\n\\r\\n        uint256 _countBuyOrderFulfiled = 0;\\r\\n        for (uint256 i = 0; i < _currBuyOrdersCount; i++) {\\r\\n            if (_sell_qty_balance == 0) break;\\r\\n\\r\\n            uint256 _orderIndex = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[i];\\r\\n            uint256 _orderPrice = ExchangeMarket[_marketIndex]\\r\\n                .buyOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .price;\\r\\n            uint256 _orderAmount = ExchangeMarket[_marketIndex]\\r\\n                .buyOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .quantity;\\r\\n            address _orderOwner = ExchangeMarket[_marketIndex]\\r\\n                .buyOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .user;\\r\\n            if (_sell_qty_balance >= _orderAmount) {\\r\\n                _sell_qty_balance -= _orderAmount;\\r\\n\\r\\n                ExchangeMarket[_marketIndex].buyOrderBook.orders[_orderIndex].quantity = 0;\\r\\n                _countBuyOrderFulfiled++;\\r\\n                emit LogFulfilBuyOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    _orderPrice,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= _orderPrice * _orderAmount;\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += _orderPrice * _orderAmount;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _orderAmount;\\r\\n            } else {\\r\\n                ExchangeMarket[_marketIndex]\\r\\n                    .buyOrderBook\\r\\n                    .orders[_orderIndex]\\r\\n                    .quantity -= _sell_qty_balance;\\r\\n                emit LogFulfilBuyOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    _orderPrice,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n\\r\\n                tokenBalanceForAddress[msg.sender][_sellTokenIndex] -=\\r\\n                    _orderPrice *\\r\\n                    _sell_qty_balance;\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] +=\\r\\n                    _orderPrice *\\r\\n                    _sell_qty_balance;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _sell_qty_balance;\\r\\n\\r\\n                _sell_qty_balance = 0;\\r\\n            }\\r\\n        }\\r\\n\\r\\n        // update sellOrderBook - ordersBook and ordersCount\\r\\n        uint256 _newBuyOrdersCount = _currBuyOrdersCount - _countBuyOrderFulfiled;\\r\\n\\r\\n        uint256[] memory _newBuyOrdersQueue = new uint256[](_newBuyOrdersCount);\\r\\n        for (uint256 i = 0; i < _newBuyOrdersCount; i++) {\\r\\n            _newBuyOrdersQueue[i] = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[\\r\\n                i + _countBuyOrderFulfiled\\r\\n            ];\\r\\n        }\\r\\n\\r\\n        ExchangeMarket[_marketIndex].buyOrderBook.ordersCount = _newBuyOrdersCount;\\r\\n        ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue = _newBuyOrdersQueue;\\r\\n    }\\r\\n\\r\\n    //User submits limit buy order\\r\\n    function createBuyOrder(\\r\\n        string memory buySymbolName,\\r\\n        string memory sellSymbolName,\\r\\n        uint256 price,\\r\\n        uint256 quantity,\\r\\n        address buyer\\r\\n    ) private {\\r\\n        require(hasToken(buySymbolName));\\r\\n        require(hasToken(sellSymbolName));\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellSymbolName);\\r\\n        require(tokenBalanceForAddress[msg.sender][_sellTokenIndex] >= price * quantity);\\r\\n\\r\\n        uint8 _marketIndex = getMarketIndex(buySymbolName, sellSymbolName);\\r\\n        uint256 _buy_qty_balance = quantity;\\r\\n\\r\\n        // fulfil buyOrder by checking against which sell orders can be fulfil\\r\\n        if (ExchangeMarket[_marketIndex].sellOrderBook.ordersCount > 0) {\\r\\n            _buy_qty_balance = fulfilBuyOrder(\\r\\n                buySymbolName,\\r\\n                sellSymbolName,\\r\\n                _buy_qty_balance,\\r\\n                price\\r\\n            );\\r\\n        }\\r\\n        if (_buy_qty_balance > 0) {\\r\\n            (, uint256[] memory prices, ) = getBuyOrderBook(buySymbolName, sellSymbolName);\\r\\n\\r\\n            uint256 _newOrderIndex = ++ExchangeMarket[_marketIndex].buyOrderBook.orderIndex;\\r\\n            uint256[] memory _newOrdersQueue = new uint256[](_newOrderIndex);\\r\\n            bool _isOrderAdded = false;\\r\\n\\r\\n            if (ExchangeMarket[_marketIndex].buyOrderBook.ordersCount == 0) {\\r\\n                _newOrdersQueue[0] = _newOrderIndex;\\r\\n                _isOrderAdded = true;\\r\\n            } else {\\r\\n                uint256 _newOrdersQueueIndex = 0;\\r\\n                for (\\r\\n                    uint256 i = 0;\\r\\n                    i < ExchangeMarket[_marketIndex].buyOrderBook.ordersCount;\\r\\n                    i++\\r\\n                ) {\\r\\n                    if (!_isOrderAdded && price > prices[i]) {\\r\\n                        _newOrdersQueue[_newOrdersQueueIndex++] = _newOrderIndex;\\r\\n                        _isOrderAdded = true;\\r\\n                    }\\r\\n                    _newOrdersQueue[_newOrdersQueueIndex++] = ExchangeMarket[_marketIndex]\\r\\n                        .buyOrderBook\\r\\n                        .ordersQueue[i];\\r\\n                }\\r\\n                if (!_isOrderAdded) {\\r\\n                    _newOrdersQueue[_newOrdersQueueIndex] = _newOrderIndex;\\r\\n                }\\r\\n            }\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue = _newOrdersQueue;\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.ordersCount++;\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.orders[_newOrderIndex] = Order({\\r\\n                quantity: _buy_qty_balance,\\r\\n                price: price,\\r\\n                user: msg.sender,\\r\\n                timestamp: block.timestamp,\\r\\n                status: \\\"A\\\"\\r\\n            });\\r\\n        }\\r\\n        tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= price * _buy_qty_balance;\\r\\n\\r\\n        // fire event\\r\\n        emit LogCreateBuyOrder(\\r\\n            buySymbolName,\\r\\n            sellSymbolName,\\r\\n            price,\\r\\n            _buy_qty_balance,\\r\\n            buyer,\\r\\n            block.timestamp\\r\\n        );\\r\\n    }\\r\\n\\r\\n    //Try if buy order can be immediately fulfilled even if partially\\r\\n    function fulfilBuyOrder(\\r\\n        string memory buyTokenSymbol,\\r\\n        string memory sellTokenSymbol,\\r\\n        uint256 _buy_qty_balance,\\r\\n        uint256 price\\r\\n    ) private returns (uint256) {\\r\\n        uint8 _buyTokenIndex = getTokenIndex(buyTokenSymbol);\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n        uint256 _currSellOrdersCount = ExchangeMarket[_marketIndex].sellOrderBook.ordersCount;\\r\\n\\r\\n        uint256 _countSellOrderFulfiled = 0;\\r\\n        for (uint256 i = 0; i < _currSellOrdersCount; i++) {\\r\\n            if (_buy_qty_balance == 0) break;\\r\\n\\r\\n            uint256 _orderIndex = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[i];\\r\\n            uint256 _orderPrice = ExchangeMarket[_marketIndex]\\r\\n                .sellOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .price;\\r\\n            uint256 _orderAmount = ExchangeMarket[_marketIndex]\\r\\n                .sellOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .quantity;\\r\\n            address _orderOwner = ExchangeMarket[_marketIndex]\\r\\n                .sellOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .user;\\r\\n\\r\\n            if (price < _orderPrice) break;\\r\\n\\r\\n            if (_buy_qty_balance >= _orderAmount) {\\r\\n                _buy_qty_balance -= _orderAmount;\\r\\n\\r\\n                ExchangeMarket[_marketIndex].sellOrderBook.orders[_orderIndex].quantity = 0;\\r\\n                _countSellOrderFulfiled++;\\r\\n                emit LogFulfilSellOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    price,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += price * _orderAmount;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _orderAmount;\\r\\n            } else {\\r\\n                ExchangeMarket[_marketIndex]\\r\\n                    .sellOrderBook\\r\\n                    .orders[_orderIndex]\\r\\n                    .quantity -= _buy_qty_balance;\\r\\n                emit LogFulfilSellOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    price,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += price * _buy_qty_balance;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += _buy_qty_balance;\\r\\n\\r\\n                _buy_qty_balance = 0;\\r\\n            }\\r\\n        }\\r\\n\\r\\n        // update sellOrderBook - ordersBook and ordersCount\\r\\n        uint256 _newSellOrdersCount = _currSellOrdersCount - _countSellOrderFulfiled;\\r\\n\\r\\n        uint256[] memory _newSellOrdersQueue = new uint256[](_newSellOrdersCount);\\r\\n        for (uint256 i = 0; i < _newSellOrdersCount; i++) {\\r\\n            _newSellOrdersQueue[i] = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[\\r\\n                i + _countSellOrderFulfiled\\r\\n            ];\\r\\n        }\\r\\n\\r\\n        ExchangeMarket[_marketIndex].sellOrderBook.ordersCount = _newSellOrdersCount;\\r\\n        ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue = _newSellOrdersQueue;\\r\\n\\r\\n        return _buy_qty_balance;\\r\\n    }\\r\\n\\r\\n    function createSellOrder(\\r\\n        string memory sellTokenSymbol,\\r\\n        string memory buyTokenSymbol,\\r\\n        uint256 price,\\r\\n        uint256 quantity,\\r\\n        address seller\\r\\n    ) private {\\r\\n        require(hasToken(sellTokenSymbol));\\r\\n        require(hasToken(buyTokenSymbol));\\r\\n\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n        require(tokenBalanceForAddress[msg.sender][_sellTokenIndex] >= price * quantity);\\r\\n\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n        uint256 _sell_qty_balance = quantity;\\r\\n\\r\\n        // fulfil sellOrder by checking against which buy orders can be fulfil\\r\\n        if (ExchangeMarket[_marketIndex].buyOrderBook.ordersCount > 0) {\\r\\n            _sell_qty_balance = fulfilSellOrder(\\r\\n                sellTokenSymbol,\\r\\n                buyTokenSymbol,\\r\\n                _sell_qty_balance,\\r\\n                price\\r\\n            );\\r\\n        }\\r\\n\\r\\n        // check if buyOrder is fully fulfiled\\r\\n        if (_sell_qty_balance > 0) {\\r\\n            // Update ordersQueue of OrderBook\\r\\n            (, uint256[] memory prices, ) = getSellOrderBook(sellTokenSymbol, buyTokenSymbol);\\r\\n            uint256 _newOrderIndex = ++ExchangeMarket[_marketIndex].sellOrderBook.orderIndex;\\r\\n            uint256[] memory _newOrdersQueue = new uint256[](_newOrderIndex);\\r\\n\\r\\n            bool _isOrderAdded = false;\\r\\n            if (ExchangeMarket[_marketIndex].sellOrderBook.ordersCount == 0) {\\r\\n                _newOrdersQueue[0] = _newOrderIndex;\\r\\n                _isOrderAdded = true;\\r\\n            } else {\\r\\n                uint256 _newOrdersQueueIndex = 0;\\r\\n                for (\\r\\n                    uint256 _counter = 0;\\r\\n                    _counter < ExchangeMarket[_marketIndex].sellOrderBook.ordersCount;\\r\\n                    _counter++\\r\\n                ) {\\r\\n                    if (!_isOrderAdded && price < prices[_counter]) {\\r\\n                        _newOrdersQueue[_newOrdersQueueIndex++] = _newOrderIndex;\\r\\n                        _isOrderAdded = true;\\r\\n                    }\\r\\n                    _newOrdersQueue[_newOrdersQueueIndex++] = ExchangeMarket[_marketIndex]\\r\\n                        .sellOrderBook\\r\\n                        .ordersQueue[_counter];\\r\\n                }\\r\\n                // for the case of the price being lower than the lowest price of the orderbook\\r\\n                if (!_isOrderAdded) {\\r\\n                    _newOrdersQueue[_newOrdersQueueIndex] = _newOrderIndex;\\r\\n                }\\r\\n            }\\r\\n\\r\\n            // replace existing orders queue is it's not empty\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue = _newOrdersQueue;\\r\\n\\r\\n            // Add new order to OrderBook\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.ordersCount++;\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.orders[_newOrderIndex] = Order({\\r\\n                timestamp: block.timestamp,\\r\\n                price: price,\\r\\n                quantity: _sell_qty_balance,\\r\\n                user: msg.sender,\\r\\n                status: \\\"A\\\"\\r\\n            });\\r\\n\\r\\n            tokenBalanceForAddress[msg.sender][_sellTokenIndex] -= price * _sell_qty_balance;\\r\\n\\r\\n            // fire event\\r\\n            emit LogCreateSellOrder(\\r\\n                sellTokenSymbol,\\r\\n                buyTokenSymbol,\\r\\n                price,\\r\\n                _sell_qty_balance,\\r\\n                seller,\\r\\n                block.timestamp\\r\\n            );\\r\\n        }\\r\\n    }\\r\\n\\r\\n    function fulfilSellOrder(\\r\\n        string memory sellTokenSymbol, //wrt sell order\\r\\n        string memory buyTokenSymbol,\\r\\n        uint256 _sell_qty_balance,\\r\\n        uint256 price\\r\\n    ) private returns (uint256) {\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n        uint8 _buyTokenIndex = getTokenIndex(buyTokenSymbol);\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n        uint256 _currBuyOrdersCount = ExchangeMarket[_marketIndex].buyOrderBook.ordersCount;\\r\\n\\r\\n        uint256 _countBuyOrderFulfiled = 0;\\r\\n\\r\\n        // update buyOrderBook - orders\\r\\n        for (uint256 i = 0; i < _currBuyOrdersCount; i++) {\\r\\n            if (_sell_qty_balance == 0) break;\\r\\n\\r\\n            uint256 _orderIndex = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[i];\\r\\n            uint256 _orderPrice = ExchangeMarket[_marketIndex]\\r\\n                .buyOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .price;\\r\\n            uint256 _orderAmount = ExchangeMarket[_marketIndex]\\r\\n                .buyOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .quantity;\\r\\n            address _orderOwner = ExchangeMarket[_marketIndex]\\r\\n                .buyOrderBook\\r\\n                .orders[_orderIndex]\\r\\n                .user;\\r\\n\\r\\n            if (price > _orderPrice) break;\\r\\n\\r\\n            if (_sell_qty_balance >= _orderAmount) {\\r\\n                _sell_qty_balance -= _orderAmount;\\r\\n\\r\\n                ExchangeMarket[_marketIndex].buyOrderBook.orders[_orderIndex].quantity = 0;\\r\\n                _countBuyOrderFulfiled++;\\r\\n                emit LogFulfilBuyOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    price,\\r\\n                    _orderAmount,\\r\\n                    block.timestamp\\r\\n                );\\r\\n\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += _orderAmount;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += price * _orderAmount;\\r\\n            } else {\\r\\n                ExchangeMarket[_marketIndex]\\r\\n                    .buyOrderBook\\r\\n                    .orders[_orderIndex]\\r\\n                    .quantity -= _sell_qty_balance;\\r\\n                emit LogFulfilBuyOrder(\\r\\n                    sellTokenSymbol,\\r\\n                    buyTokenSymbol,\\r\\n                    _orderIndex,\\r\\n                    price,\\r\\n                    _sell_qty_balance,\\r\\n                    block.timestamp\\r\\n                );\\r\\n                tokenBalanceForAddress[_orderOwner][_sellTokenIndex] += _sell_qty_balance;\\r\\n                tokenBalanceForAddress[msg.sender][_buyTokenIndex] += price * _sell_qty_balance;\\r\\n\\r\\n                _sell_qty_balance = 0;\\r\\n            }\\r\\n        }\\r\\n\\r\\n        // update buyOrderBook - ordersBook and ordersCount\\r\\n        uint256 _newBuyOrdersCount = _currBuyOrdersCount - _countBuyOrderFulfiled;\\r\\n\\r\\n        uint256[] memory _newBuyOrdersQueue = new uint256[](_newBuyOrdersCount);\\r\\n        for (uint256 i = 0; i < _newBuyOrdersCount; i++) {\\r\\n            _newBuyOrdersQueue[i] = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[\\r\\n                i + _countBuyOrderFulfiled\\r\\n            ];\\r\\n        }\\r\\n\\r\\n        ExchangeMarket[_marketIndex].buyOrderBook.ordersCount = _newBuyOrdersCount;\\r\\n        ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue = _newBuyOrdersQueue;\\r\\n\\r\\n        return _sell_qty_balance;\\r\\n    }\\r\\n\\r\\n    //User's ability to cancel orders that were placed\\r\\n    function cancelBuyOrder(\\r\\n        string memory buyTokenSymbol,\\r\\n        string memory sellTokenSymbol,\\r\\n        uint256 orderIndex\\r\\n    ) public {\\r\\n        require(hasToken(buyTokenSymbol));\\r\\n        require(hasToken(sellTokenSymbol));\\r\\n\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n\\r\\n        require(ExchangeMarket[_marketIndex].buyOrderBook.ordersCount > 0);\\r\\n\\r\\n        // Check order is in OrderBook\\r\\n        // Create new orderQueue\\r\\n        bool _isOrderInBook = false;\\r\\n        uint256 _newOrderQueueIndex = 0;\\r\\n        uint256[] memory _newOrdersQueue = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.ordersCount - 1\\r\\n        );\\r\\n        uint256 _price;\\r\\n        uint256 _quantity;\\r\\n\\r\\n        for (\\r\\n            uint256 _orderQueueIndex = 0;\\r\\n            _orderQueueIndex < ExchangeMarket[_marketIndex].buyOrderBook.ordersCount;\\r\\n            _orderQueueIndex++\\r\\n        ) {\\r\\n            if (\\r\\n                orderIndex ==\\r\\n                ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[_orderQueueIndex]\\r\\n            ) {\\r\\n                _isOrderInBook = true;\\r\\n                _price = ExchangeMarket[_marketIndex].buyOrderBook.orders[orderIndex].price;\\r\\n                _quantity = ExchangeMarket[_marketIndex].buyOrderBook.orders[orderIndex].quantity;\\r\\n            } else {\\r\\n                _newOrdersQueue[_newOrderQueueIndex] = ExchangeMarket[_marketIndex]\\r\\n                    .buyOrderBook\\r\\n                    .ordersQueue[_orderQueueIndex];\\r\\n                _newOrderQueueIndex++;\\r\\n            }\\r\\n        }\\r\\n        require(_isOrderInBook);\\r\\n\\r\\n        // Update OrderBook and OrderQueue\\r\\n        ExchangeMarket[_marketIndex].buyOrderBook.ordersCount--;\\r\\n        ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue = _newOrdersQueue;\\r\\n\\r\\n        // refund ether balance back to user's account\\r\\n        tokenBalanceForAddress[msg.sender][_sellTokenIndex] += _price * _quantity;\\r\\n\\r\\n        emit LogCancelBuyOrder(\\r\\n            buyTokenSymbol,\\r\\n            sellTokenSymbol,\\r\\n            orderIndex,\\r\\n            msg.sender,\\r\\n            block.timestamp\\r\\n        );\\r\\n    }\\r\\n\\r\\n    function cancelSellOrder(\\r\\n        string memory buyTokenSymbol,\\r\\n        string memory sellTokenSymbol,\\r\\n        uint256 orderIndex\\r\\n    ) public {\\r\\n        require(hasToken(buyTokenSymbol));\\r\\n        require(hasToken(sellTokenSymbol));\\r\\n\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n        uint8 _sellTokenIndex = getTokenIndex(sellTokenSymbol);\\r\\n\\r\\n        require(ExchangeMarket[_marketIndex].sellOrderBook.ordersCount > 0);\\r\\n\\r\\n        // Check order is in OrderBook\\r\\n        // Create new orderQueue\\r\\n        bool _isOrderInBook = false;\\r\\n        uint256 _newOrderQueueIndex = 0;\\r\\n        uint256[] memory _newOrdersQueue = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.ordersCount - 1\\r\\n        );\\r\\n        uint256 _quantity;\\r\\n\\r\\n        for (\\r\\n            uint256 _orderQueueIndex = 0;\\r\\n            _orderQueueIndex < ExchangeMarket[_marketIndex].sellOrderBook.ordersCount;\\r\\n            _orderQueueIndex++\\r\\n        ) {\\r\\n            if (\\r\\n                orderIndex ==\\r\\n                ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[_orderQueueIndex]\\r\\n            ) {\\r\\n                _isOrderInBook = true;\\r\\n                _quantity = ExchangeMarket[_marketIndex].sellOrderBook.orders[orderIndex].quantity;\\r\\n            } else {\\r\\n                _newOrdersQueue[_newOrderQueueIndex] = ExchangeMarket[_marketIndex]\\r\\n                    .sellOrderBook\\r\\n                    .ordersQueue[_orderQueueIndex];\\r\\n                _newOrderQueueIndex++;\\r\\n            }\\r\\n        }\\r\\n        require(_isOrderInBook);\\r\\n\\r\\n        // Update OrderBook and OrderQueue\\r\\n        ExchangeMarket[_marketIndex].sellOrderBook.ordersCount--;\\r\\n        ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue = _newOrdersQueue;\\r\\n\\r\\n        // refund token balance back to user's account\\r\\n        tokenBalanceForAddress[msg.sender][_sellTokenIndex] += _quantity;\\r\\n\\r\\n        emit LogCancelSellOrder(\\r\\n            buyTokenSymbol,\\r\\n            sellTokenSymbol,\\r\\n            orderIndex,\\r\\n            msg.sender,\\r\\n            block.timestamp\\r\\n        );\\r\\n    }\\r\\n\\r\\n    /* HELPER FUNCTION */\\r\\n\\r\\n    function hasToken(string memory symbolName) public view returns (bool) {\\r\\n        for (uint8 i = 1; i <= tokenIndex; i++) {\\r\\n            if (\\r\\n                keccak256(abi.encodePacked(symbolName)) ==\\r\\n                keccak256(abi.encodePacked(tokenInfo[i].symbolName))\\r\\n            ) {\\r\\n                return true;\\r\\n            }\\r\\n        }\\r\\n        return false;\\r\\n    }\\r\\n\\r\\n    /* GETTER FUNCTIONS */\\r\\n\\r\\n    function getBuyOrderBook(string memory buyTokenSymbol, string memory sellTokenSymbol)\\r\\n        public\\r\\n        view\\r\\n        returns (\\r\\n            uint256[] memory,\\r\\n            uint256[] memory,\\r\\n            uint256[] memory\\r\\n        )\\r\\n    {\\r\\n        uint8 _marketIndex = getMarketIndex(buyTokenSymbol, sellTokenSymbol);\\r\\n\\r\\n        uint256[] memory indexes = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.ordersCount\\r\\n        );\\r\\n        uint256[] memory prices = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.ordersCount\\r\\n        );\\r\\n        uint256[] memory quantity = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].buyOrderBook.ordersCount\\r\\n        );\\r\\n\\r\\n        for (uint256 i = 1; i <= ExchangeMarket[_marketIndex].buyOrderBook.ordersCount; i++) {\\r\\n            Order memory _order = ExchangeMarket[_marketIndex].buyOrderBook.orders[\\r\\n                ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[i - 1]\\r\\n            ];\\r\\n            indexes[i - 1] = ExchangeMarket[_marketIndex].buyOrderBook.ordersQueue[i - 1];\\r\\n            prices[i - 1] = _order.price;\\r\\n            quantity[i - 1] = _order.quantity;\\r\\n        }\\r\\n\\r\\n        return (indexes, prices, quantity);\\r\\n    }\\r\\n\\r\\n    function getSellOrderBook(string memory sellTokenSymbol, string memory buyTokenSymbol)\\r\\n        public\\r\\n        view\\r\\n        returns (\\r\\n            uint256[] memory,\\r\\n            uint256[] memory,\\r\\n            uint256[] memory\\r\\n        )\\r\\n    {\\r\\n        uint8 _marketIndex = getMarketIndex(sellTokenSymbol, buyTokenSymbol);\\r\\n\\r\\n        uint256[] memory indexes = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.ordersCount\\r\\n        );\\r\\n        uint256[] memory prices = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.ordersCount\\r\\n        );\\r\\n        uint256[] memory quantity = new uint256[](\\r\\n            ExchangeMarket[_marketIndex].sellOrderBook.ordersCount\\r\\n        );\\r\\n\\r\\n        for (uint256 i = 1; i <= ExchangeMarket[_marketIndex].sellOrderBook.ordersCount; i++) {\\r\\n            Order memory _order = ExchangeMarket[_marketIndex].sellOrderBook.orders[\\r\\n                ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[i - 1]\\r\\n            ];\\r\\n            indexes[i - 1] = ExchangeMarket[_marketIndex].sellOrderBook.ordersQueue[i - 1];\\r\\n            prices[i - 1] = _order.price;\\r\\n            quantity[i - 1] = _order.quantity;\\r\\n        }\\r\\n\\r\\n        return (indexes, prices, quantity);\\r\\n    }\\r\\n\\r\\n    function getTokenAddress(string memory symbolName) public view returns (address) {\\r\\n        require(hasToken(symbolName));\\r\\n\\r\\n        uint8 _tokenIndex = getTokenIndex(symbolName);\\r\\n\\r\\n        return tokenInfo[_tokenIndex].contractAddress;\\r\\n    }\\r\\n\\r\\n    function getTokenIndex(string memory symbolName) public view returns (uint8) {\\r\\n        for (uint8 i = 1; i <= tokenIndex; i++) {\\r\\n            if (keccak256(bytes(symbolName)) == keccak256(bytes(tokenInfo[i].symbolName))) {\\r\\n                return i;\\r\\n            }\\r\\n        }\\r\\n        return 0;\\r\\n    }\\r\\n\\r\\n    function getMarketIndex(string memory buyTokenSymbol, string memory sellTokenSymbol)\\r\\n        public\\r\\n        view\\r\\n        returns (uint8)\\r\\n    {\\r\\n        for (uint8 i = 1; i <= marketIndex; i++) {\\r\\n            if (\\r\\n                keccak256(bytes(buyTokenSymbol)) ==\\r\\n                keccak256(bytes(tokenInfo[buyToSell[i][0]].symbolName)) &&\\r\\n                keccak256(bytes(sellTokenSymbol)) ==\\r\\n                keccak256(bytes(tokenInfo[buyToSell[i][1]].symbolName))\\r\\n            ) {\\r\\n                return i;\\r\\n            }\\r\\n        }\\r\\n        return 0;\\r\\n    }\\r\\n\\r\\n    function getTokenBalanceForUser(string memory symbolName) public view returns (uint256) {\\r\\n        return tokenBalanceForAddress[msg.sender][getTokenIndex(symbolName)];\\r\\n    }\\r\\n\\r\\n    function getAllTokenBalanceForUser() public view returns (string[] memory, uint256[] memory) {\\r\\n        string[] memory symbolNames = new string[](tokenIndex - 1);\\r\\n        uint256[] memory balances = new uint256[](tokenIndex - 1);\\r\\n        for (uint8 i = 1; i <= tokenIndex; i++) {\\r\\n            symbolNames[i - 1] = tokenInfo[i].symbolName;\\r\\n            balances[i - 1] = getTokenBalanceForUser(tokenInfo[i].symbolName);\\r\\n        }\\r\\n        return (symbolNames, balances);\\r\\n    }\\r\\n\\r\\n    //orderIndex, buy/sell tokensymbol, buy or sell, price, quantity\\r\\n    function getOpenOrdersForUser()\\r\\n        public\\r\\n        view\\r\\n        returns (\\r\\n            uint256[] memory, /*orderIndex*/\\r\\n            string[] memory, /*buy/sell tokensymbol*/\\r\\n            string[] memory, /*buy/sell tokensymbol*/\\r\\n            string[] memory, /*buy or sell*/\\r\\n            uint256[] memory, /*price*/\\r\\n            uint256[] memory, /*quantity*/\\r\\n            uint8\\r\\n        )\\r\\n    {\\r\\n        uint256[] memory orderIndexes = new uint256[](20); /*orderIndex*/\\r\\n        string[] memory buySymbols = new string[](20); /*buy/sell tokensymbol*/\\r\\n        string[] memory sellSymbols = new string[](20); /*buy/sell tokensymbol*/\\r\\n        string[] memory types = new string[](20); /*buy or sell*/\\r\\n        uint256[] memory prices = new uint256[](20); /*price*/\\r\\n        uint256[] memory quantities = new uint256[](20); /*quantity*/\\r\\n        uint8 count = 0;\\r\\n\\r\\n        for (uint8 i = 1; i <= marketIndex; i++) {\\r\\n            for (uint256 j = 1; j <= ExchangeMarket[i].sellOrderBook.ordersCount; j++) {\\r\\n                Order memory _order = ExchangeMarket[i].sellOrderBook.orders[\\r\\n                    ExchangeMarket[i].sellOrderBook.ordersQueue[j - 1]\\r\\n                ];\\r\\n                if (_order.user == msg.sender) {\\r\\n                    count++;\\r\\n                    orderIndexes[count - 1] = ExchangeMarket[i].sellOrderBook.ordersQueue[j - 1];\\r\\n                    buySymbols[count - 1] = tokenInfo[buyToSell[i][0]].symbolName;\\r\\n                    sellSymbols[count - 1] = tokenInfo[buyToSell[i][1]].symbolName;\\r\\n                    types[count - 1] = \\\"sell\\\";\\r\\n                    prices[count - 1] = _order.price;\\r\\n                    quantities[count - 1] = _order.quantity;\\r\\n                }\\r\\n            }\\r\\n            for (uint256 j = 1; j <= ExchangeMarket[i].buyOrderBook.ordersCount; j++) {\\r\\n                Order memory _order = ExchangeMarket[i].buyOrderBook.orders[\\r\\n                    ExchangeMarket[i].buyOrderBook.ordersQueue[j - 1]\\r\\n                ];\\r\\n                if (_order.user == msg.sender) {\\r\\n                    count++;\\r\\n                    orderIndexes[count - 1] = ExchangeMarket[i].buyOrderBook.ordersQueue[j - 1];\\r\\n                    buySymbols[count - 1] = tokenInfo[buyToSell[i][0]].symbolName;\\r\\n                    sellSymbols[count - 1] = tokenInfo[buyToSell[i][1]].symbolName;\\r\\n                    types[count - 1] = \\\"buy\\\";\\r\\n                    prices[count - 1] = _order.price;\\r\\n                    quantities[count - 1] = _order.quantity;\\r\\n                }\\r\\n            }\\r\\n        }\\r\\n\\r\\n        return (orderIndexes, buySymbols, sellSymbols, types, prices, quantities, count);\\r\\n    }\\r\\n\\r\\n    function getAllTokens() public view returns (string[] memory, address[] memory) {\\r\\n        string[] memory symbolNames = new string[](tokenIndex - 1);\\r\\n        address[] memory addresses = new address[](tokenIndex - 1);\\r\\n\\r\\n        for (uint8 i = 1; i <= tokenIndex; i++) {\\r\\n            symbolNames[i - 1] = tokenInfo[i].symbolName;\\r\\n            addresses[i - 1] = tokenInfo[i].contractAddress;\\r\\n        }\\r\\n\\r\\n        return (symbolNames, addresses);\\r\\n    }\\r\\n\\r\\n    function getAllMarkets() public view returns (string[] memory, string[] memory) {\\r\\n        string[] memory buySymbols = new string[](marketIndex - 1);\\r\\n        string[] memory sellSymbols = new string[](marketIndex - 1);\\r\\n\\r\\n        for (uint8 i = 1; i <= marketIndex; i++) {\\r\\n            buySymbols[i - 1] = tokenInfo[buyToSell[i][0]].symbolName;\\r\\n            sellSymbols[i - 1] = tokenInfo[buyToSell[i][1]].symbolName;\\r\\n        }\\r\\n\\r\\n        return (buySymbols, sellSymbols);\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x9c2ef6ef31b3535c5deaa8e8c3215a32ae7a065f297453d013c5d20e466eef31\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5062000032620000266200007060201b60201c565b6200007860201b60201c565b6000600660006101000a81548160ff021916908360ff1602179055506000600660016101000a81548160ff021916908360ff1602179055506200013c565b600033905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a35050565b614b90806200014c6000396000f3fe608060405234801561001057600080fd5b506004361061012c5760003560e01c80638ea00818116100ad578063c409123611610071578063c40912361461034a578063c97a413a1461037a578063cedd00b1146103aa578063dc1d94c5146103da578063f2fde38b146103fe5761012c565b80638ea00818146102915780638fb2742c146102c1578063a8854979146102f3578063b0772d0b1461030f578063b0b22c2c1461032e5761012c565b80635f968767116100f45780635f968767146101ea5780636409d48d1461021a578063715018a6146102395780638883b10c146102435780638da5cb5b146102735761012c565b806320977b49146101315780632a5c792a1461014d5780632bcc76031461016c57806333ad57e4146101885780634bb5d232146101b8575b600080fd5b61014b60048036038101906101469190613869565b61041a565b005b610155610798565b604051610163929190613b25565b60405180910390f35b61018660048036038101906101819190613b95565b610a24565b005b6101a2600480360381019061019d9190613bf1565b610c05565b6040516101af9190613c5c565b60405180910390f35b6101d260048036038101906101cd9190613c77565b610dd3565b6040516101e193929190613dad565b60405180910390f35b61020460048036038101906101ff9190613df9565b6111a6565b6040516102119190613e51565b60405180910390f35b61022261122f565b604051610230929190613e6c565b60405180910390f35b6102416114fd565b005b61025d60048036038101906102589190613df9565b611511565b60405161026a9190613c5c565b60405180910390f35b61027b611579565b6040516102889190613eb2565b60405180910390f35b6102ab60048036038101906102a69190613df9565b6115a2565b6040516102b89190613ee8565b60405180910390f35b6102db60048036038101906102d69190613c77565b61165c565b6040516102ea93929190613dad565b60405180910390f35b61030d60048036038101906103089190613869565b611a2f565b005b610317611d6d565b604051610325929190613f03565b60405180910390f35b61034860048036038101906103439190613f66565b6120cd565b005b610364600480360381019061035f9190613df9565b612387565b6040516103719190613eb2565b60405180910390f35b610394600480360381019061038f9190613bf1565b6123ed565b6040516103a19190613c5c565b60405180910390f35b6103c460048036038101906103bf9190613c77565b6125a6565b6040516103d19190613e51565b60405180910390f35b6103e2612709565b6040516103f59796959493929190613fc2565b60405180910390f35b6104186004803603810190610413919061405b565b6133fb565b005b610423836115a2565b61042c57600080fd5b610435826115a2565b61043e57600080fd5b600061044a84846125a6565b90506000610457846111a6565b90506000600560008460ff1660ff168152602001908152602001600020600001600201541161048557600080fd5b60008060006001600560008760ff1660ff168152602001908152602001600020600001600201546104b691906140b7565b67ffffffffffffffff8111156104cf576104ce613708565b5b6040519080825280602002602001820160405280156104fd5781602001602082028036833780820191505090505b50905060008060005b600560008960ff1660ff1681526020019081526020016000206000016002015481101561066157600560008960ff1660ff168152602001908152602001600020600001600301818154811061055e5761055d6140eb565b5b906000526020600020015489036105e45760019550600560008960ff1660ff16815260200190815260200160002060000160010160008a8152602001908152602001600020600101549250600560008960ff1660ff16815260200190815260200160002060000160010160008a815260200190815260200160002060000154915061064e565b600560008960ff1660ff1681526020019081526020016000206000016003018181548110610615576106146140eb565b5b9060005260206000200154848681518110610633576106326140eb565b5b602002602001018181525050848061064a9061411a565b9550505b80806106599061411a565b915050610506565b508461066c57600080fd5b600560008860ff1660ff168152602001908152602001600020600001600201600081548092919061069c90614162565b919050555082600560008960ff1660ff16815260200190815260200160002060000160030190805190602001906106d49291906135c8565b5080826106e1919061418b565b600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008860ff1660ff168152602001908152602001600020600082825461074691906141cd565b925050819055507f9a61c2300d2dd6e5e6c4d4860206d72177034372cf558a91f14cce7c88fb38dc8a8a8a334260405161078495949392919061424b565b60405180910390a150505050505050505050565b60608060006001600660009054906101000a900460ff166107b991906142ac565b60ff1667ffffffffffffffff8111156107d5576107d4613708565b5b60405190808252806020026020018201604052801561080857816020015b60608152602001906001900390816107f35790505b50905060006001600660009054906101000a900460ff1661082991906142ac565b60ff1667ffffffffffffffff81111561084557610844613708565b5b6040519080825280602002602001820160405280156108735781602001602082028036833780820191505090505b5090506000600190505b600660009054906101000a900460ff1660ff168160ff1611610a1757600160008260ff1660ff16815260200190815260200160002060010180546108c090614310565b80601f01602080910402602001604051908101604052809291908181526020018280546108ec90614310565b80156109395780601f1061090e57610100808354040283529160200191610939565b820191906000526020600020905b81548152906001019060200180831161091c57829003601f168201915b50505050508360018361094c91906142ac565b60ff16815181106109605761095f6140eb565b5b6020026020010181905250600160008260ff1660ff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16826001836109b691906142ac565b60ff16815181106109ca576109c96140eb565b5b602002602001019073ffffffffffffffffffffffffffffffffffffffff16908173ffffffffffffffffffffffffffffffffffffffff16815250508080610a0f90614341565b91505061087d565b5081819350935050509091565b610a2c61347e565b600660019054906101000a900460ff1660ff166001600660019054906101000a900460ff16610a5b919061436a565b60ff161015610a6957600080fd5b6000600190505b600660009054906101000a900460ff1660ff168160ff161015610bb6576006600181819054906101000a900460ff1680929190610aac90614341565b91906101000a81548160ff021916908360ff160217905550506000600267ffffffffffffffff811115610ae257610ae1613708565b5b604051908082528060200260200182016040528015610b105781602001602082028036833780820191505090505b5090508281600081518110610b2857610b276140eb565b5b602002602001019060ff16908160ff16815250508181600181518110610b5157610b506140eb565b5b602002602001019060ff16908160ff16815250508060046000600660019054906101000a900460ff1660ff1660ff1681526020019081526020016000209080519060200190610ba1929190613615565b50508080610bae90614341565b915050610a70565b507f8877b3481be0c4a9d298c35f0e291fd2f61a153f7d22354a14c44c8266a5a754600660019054906101000a900460ff168342604051610bf9939291906143da565b60405180910390a15050565b6000610c10836115a2565b610c1957600080fd5b610c2283611511565b82610c2c85611511565b610c3691906141cd565b1015610c4157600080fd5b6000610c4c846111a6565b905082600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008360ff1660ff1681526020019081526020016000206000828254610cb491906141cd565b9250508190555060011515600260008360ff1660ff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd3330876040518463ffffffff1660e01b8152600401610d3593929190614418565b6020604051808303816000875af1158015610d54573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d78919061447b565b151514610d8457600080fd5b7f4dbc01516018d27f28f32ddd20595428f662140f1fff79b754484578ac27fc1984338542604051610db994939291906144a8565b60405180910390a1610dca84611511565b91505092915050565b60608060606000610de486866125a6565b90506000600560008360ff1660ff1681526020019081526020016000206004016002015467ffffffffffffffff811115610e2157610e20613708565b5b604051908082528060200260200182016040528015610e4f5781602001602082028036833780820191505090505b5090506000600560008460ff1660ff1681526020019081526020016000206004016002015467ffffffffffffffff811115610e8d57610e8c613708565b5b604051908082528060200260200182016040528015610ebb5781602001602082028036833780820191505090505b5090506000600560008560ff1660ff1681526020019081526020016000206004016002015467ffffffffffffffff811115610ef957610ef8613708565b5b604051908082528060200260200182016040528015610f275781602001602082028036833780820191505090505b5090506000600190505b600560008660ff1660ff168152602001908152602001600020600401600201548111611191576000600560008760ff1660ff1681526020019081526020016000206004016001016000600560008960ff1660ff168152602001908152602001600020600401600301600185610fa691906140b7565b81548110610fb757610fb66140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815250509050600560008760ff1660ff1681526020019081526020016000206004016003016001836110d691906140b7565b815481106110e7576110e66140eb565b5b90600052602060002001548560018461110091906140b7565b81518110611111576111106140eb565b5b60200260200101818152505080602001518460018461113091906140b7565b81518110611141576111406140eb565b5b60200260200101818152505080600001518360018461116091906140b7565b81518110611171576111706140eb565b5b6020026020010181815250505080806111899061411a565b915050610f31565b50828282965096509650505050509250925092565b600080600190505b600660009054906101000a900460ff1660ff168160ff161161122457600160008260ff1660ff1681526020019081526020016000206001016040516111f39190614597565b6040518091039020838051906020012003611211578091505061122a565b808061121c90614341565b9150506111ae565b50600090505b919050565b60608060006001600660009054906101000a900460ff1661125091906142ac565b60ff1667ffffffffffffffff81111561126c5761126b613708565b5b60405190808252806020026020018201604052801561129f57816020015b606081526020019060019003908161128a5790505b50905060006001600660009054906101000a900460ff166112c091906142ac565b60ff1667ffffffffffffffff8111156112dc576112db613708565b5b60405190808252806020026020018201604052801561130a5781602001602082028036833780820191505090505b5090506000600190505b600660009054906101000a900460ff1660ff168160ff16116114f057600160008260ff1660ff168152602001908152602001600020600101805461135790614310565b80601f016020809104026020016040519081016040528092919081815260200182805461138390614310565b80156113d05780601f106113a5576101008083540402835291602001916113d0565b820191906000526020600020905b8154815290600101906020018083116113b357829003601f168201915b5050505050836001836113e391906142ac565b60ff16815181106113f7576113f66140eb565b5b60200260200101819052506114af600160008360ff1660ff168152602001908152602001600020600101805461142c90614310565b80601f016020809104026020016040519081016040528092919081815260200182805461145890614310565b80156114a55780601f1061147a576101008083540402835291602001916114a5565b820191906000526020600020905b81548152906001019060200180831161148857829003601f168201915b5050505050611511565b826001836114bd91906142ac565b60ff16815181106114d1576114d06140eb565b5b60200260200101818152505080806114e890614341565b915050611314565b5081819350935050509091565b61150561347e565b61150f60006134fc565b565b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600061155d846111a6565b60ff1660ff168152602001908152602001600020549050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b600080600190505b600660009054906101000a900460ff1660ff168160ff161161165157600160008260ff1660ff1681526020019081526020016000206001016040516020016115f29190614651565b60405160208183030381529060405280519060200120836040516020016116199190614699565b604051602081830303815290604052805190602001200361163e576001915050611657565b808061164990614341565b9150506115aa565b50600090505b919050565b6060806060600061166d86866125a6565b90506000600560008360ff1660ff1681526020019081526020016000206000016002015467ffffffffffffffff8111156116aa576116a9613708565b5b6040519080825280602002602001820160405280156116d85781602001602082028036833780820191505090505b5090506000600560008460ff1660ff1681526020019081526020016000206000016002015467ffffffffffffffff81111561171657611715613708565b5b6040519080825280602002602001820160405280156117445781602001602082028036833780820191505090505b5090506000600560008560ff1660ff1681526020019081526020016000206000016002015467ffffffffffffffff81111561178257611781613708565b5b6040519080825280602002602001820160405280156117b05781602001602082028036833780820191505090505b5090506000600190505b600560008660ff1660ff168152602001908152602001600020600001600201548111611a1a576000600560008760ff1660ff1681526020019081526020016000206000016001016000600560008960ff1660ff16815260200190815260200160002060000160030160018561182f91906140b7565b815481106118405761183f6140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815250509050600560008760ff1660ff16815260200190815260200160002060000160030160018361195f91906140b7565b815481106119705761196f6140eb565b5b90600052602060002001548560018461198991906140b7565b8151811061199a576119996140eb565b5b6020026020010181815250508060200151846001846119b991906140b7565b815181106119ca576119c96140eb565b5b6020026020010181815250508060000151836001846119e991906140b7565b815181106119fa576119f96140eb565b5b602002602001018181525050508080611a129061411a565b9150506117ba565b50828282965096509650505050509250925092565b611a38836115a2565b611a4157600080fd5b611a4a826115a2565b611a5357600080fd5b6000611a5f84846125a6565b90506000611a6c846111a6565b90506000600560008460ff1660ff1681526020019081526020016000206004016002015411611a9a57600080fd5b60008060006001600560008760ff1660ff16815260200190815260200160002060040160020154611acb91906140b7565b67ffffffffffffffff811115611ae457611ae3613708565b5b604051908082528060200260200182016040528015611b125781602001602082028036833780820191505090505b509050600080600090505b600560008860ff1660ff16815260200190815260200160002060040160020154811015611c4257600560008860ff1660ff1681526020019081526020016000206004016003018181548110611b7557611b746140eb565b5b90600052602060002001548803611bc55760019450600560008860ff1660ff1681526020019081526020016000206004016001016000898152602001908152602001600020600001549150611c2f565b600560008860ff1660ff1681526020019081526020016000206004016003018181548110611bf657611bf56140eb565b5b9060005260206000200154838581518110611c1457611c136140eb565b5b6020026020010181815250508380611c2b9061411a565b9450505b8080611c3a9061411a565b915050611b1d565b5083611c4d57600080fd5b600560008760ff1660ff1681526020019081526020016000206004016002016000815480929190611c7d90614162565b919050555081600560008860ff1660ff1681526020019081526020016000206004016003019080519060200190611cb59291906135c8565b5080600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008760ff1660ff1681526020019081526020016000206000828254611d1c91906141cd565b925050819055507fc6a6416b415d06b5cea3ff17e447ceb010fa4d602523d17f25cfbc54656a28d08989893342604051611d5a95949392919061424b565b60405180910390a1505050505050505050565b60608060006001600660019054906101000a900460ff16611d8e91906142ac565b60ff1667ffffffffffffffff811115611daa57611da9613708565b5b604051908082528060200260200182016040528015611ddd57816020015b6060815260200190600190039081611dc85790505b50905060006001600660019054906101000a900460ff16611dfe91906142ac565b60ff1667ffffffffffffffff811115611e1a57611e19613708565b5b604051908082528060200260200182016040528015611e4d57816020015b6060815260200190600190039081611e385790505b5090506000600190505b600660019054906101000a900460ff1660ff168160ff16116120c05760016000600460008460ff1660ff168152602001908152602001600020600081548110611ea357611ea26140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001018054611ee590614310565b80601f0160208091040260200160405190810160405280929190818152602001828054611f1190614310565b8015611f5e5780601f10611f3357610100808354040283529160200191611f5e565b820191906000526020600020905b815481529060010190602001808311611f4157829003601f168201915b505050505083600183611f7191906142ac565b60ff1681518110611f8557611f846140eb565b5b602002602001018190525060016000600460008460ff1660ff168152602001908152602001600020600181548110611fc057611fbf6140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff168152602001908152602001600020600101805461200290614310565b80601f016020809104026020016040519081016040528092919081815260200182805461202e90614310565b801561207b5780601f106120505761010080835404028352916020019161207b565b820191906000526020600020905b81548152906001019060200180831161205e57829003601f168201915b50505050508260018361208e91906142ac565b60ff16815181106120a2576120a16140eb565b5b602002602001018190525080806120b890614341565b915050611e57565b5081819350935050509091565b6120d561347e565b6120de826115a2565b1561211e576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401612115906146fc565b60405180910390fd5b600660009054906101000a900460ff1660ff166001600660009054906101000a900460ff1661214d919061436a565b60ff161015612191576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161218890614768565b60405180910390fd5b6006600081819054906101000a900460ff16809291906121b090614341565b91906101000a81548160ff021916908360ff160217905550508160016000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060010190816122019190614915565b508060016000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060016000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660026000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507f1723c709bc871c32c420d3c2d2837cdd4bef40c574088c1d055e1f4f609d2377600660009054906101000a900460ff1683834260405161236294939291906149e7565b60405180910390a161238382600660009054906101000a900460ff16610a24565b5050565b6000612392826115a2565b61239b57600080fd5b60006123a6836111a6565b9050600160008260ff1660ff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16915050919050565b60006123f8836115a2565b61240157600080fd5b61240a83611511565b82111561241657600080fd5b6000612421846111a6565b905082600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008360ff1660ff168152602001908152602001600020600082825461248991906140b7565b9250508190555060011515600260008360ff1660ff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb33866040518363ffffffff1660e01b8152600401612508929190614a33565b6020604051808303816000875af1158015612527573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061254b919061447b565b15151461255757600080fd5b7fc0a144e0d9af86fa328820e6f7f9e66f6e2a7248ff06a92aa13dc1f01e26934f8433854260405161258c94939291906144a8565b60405180910390a161259d84611511565b91505092915050565b600080600190505b600660019054906101000a900460ff1660ff168160ff16116126fd5760016000600460008460ff1660ff1681526020019081526020016000206000815481106125fa576125f96140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff16815260200190815260200160002060010160405161263e9190614597565b604051809103902084805190602001201480156126dc575060016000600460008460ff1660ff168152602001908152602001600020600181548110612686576126856140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001016040516126ca9190614597565b60405180910390208380519060200120145b156126ea5780915050612703565b80806126f590614341565b9150506125ae565b50600090505b92915050565b606080606080606080600080601467ffffffffffffffff8111156127305761272f613708565b5b60405190808252806020026020018201604052801561275e5781602001602082028036833780820191505090505b5090506000601467ffffffffffffffff81111561277e5761277d613708565b5b6040519080825280602002602001820160405280156127b157816020015b606081526020019060019003908161279c5790505b5090506000601467ffffffffffffffff8111156127d1576127d0613708565b5b60405190808252806020026020018201604052801561280457816020015b60608152602001906001900390816127ef5790505b5090506000601467ffffffffffffffff81111561282457612823613708565b5b60405190808252806020026020018201604052801561285757816020015b60608152602001906001900390816128425790505b5090506000601467ffffffffffffffff81111561287757612876613708565b5b6040519080825280602002602001820160405280156128a55781602001602082028036833780820191505090505b5090506000601467ffffffffffffffff8111156128c5576128c4613708565b5b6040519080825280602002602001820160405280156128f35781602001602082028036833780820191505090505b509050600080600190505b600660019054906101000a900460ff1660ff168160ff16116133d5576000600190505b600560008360ff1660ff168152602001908152602001600020600401600201548111612e6d576000600560008460ff1660ff1681526020019081526020016000206004016001016000600560008660ff1660ff16815260200190815260200160002060040160030160018561299691906140b7565b815481106129a7576129a66140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19168152505090503373ffffffffffffffffffffffffffffffffffffffff16816060015173ffffffffffffffffffffffffffffffffffffffff1603612e59578380612adc90614341565b945050600560008460ff1660ff168152602001908152602001600020600401600301600183612b0b91906140b7565b81548110612b1c57612b1b6140eb565b5b90600052602060002001548a600186612b3591906142ac565b60ff1681518110612b4957612b486140eb565b5b60200260200101818152505060016000600460008660ff1660ff168152602001908152602001600020600081548110612b8557612b846140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001018054612bc790614310565b80601f0160208091040260200160405190810160405280929190818152602001828054612bf390614310565b8015612c405780601f10612c1557610100808354040283529160200191612c40565b820191906000526020600020905b815481529060010190602001808311612c2357829003601f168201915b505050505089600186612c5391906142ac565b60ff1681518110612c6757612c666140eb565b5b602002602001018190525060016000600460008660ff1660ff168152602001908152602001600020600181548110612ca257612ca16140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001018054612ce490614310565b80601f0160208091040260200160405190810160405280929190818152602001828054612d1090614310565b8015612d5d5780601f10612d3257610100808354040283529160200191612d5d565b820191906000526020600020905b815481529060010190602001808311612d4057829003601f168201915b505050505088600186612d7091906142ac565b60ff1681518110612d8457612d836140eb565b5b60200260200101819052506040518060400160405280600481526020017f73656c6c0000000000000000000000000000000000000000000000000000000081525087600186612dd391906142ac565b60ff1681518110612de757612de66140eb565b5b6020026020010181905250806020015186600186612e0591906142ac565b60ff1681518110612e1957612e186140eb565b5b602002602001018181525050806000015185600186612e3891906142ac565b60ff1681518110612e4c57612e4b6140eb565b5b6020026020010181815250505b508080612e659061411a565b915050612921565b506000600190505b600560008360ff1660ff1681526020019081526020016000206000016002015481116133c1576000600560008460ff1660ff1681526020019081526020016000206000016001016000600560008660ff1660ff168152602001908152602001600020600001600301600185612eea91906140b7565b81548110612efb57612efa6140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19168152505090503373ffffffffffffffffffffffffffffffffffffffff16816060015173ffffffffffffffffffffffffffffffffffffffff16036133ad57838061303090614341565b945050600560008460ff1660ff16815260200190815260200160002060000160030160018361305f91906140b7565b815481106130705761306f6140eb565b5b90600052602060002001548a60018661308991906142ac565b60ff168151811061309d5761309c6140eb565b5b60200260200101818152505060016000600460008660ff1660ff1681526020019081526020016000206000815481106130d9576130d86140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff168152602001908152602001600020600101805461311b90614310565b80601f016020809104026020016040519081016040528092919081815260200182805461314790614310565b80156131945780601f1061316957610100808354040283529160200191613194565b820191906000526020600020905b81548152906001019060200180831161317757829003601f168201915b5050505050896001866131a791906142ac565b60ff16815181106131bb576131ba6140eb565b5b602002602001018190525060016000600460008660ff1660ff1681526020019081526020016000206001815481106131f6576131f56140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff168152602001908152602001600020600101805461323890614310565b80601f016020809104026020016040519081016040528092919081815260200182805461326490614310565b80156132b15780601f10613286576101008083540402835291602001916132b1565b820191906000526020600020905b81548152906001019060200180831161329457829003601f168201915b5050505050886001866132c491906142ac565b60ff16815181106132d8576132d76140eb565b5b60200260200101819052506040518060400160405280600381526020017f62757900000000000000000000000000000000000000000000000000000000008152508760018661332791906142ac565b60ff168151811061333b5761333a6140eb565b5b602002602001018190525080602001518660018661335991906142ac565b60ff168151811061336d5761336c6140eb565b5b60200260200101818152505080600001518560018661338c91906142ac565b60ff16815181106133a05761339f6140eb565b5b6020026020010181815250505b5080806133b99061411a565b915050612e75565b5080806133cd90614341565b9150506128fe565b50868686868686869d509d509d509d509d509d509d505050505050505090919293949596565b61340361347e565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603613472576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161346990614ace565b60405180910390fd5b61347b816134fc565b50565b6134866135c0565b73ffffffffffffffffffffffffffffffffffffffff166134a4611579565b73ffffffffffffffffffffffffffffffffffffffff16146134fa576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016134f190614b3a565b60405180910390fd5b565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a35050565b600033905090565b828054828255906000526020600020908101928215613604579160200282015b828111156136035782518255916020019190600101906135e8565b5b50905061361191906136bc565b5090565b82805482825590600052602060002090601f016020900481019282156136ab5791602002820160005b8382111561367c57835183826101000a81548160ff021916908360ff160217905550926020019260010160208160000104928301926001030261363e565b80156136a95782816101000a81549060ff021916905560010160208160000104928301926001030261367c565b505b5090506136b891906136bc565b5090565b5b808211156136d55760008160009055506001016136bd565b5090565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b613740826136f7565b810181811067ffffffffffffffff8211171561375f5761375e613708565b5b80604052505050565b60006137726136d9565b905061377e8282613737565b919050565b600067ffffffffffffffff82111561379e5761379d613708565b5b6137a7826136f7565b9050602081019050919050565b82818337600083830152505050565b60006137d66137d184613783565b613768565b9050828152602081018484840111156137f2576137f16136f2565b5b6137fd8482856137b4565b509392505050565b600082601f83011261381a576138196136ed565b5b813561382a8482602086016137c3565b91505092915050565b6000819050919050565b61384681613833565b811461385157600080fd5b50565b6000813590506138638161383d565b92915050565b600080600060608486031215613882576138816136e3565b5b600084013567ffffffffffffffff8111156138a05761389f6136e8565b5b6138ac86828701613805565b935050602084013567ffffffffffffffff8111156138cd576138cc6136e8565b5b6138d986828701613805565b92505060406138ea86828701613854565b9150509250925092565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600081519050919050565b600082825260208201905092915050565b60005b8381101561395a57808201518184015260208101905061393f565b60008484015250505050565b600061397182613920565b61397b818561392b565b935061398b81856020860161393c565b613994816136f7565b840191505092915050565b60006139ab8383613966565b905092915050565b6000602082019050919050565b60006139cb826138f4565b6139d581856138ff565b9350836020820285016139e785613910565b8060005b85811015613a235784840389528151613a04858261399f565b9450613a0f836139b3565b925060208a019950506001810190506139eb565b50829750879550505050505092915050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000613a8c82613a61565b9050919050565b613a9c81613a81565b82525050565b6000613aae8383613a93565b60208301905092915050565b6000602082019050919050565b6000613ad282613a35565b613adc8185613a40565b9350613ae783613a51565b8060005b83811015613b18578151613aff8882613aa2565b9750613b0a83613aba565b925050600181019050613aeb565b5085935050505092915050565b60006040820190508181036000830152613b3f81856139c0565b90508181036020830152613b538184613ac7565b90509392505050565b600060ff82169050919050565b613b7281613b5c565b8114613b7d57600080fd5b50565b600081359050613b8f81613b69565b92915050565b60008060408385031215613bac57613bab6136e3565b5b600083013567ffffffffffffffff811115613bca57613bc96136e8565b5b613bd685828601613805565b9250506020613be785828601613b80565b9150509250929050565b60008060408385031215613c0857613c076136e3565b5b600083013567ffffffffffffffff811115613c2657613c256136e8565b5b613c3285828601613805565b9250506020613c4385828601613854565b9150509250929050565b613c5681613833565b82525050565b6000602082019050613c716000830184613c4d565b92915050565b60008060408385031215613c8e57613c8d6136e3565b5b600083013567ffffffffffffffff811115613cac57613cab6136e8565b5b613cb885828601613805565b925050602083013567ffffffffffffffff811115613cd957613cd86136e8565b5b613ce585828601613805565b9150509250929050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b613d2481613833565b82525050565b6000613d368383613d1b565b60208301905092915050565b6000602082019050919050565b6000613d5a82613cef565b613d648185613cfa565b9350613d6f83613d0b565b8060005b83811015613da0578151613d878882613d2a565b9750613d9283613d42565b925050600181019050613d73565b5085935050505092915050565b60006060820190508181036000830152613dc78186613d4f565b90508181036020830152613ddb8185613d4f565b90508181036040830152613def8184613d4f565b9050949350505050565b600060208284031215613e0f57613e0e6136e3565b5b600082013567ffffffffffffffff811115613e2d57613e2c6136e8565b5b613e3984828501613805565b91505092915050565b613e4b81613b5c565b82525050565b6000602082019050613e666000830184613e42565b92915050565b60006040820190508181036000830152613e8681856139c0565b90508181036020830152613e9a8184613d4f565b90509392505050565b613eac81613a81565b82525050565b6000602082019050613ec76000830184613ea3565b92915050565b60008115159050919050565b613ee281613ecd565b82525050565b6000602082019050613efd6000830184613ed9565b92915050565b60006040820190508181036000830152613f1d81856139c0565b90508181036020830152613f3181846139c0565b90509392505050565b613f4381613a81565b8114613f4e57600080fd5b50565b600081359050613f6081613f3a565b92915050565b60008060408385031215613f7d57613f7c6136e3565b5b600083013567ffffffffffffffff811115613f9b57613f9a6136e8565b5b613fa785828601613805565b9250506020613fb885828601613f51565b9150509250929050565b600060e0820190508181036000830152613fdc818a613d4f565b90508181036020830152613ff081896139c0565b9050818103604083015261400481886139c0565b9050818103606083015261401881876139c0565b9050818103608083015261402c8186613d4f565b905081810360a08301526140408185613d4f565b905061404f60c0830184613e42565b98975050505050505050565b600060208284031215614071576140706136e3565b5b600061407f84828501613f51565b91505092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60006140c282613833565b91506140cd83613833565b92508282039050818111156140e5576140e4614088565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600061412582613833565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff820361415757614156614088565b5b600182019050919050565b600061416d82613833565b9150600082036141805761417f614088565b5b600182039050919050565b600061419682613833565b91506141a183613833565b92508282026141af81613833565b915082820484148315176141c6576141c5614088565b5b5092915050565b60006141d882613833565b91506141e383613833565b92508282019050808211156141fb576141fa614088565b5b92915050565b600082825260208201905092915050565b600061421d82613920565b6142278185614201565b935061423781856020860161393c565b614240816136f7565b840191505092915050565b600060a08201905081810360008301526142658188614212565b905081810360208301526142798187614212565b90506142886040830186613c4d565b6142956060830185613ea3565b6142a26080830184613c4d565b9695505050505050565b60006142b782613b5c565b91506142c283613b5c565b9250828203905060ff8111156142db576142da614088565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b6000600282049050600182168061432857607f821691505b60208210810361433b5761433a6142e1565b5b50919050565b600061434c82613b5c565b915060ff820361435f5761435e614088565b5b600182019050919050565b600061437582613b5c565b915061438083613b5c565b9250828201905060ff81111561439957614398614088565b5b92915050565b6000819050919050565b60006143c46143bf6143ba84613b5c565b61439f565b613833565b9050919050565b6143d4816143a9565b82525050565b60006060820190506143ef60008301866143cb565b81810360208301526144018185614212565b90506144106040830184613c4d565b949350505050565b600060608201905061442d6000830186613ea3565b61443a6020830185613ea3565b6144476040830184613c4d565b949350505050565b61445881613ecd565b811461446357600080fd5b50565b6000815190506144758161444f565b92915050565b600060208284031215614491576144906136e3565b5b600061449f84828501614466565b91505092915050565b600060808201905081810360008301526144c28187614212565b90506144d16020830186613ea3565b6144de6040830185613c4d565b6144eb6060830184613c4d565b95945050505050565b600081905092915050565b60008190508160005260206000209050919050565b6000815461452181614310565b61452b81866144f4565b94506001821660008114614546576001811461455b5761458e565b60ff198316865281151582028601935061458e565b614564856144ff565b60005b8381101561458657815481890152600182019150602081019050614567565b838801955050505b50505092915050565b60006145a38284614514565b915081905092915050565b600081905092915050565b60008190508160005260206000209050919050565b600081546145db81614310565b6145e581866145ae565b94506001821660008114614600576001811461461557614648565b60ff1983168652811515820286019350614648565b61461e856145b9565b60005b8381101561464057815481890152600182019150602081019050614621565b838801955050505b50505092915050565b600061465d82846145ce565b915081905092915050565b600061467382613920565b61467d81856145ae565b935061468d81856020860161393c565b80840191505092915050565b60006146a58284614668565b915081905092915050565b7f546f6b656e20616c726561647920657869737473000000000000000000000000600082015250565b60006146e6601483614201565b91506146f1826146b0565b602082019050919050565b60006020820190508181036000830152614715816146d9565b9050919050565b7f546f6b656e20496e646578206f766572666c6f77000000000000000000000000600082015250565b6000614752601483614201565b915061475d8261471c565b602082019050919050565b6000602082019050818103600083015261478181614745565b9050919050565b60006020601f8301049050919050565b600082821b905092915050565b6000600883026147d57fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82614798565b6147df8683614798565b95508019841693508086168417925050509392505050565b600061481261480d61480884613833565b61439f565b613833565b9050919050565b6000819050919050565b61482c836147f7565b61484061483882614819565b8484546147a5565b825550505050565b600090565b614855614848565b614860818484614823565b505050565b5b818110156148845761487960008261484d565b600181019050614866565b5050565b601f8211156148c95761489a816145b9565b6148a384614788565b810160208510156148b2578190505b6148c66148be85614788565b830182614865565b50505b505050565b600082821c905092915050565b60006148ec600019846008026148ce565b1980831691505092915050565b600061490583836148db565b9150826002028217905092915050565b61491e82613920565b67ffffffffffffffff81111561493757614936613708565b5b6149418254614310565b61494c828285614888565b600060209050601f83116001811461497f576000841561496d578287015190505b61497785826148f9565b8655506149df565b601f19841661498d866145b9565b60005b828110156149b557848901518255600182019150602085019450602081019050614990565b868310156149d257848901516149ce601f8916826148db565b8355505b6001600288020188555050505b505050505050565b60006080820190506149fc60008301876143cb565b8181036020830152614a0e8186614212565b9050614a1d6040830185613ea3565b614a2a6060830184613c4d565b95945050505050565b6000604082019050614a486000830185613ea3565b614a556020830184613c4d565b9392505050565b7f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160008201527f6464726573730000000000000000000000000000000000000000000000000000602082015250565b6000614ab8602683614201565b9150614ac382614a5c565b604082019050919050565b60006020820190508181036000830152614ae781614aab565b9050919050565b7f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572600082015250565b6000614b24602083614201565b9150614b2f82614aee565b602082019050919050565b60006020820190508181036000830152614b5381614b17565b905091905056fea2646970667358221220c60131c4b855ea8ba111da87d79613b55abfc0558f1a43163ecc699ad03ae36364736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061012c5760003560e01c80638ea00818116100ad578063c409123611610071578063c40912361461034a578063c97a413a1461037a578063cedd00b1146103aa578063dc1d94c5146103da578063f2fde38b146103fe5761012c565b80638ea00818146102915780638fb2742c146102c1578063a8854979146102f3578063b0772d0b1461030f578063b0b22c2c1461032e5761012c565b80635f968767116100f45780635f968767146101ea5780636409d48d1461021a578063715018a6146102395780638883b10c146102435780638da5cb5b146102735761012c565b806320977b49146101315780632a5c792a1461014d5780632bcc76031461016c57806333ad57e4146101885780634bb5d232146101b8575b600080fd5b61014b60048036038101906101469190613869565b61041a565b005b610155610798565b604051610163929190613b25565b60405180910390f35b61018660048036038101906101819190613b95565b610a24565b005b6101a2600480360381019061019d9190613bf1565b610c05565b6040516101af9190613c5c565b60405180910390f35b6101d260048036038101906101cd9190613c77565b610dd3565b6040516101e193929190613dad565b60405180910390f35b61020460048036038101906101ff9190613df9565b6111a6565b6040516102119190613e51565b60405180910390f35b61022261122f565b604051610230929190613e6c565b60405180910390f35b6102416114fd565b005b61025d60048036038101906102589190613df9565b611511565b60405161026a9190613c5c565b60405180910390f35b61027b611579565b6040516102889190613eb2565b60405180910390f35b6102ab60048036038101906102a69190613df9565b6115a2565b6040516102b89190613ee8565b60405180910390f35b6102db60048036038101906102d69190613c77565b61165c565b6040516102ea93929190613dad565b60405180910390f35b61030d60048036038101906103089190613869565b611a2f565b005b610317611d6d565b604051610325929190613f03565b60405180910390f35b61034860048036038101906103439190613f66565b6120cd565b005b610364600480360381019061035f9190613df9565b612387565b6040516103719190613eb2565b60405180910390f35b610394600480360381019061038f9190613bf1565b6123ed565b6040516103a19190613c5c565b60405180910390f35b6103c460048036038101906103bf9190613c77565b6125a6565b6040516103d19190613e51565b60405180910390f35b6103e2612709565b6040516103f59796959493929190613fc2565b60405180910390f35b6104186004803603810190610413919061405b565b6133fb565b005b610423836115a2565b61042c57600080fd5b610435826115a2565b61043e57600080fd5b600061044a84846125a6565b90506000610457846111a6565b90506000600560008460ff1660ff168152602001908152602001600020600001600201541161048557600080fd5b60008060006001600560008760ff1660ff168152602001908152602001600020600001600201546104b691906140b7565b67ffffffffffffffff8111156104cf576104ce613708565b5b6040519080825280602002602001820160405280156104fd5781602001602082028036833780820191505090505b50905060008060005b600560008960ff1660ff1681526020019081526020016000206000016002015481101561066157600560008960ff1660ff168152602001908152602001600020600001600301818154811061055e5761055d6140eb565b5b906000526020600020015489036105e45760019550600560008960ff1660ff16815260200190815260200160002060000160010160008a8152602001908152602001600020600101549250600560008960ff1660ff16815260200190815260200160002060000160010160008a815260200190815260200160002060000154915061064e565b600560008960ff1660ff1681526020019081526020016000206000016003018181548110610615576106146140eb565b5b9060005260206000200154848681518110610633576106326140eb565b5b602002602001018181525050848061064a9061411a565b9550505b80806106599061411a565b915050610506565b508461066c57600080fd5b600560008860ff1660ff168152602001908152602001600020600001600201600081548092919061069c90614162565b919050555082600560008960ff1660ff16815260200190815260200160002060000160030190805190602001906106d49291906135c8565b5080826106e1919061418b565b600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008860ff1660ff168152602001908152602001600020600082825461074691906141cd565b925050819055507f9a61c2300d2dd6e5e6c4d4860206d72177034372cf558a91f14cce7c88fb38dc8a8a8a334260405161078495949392919061424b565b60405180910390a150505050505050505050565b60608060006001600660009054906101000a900460ff166107b991906142ac565b60ff1667ffffffffffffffff8111156107d5576107d4613708565b5b60405190808252806020026020018201604052801561080857816020015b60608152602001906001900390816107f35790505b50905060006001600660009054906101000a900460ff1661082991906142ac565b60ff1667ffffffffffffffff81111561084557610844613708565b5b6040519080825280602002602001820160405280156108735781602001602082028036833780820191505090505b5090506000600190505b600660009054906101000a900460ff1660ff168160ff1611610a1757600160008260ff1660ff16815260200190815260200160002060010180546108c090614310565b80601f01602080910402602001604051908101604052809291908181526020018280546108ec90614310565b80156109395780601f1061090e57610100808354040283529160200191610939565b820191906000526020600020905b81548152906001019060200180831161091c57829003601f168201915b50505050508360018361094c91906142ac565b60ff16815181106109605761095f6140eb565b5b6020026020010181905250600160008260ff1660ff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16826001836109b691906142ac565b60ff16815181106109ca576109c96140eb565b5b602002602001019073ffffffffffffffffffffffffffffffffffffffff16908173ffffffffffffffffffffffffffffffffffffffff16815250508080610a0f90614341565b91505061087d565b5081819350935050509091565b610a2c61347e565b600660019054906101000a900460ff1660ff166001600660019054906101000a900460ff16610a5b919061436a565b60ff161015610a6957600080fd5b6000600190505b600660009054906101000a900460ff1660ff168160ff161015610bb6576006600181819054906101000a900460ff1680929190610aac90614341565b91906101000a81548160ff021916908360ff160217905550506000600267ffffffffffffffff811115610ae257610ae1613708565b5b604051908082528060200260200182016040528015610b105781602001602082028036833780820191505090505b5090508281600081518110610b2857610b276140eb565b5b602002602001019060ff16908160ff16815250508181600181518110610b5157610b506140eb565b5b602002602001019060ff16908160ff16815250508060046000600660019054906101000a900460ff1660ff1660ff1681526020019081526020016000209080519060200190610ba1929190613615565b50508080610bae90614341565b915050610a70565b507f8877b3481be0c4a9d298c35f0e291fd2f61a153f7d22354a14c44c8266a5a754600660019054906101000a900460ff168342604051610bf9939291906143da565b60405180910390a15050565b6000610c10836115a2565b610c1957600080fd5b610c2283611511565b82610c2c85611511565b610c3691906141cd565b1015610c4157600080fd5b6000610c4c846111a6565b905082600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008360ff1660ff1681526020019081526020016000206000828254610cb491906141cd565b9250508190555060011515600260008360ff1660ff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd3330876040518463ffffffff1660e01b8152600401610d3593929190614418565b6020604051808303816000875af1158015610d54573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d78919061447b565b151514610d8457600080fd5b7f4dbc01516018d27f28f32ddd20595428f662140f1fff79b754484578ac27fc1984338542604051610db994939291906144a8565b60405180910390a1610dca84611511565b91505092915050565b60608060606000610de486866125a6565b90506000600560008360ff1660ff1681526020019081526020016000206004016002015467ffffffffffffffff811115610e2157610e20613708565b5b604051908082528060200260200182016040528015610e4f5781602001602082028036833780820191505090505b5090506000600560008460ff1660ff1681526020019081526020016000206004016002015467ffffffffffffffff811115610e8d57610e8c613708565b5b604051908082528060200260200182016040528015610ebb5781602001602082028036833780820191505090505b5090506000600560008560ff1660ff1681526020019081526020016000206004016002015467ffffffffffffffff811115610ef957610ef8613708565b5b604051908082528060200260200182016040528015610f275781602001602082028036833780820191505090505b5090506000600190505b600560008660ff1660ff168152602001908152602001600020600401600201548111611191576000600560008760ff1660ff1681526020019081526020016000206004016001016000600560008960ff1660ff168152602001908152602001600020600401600301600185610fa691906140b7565b81548110610fb757610fb66140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815250509050600560008760ff1660ff1681526020019081526020016000206004016003016001836110d691906140b7565b815481106110e7576110e66140eb565b5b90600052602060002001548560018461110091906140b7565b81518110611111576111106140eb565b5b60200260200101818152505080602001518460018461113091906140b7565b81518110611141576111406140eb565b5b60200260200101818152505080600001518360018461116091906140b7565b81518110611171576111706140eb565b5b6020026020010181815250505080806111899061411a565b915050610f31565b50828282965096509650505050509250925092565b600080600190505b600660009054906101000a900460ff1660ff168160ff161161122457600160008260ff1660ff1681526020019081526020016000206001016040516111f39190614597565b6040518091039020838051906020012003611211578091505061122a565b808061121c90614341565b9150506111ae565b50600090505b919050565b60608060006001600660009054906101000a900460ff1661125091906142ac565b60ff1667ffffffffffffffff81111561126c5761126b613708565b5b60405190808252806020026020018201604052801561129f57816020015b606081526020019060019003908161128a5790505b50905060006001600660009054906101000a900460ff166112c091906142ac565b60ff1667ffffffffffffffff8111156112dc576112db613708565b5b60405190808252806020026020018201604052801561130a5781602001602082028036833780820191505090505b5090506000600190505b600660009054906101000a900460ff1660ff168160ff16116114f057600160008260ff1660ff168152602001908152602001600020600101805461135790614310565b80601f016020809104026020016040519081016040528092919081815260200182805461138390614310565b80156113d05780601f106113a5576101008083540402835291602001916113d0565b820191906000526020600020905b8154815290600101906020018083116113b357829003601f168201915b5050505050836001836113e391906142ac565b60ff16815181106113f7576113f66140eb565b5b60200260200101819052506114af600160008360ff1660ff168152602001908152602001600020600101805461142c90614310565b80601f016020809104026020016040519081016040528092919081815260200182805461145890614310565b80156114a55780601f1061147a576101008083540402835291602001916114a5565b820191906000526020600020905b81548152906001019060200180831161148857829003601f168201915b5050505050611511565b826001836114bd91906142ac565b60ff16815181106114d1576114d06140eb565b5b60200260200101818152505080806114e890614341565b915050611314565b5081819350935050509091565b61150561347e565b61150f60006134fc565b565b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600061155d846111a6565b60ff1660ff168152602001908152602001600020549050919050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b600080600190505b600660009054906101000a900460ff1660ff168160ff161161165157600160008260ff1660ff1681526020019081526020016000206001016040516020016115f29190614651565b60405160208183030381529060405280519060200120836040516020016116199190614699565b604051602081830303815290604052805190602001200361163e576001915050611657565b808061164990614341565b9150506115aa565b50600090505b919050565b6060806060600061166d86866125a6565b90506000600560008360ff1660ff1681526020019081526020016000206000016002015467ffffffffffffffff8111156116aa576116a9613708565b5b6040519080825280602002602001820160405280156116d85781602001602082028036833780820191505090505b5090506000600560008460ff1660ff1681526020019081526020016000206000016002015467ffffffffffffffff81111561171657611715613708565b5b6040519080825280602002602001820160405280156117445781602001602082028036833780820191505090505b5090506000600560008560ff1660ff1681526020019081526020016000206000016002015467ffffffffffffffff81111561178257611781613708565b5b6040519080825280602002602001820160405280156117b05781602001602082028036833780820191505090505b5090506000600190505b600560008660ff1660ff168152602001908152602001600020600001600201548111611a1a576000600560008760ff1660ff1681526020019081526020016000206000016001016000600560008960ff1660ff16815260200190815260200160002060000160030160018561182f91906140b7565b815481106118405761183f6140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916815250509050600560008760ff1660ff16815260200190815260200160002060000160030160018361195f91906140b7565b815481106119705761196f6140eb565b5b90600052602060002001548560018461198991906140b7565b8151811061199a576119996140eb565b5b6020026020010181815250508060200151846001846119b991906140b7565b815181106119ca576119c96140eb565b5b6020026020010181815250508060000151836001846119e991906140b7565b815181106119fa576119f96140eb565b5b602002602001018181525050508080611a129061411a565b9150506117ba565b50828282965096509650505050509250925092565b611a38836115a2565b611a4157600080fd5b611a4a826115a2565b611a5357600080fd5b6000611a5f84846125a6565b90506000611a6c846111a6565b90506000600560008460ff1660ff1681526020019081526020016000206004016002015411611a9a57600080fd5b60008060006001600560008760ff1660ff16815260200190815260200160002060040160020154611acb91906140b7565b67ffffffffffffffff811115611ae457611ae3613708565b5b604051908082528060200260200182016040528015611b125781602001602082028036833780820191505090505b509050600080600090505b600560008860ff1660ff16815260200190815260200160002060040160020154811015611c4257600560008860ff1660ff1681526020019081526020016000206004016003018181548110611b7557611b746140eb565b5b90600052602060002001548803611bc55760019450600560008860ff1660ff1681526020019081526020016000206004016001016000898152602001908152602001600020600001549150611c2f565b600560008860ff1660ff1681526020019081526020016000206004016003018181548110611bf657611bf56140eb565b5b9060005260206000200154838581518110611c1457611c136140eb565b5b6020026020010181815250508380611c2b9061411a565b9450505b8080611c3a9061411a565b915050611b1d565b5083611c4d57600080fd5b600560008760ff1660ff1681526020019081526020016000206004016002016000815480929190611c7d90614162565b919050555081600560008860ff1660ff1681526020019081526020016000206004016003019080519060200190611cb59291906135c8565b5080600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008760ff1660ff1681526020019081526020016000206000828254611d1c91906141cd565b925050819055507fc6a6416b415d06b5cea3ff17e447ceb010fa4d602523d17f25cfbc54656a28d08989893342604051611d5a95949392919061424b565b60405180910390a1505050505050505050565b60608060006001600660019054906101000a900460ff16611d8e91906142ac565b60ff1667ffffffffffffffff811115611daa57611da9613708565b5b604051908082528060200260200182016040528015611ddd57816020015b6060815260200190600190039081611dc85790505b50905060006001600660019054906101000a900460ff16611dfe91906142ac565b60ff1667ffffffffffffffff811115611e1a57611e19613708565b5b604051908082528060200260200182016040528015611e4d57816020015b6060815260200190600190039081611e385790505b5090506000600190505b600660019054906101000a900460ff1660ff168160ff16116120c05760016000600460008460ff1660ff168152602001908152602001600020600081548110611ea357611ea26140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001018054611ee590614310565b80601f0160208091040260200160405190810160405280929190818152602001828054611f1190614310565b8015611f5e5780601f10611f3357610100808354040283529160200191611f5e565b820191906000526020600020905b815481529060010190602001808311611f4157829003601f168201915b505050505083600183611f7191906142ac565b60ff1681518110611f8557611f846140eb565b5b602002602001018190525060016000600460008460ff1660ff168152602001908152602001600020600181548110611fc057611fbf6140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff168152602001908152602001600020600101805461200290614310565b80601f016020809104026020016040519081016040528092919081815260200182805461202e90614310565b801561207b5780601f106120505761010080835404028352916020019161207b565b820191906000526020600020905b81548152906001019060200180831161205e57829003601f168201915b50505050508260018361208e91906142ac565b60ff16815181106120a2576120a16140eb565b5b602002602001018190525080806120b890614341565b915050611e57565b5081819350935050509091565b6120d561347e565b6120de826115a2565b1561211e576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401612115906146fc565b60405180910390fd5b600660009054906101000a900460ff1660ff166001600660009054906101000a900460ff1661214d919061436a565b60ff161015612191576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161218890614768565b60405180910390fd5b6006600081819054906101000a900460ff16809291906121b090614341565b91906101000a81548160ff021916908360ff160217905550508160016000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060010190816122019190614915565b508060016000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060016000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660026000600660009054906101000a900460ff1660ff1660ff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507f1723c709bc871c32c420d3c2d2837cdd4bef40c574088c1d055e1f4f609d2377600660009054906101000a900460ff1683834260405161236294939291906149e7565b60405180910390a161238382600660009054906101000a900460ff16610a24565b5050565b6000612392826115a2565b61239b57600080fd5b60006123a6836111a6565b9050600160008260ff1660ff16815260200190815260200160002060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16915050919050565b60006123f8836115a2565b61240157600080fd5b61240a83611511565b82111561241657600080fd5b6000612421846111a6565b905082600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008360ff1660ff168152602001908152602001600020600082825461248991906140b7565b9250508190555060011515600260008360ff1660ff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb33866040518363ffffffff1660e01b8152600401612508929190614a33565b6020604051808303816000875af1158015612527573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061254b919061447b565b15151461255757600080fd5b7fc0a144e0d9af86fa328820e6f7f9e66f6e2a7248ff06a92aa13dc1f01e26934f8433854260405161258c94939291906144a8565b60405180910390a161259d84611511565b91505092915050565b600080600190505b600660019054906101000a900460ff1660ff168160ff16116126fd5760016000600460008460ff1660ff1681526020019081526020016000206000815481106125fa576125f96140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff16815260200190815260200160002060010160405161263e9190614597565b604051809103902084805190602001201480156126dc575060016000600460008460ff1660ff168152602001908152602001600020600181548110612686576126856140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001016040516126ca9190614597565b60405180910390208380519060200120145b156126ea5780915050612703565b80806126f590614341565b9150506125ae565b50600090505b92915050565b606080606080606080600080601467ffffffffffffffff8111156127305761272f613708565b5b60405190808252806020026020018201604052801561275e5781602001602082028036833780820191505090505b5090506000601467ffffffffffffffff81111561277e5761277d613708565b5b6040519080825280602002602001820160405280156127b157816020015b606081526020019060019003908161279c5790505b5090506000601467ffffffffffffffff8111156127d1576127d0613708565b5b60405190808252806020026020018201604052801561280457816020015b60608152602001906001900390816127ef5790505b5090506000601467ffffffffffffffff81111561282457612823613708565b5b60405190808252806020026020018201604052801561285757816020015b60608152602001906001900390816128425790505b5090506000601467ffffffffffffffff81111561287757612876613708565b5b6040519080825280602002602001820160405280156128a55781602001602082028036833780820191505090505b5090506000601467ffffffffffffffff8111156128c5576128c4613708565b5b6040519080825280602002602001820160405280156128f35781602001602082028036833780820191505090505b509050600080600190505b600660019054906101000a900460ff1660ff168160ff16116133d5576000600190505b600560008360ff1660ff168152602001908152602001600020600401600201548111612e6d576000600560008460ff1660ff1681526020019081526020016000206004016001016000600560008660ff1660ff16815260200190815260200160002060040160030160018561299691906140b7565b815481106129a7576129a66140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19168152505090503373ffffffffffffffffffffffffffffffffffffffff16816060015173ffffffffffffffffffffffffffffffffffffffff1603612e59578380612adc90614341565b945050600560008460ff1660ff168152602001908152602001600020600401600301600183612b0b91906140b7565b81548110612b1c57612b1b6140eb565b5b90600052602060002001548a600186612b3591906142ac565b60ff1681518110612b4957612b486140eb565b5b60200260200101818152505060016000600460008660ff1660ff168152602001908152602001600020600081548110612b8557612b846140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001018054612bc790614310565b80601f0160208091040260200160405190810160405280929190818152602001828054612bf390614310565b8015612c405780601f10612c1557610100808354040283529160200191612c40565b820191906000526020600020905b815481529060010190602001808311612c2357829003601f168201915b505050505089600186612c5391906142ac565b60ff1681518110612c6757612c666140eb565b5b602002602001018190525060016000600460008660ff1660ff168152602001908152602001600020600181548110612ca257612ca16140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff1681526020019081526020016000206001018054612ce490614310565b80601f0160208091040260200160405190810160405280929190818152602001828054612d1090614310565b8015612d5d5780601f10612d3257610100808354040283529160200191612d5d565b820191906000526020600020905b815481529060010190602001808311612d4057829003601f168201915b505050505088600186612d7091906142ac565b60ff1681518110612d8457612d836140eb565b5b60200260200101819052506040518060400160405280600481526020017f73656c6c0000000000000000000000000000000000000000000000000000000081525087600186612dd391906142ac565b60ff1681518110612de757612de66140eb565b5b6020026020010181905250806020015186600186612e0591906142ac565b60ff1681518110612e1957612e186140eb565b5b602002602001018181525050806000015185600186612e3891906142ac565b60ff1681518110612e4c57612e4b6140eb565b5b6020026020010181815250505b508080612e659061411a565b915050612921565b506000600190505b600560008360ff1660ff1681526020019081526020016000206000016002015481116133c1576000600560008460ff1660ff1681526020019081526020016000206000016001016000600560008660ff1660ff168152602001908152602001600020600001600301600185612eea91906140b7565b81548110612efb57612efa6140eb565b5b906000526020600020015481526020019081526020016000206040518060a00160405290816000820154815260200160018201548152602001600282015481526020016003820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016003820160149054906101000a900460f01b7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19167dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19168152505090503373ffffffffffffffffffffffffffffffffffffffff16816060015173ffffffffffffffffffffffffffffffffffffffff16036133ad57838061303090614341565b945050600560008460ff1660ff16815260200190815260200160002060000160030160018361305f91906140b7565b815481106130705761306f6140eb565b5b90600052602060002001548a60018661308991906142ac565b60ff168151811061309d5761309c6140eb565b5b60200260200101818152505060016000600460008660ff1660ff1681526020019081526020016000206000815481106130d9576130d86140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff168152602001908152602001600020600101805461311b90614310565b80601f016020809104026020016040519081016040528092919081815260200182805461314790614310565b80156131945780601f1061316957610100808354040283529160200191613194565b820191906000526020600020905b81548152906001019060200180831161317757829003601f168201915b5050505050896001866131a791906142ac565b60ff16815181106131bb576131ba6140eb565b5b602002602001018190525060016000600460008660ff1660ff1681526020019081526020016000206001815481106131f6576131f56140eb565b5b90600052602060002090602091828204019190069054906101000a900460ff1660ff1660ff168152602001908152602001600020600101805461323890614310565b80601f016020809104026020016040519081016040528092919081815260200182805461326490614310565b80156132b15780601f10613286576101008083540402835291602001916132b1565b820191906000526020600020905b81548152906001019060200180831161329457829003601f168201915b5050505050886001866132c491906142ac565b60ff16815181106132d8576132d76140eb565b5b60200260200101819052506040518060400160405280600381526020017f62757900000000000000000000000000000000000000000000000000000000008152508760018661332791906142ac565b60ff168151811061333b5761333a6140eb565b5b602002602001018190525080602001518660018661335991906142ac565b60ff168151811061336d5761336c6140eb565b5b60200260200101818152505080600001518560018661338c91906142ac565b60ff16815181106133a05761339f6140eb565b5b6020026020010181815250505b5080806133b99061411a565b915050612e75565b5080806133cd90614341565b9150506128fe565b50868686868686869d509d509d509d509d509d509d505050505050505090919293949596565b61340361347e565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603613472576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161346990614ace565b60405180910390fd5b61347b816134fc565b50565b6134866135c0565b73ffffffffffffffffffffffffffffffffffffffff166134a4611579565b73ffffffffffffffffffffffffffffffffffffffff16146134fa576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016134f190614b3a565b60405180910390fd5b565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050816000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a35050565b600033905090565b828054828255906000526020600020908101928215613604579160200282015b828111156136035782518255916020019190600101906135e8565b5b50905061361191906136bc565b5090565b82805482825590600052602060002090601f016020900481019282156136ab5791602002820160005b8382111561367c57835183826101000a81548160ff021916908360ff160217905550926020019260010160208160000104928301926001030261363e565b80156136a95782816101000a81549060ff021916905560010160208160000104928301926001030261367c565b505b5090506136b891906136bc565b5090565b5b808211156136d55760008160009055506001016136bd565b5090565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b613740826136f7565b810181811067ffffffffffffffff8211171561375f5761375e613708565b5b80604052505050565b60006137726136d9565b905061377e8282613737565b919050565b600067ffffffffffffffff82111561379e5761379d613708565b5b6137a7826136f7565b9050602081019050919050565b82818337600083830152505050565b60006137d66137d184613783565b613768565b9050828152602081018484840111156137f2576137f16136f2565b5b6137fd8482856137b4565b509392505050565b600082601f83011261381a576138196136ed565b5b813561382a8482602086016137c3565b91505092915050565b6000819050919050565b61384681613833565b811461385157600080fd5b50565b6000813590506138638161383d565b92915050565b600080600060608486031215613882576138816136e3565b5b600084013567ffffffffffffffff8111156138a05761389f6136e8565b5b6138ac86828701613805565b935050602084013567ffffffffffffffff8111156138cd576138cc6136e8565b5b6138d986828701613805565b92505060406138ea86828701613854565b9150509250925092565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600081519050919050565b600082825260208201905092915050565b60005b8381101561395a57808201518184015260208101905061393f565b60008484015250505050565b600061397182613920565b61397b818561392b565b935061398b81856020860161393c565b613994816136f7565b840191505092915050565b60006139ab8383613966565b905092915050565b6000602082019050919050565b60006139cb826138f4565b6139d581856138ff565b9350836020820285016139e785613910565b8060005b85811015613a235784840389528151613a04858261399f565b9450613a0f836139b3565b925060208a019950506001810190506139eb565b50829750879550505050505092915050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000613a8c82613a61565b9050919050565b613a9c81613a81565b82525050565b6000613aae8383613a93565b60208301905092915050565b6000602082019050919050565b6000613ad282613a35565b613adc8185613a40565b9350613ae783613a51565b8060005b83811015613b18578151613aff8882613aa2565b9750613b0a83613aba565b925050600181019050613aeb565b5085935050505092915050565b60006040820190508181036000830152613b3f81856139c0565b90508181036020830152613b538184613ac7565b90509392505050565b600060ff82169050919050565b613b7281613b5c565b8114613b7d57600080fd5b50565b600081359050613b8f81613b69565b92915050565b60008060408385031215613bac57613bab6136e3565b5b600083013567ffffffffffffffff811115613bca57613bc96136e8565b5b613bd685828601613805565b9250506020613be785828601613b80565b9150509250929050565b60008060408385031215613c0857613c076136e3565b5b600083013567ffffffffffffffff811115613c2657613c256136e8565b5b613c3285828601613805565b9250506020613c4385828601613854565b9150509250929050565b613c5681613833565b82525050565b6000602082019050613c716000830184613c4d565b92915050565b60008060408385031215613c8e57613c8d6136e3565b5b600083013567ffffffffffffffff811115613cac57613cab6136e8565b5b613cb885828601613805565b925050602083013567ffffffffffffffff811115613cd957613cd86136e8565b5b613ce585828601613805565b9150509250929050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b613d2481613833565b82525050565b6000613d368383613d1b565b60208301905092915050565b6000602082019050919050565b6000613d5a82613cef565b613d648185613cfa565b9350613d6f83613d0b565b8060005b83811015613da0578151613d878882613d2a565b9750613d9283613d42565b925050600181019050613d73565b5085935050505092915050565b60006060820190508181036000830152613dc78186613d4f565b90508181036020830152613ddb8185613d4f565b90508181036040830152613def8184613d4f565b9050949350505050565b600060208284031215613e0f57613e0e6136e3565b5b600082013567ffffffffffffffff811115613e2d57613e2c6136e8565b5b613e3984828501613805565b91505092915050565b613e4b81613b5c565b82525050565b6000602082019050613e666000830184613e42565b92915050565b60006040820190508181036000830152613e8681856139c0565b90508181036020830152613e9a8184613d4f565b90509392505050565b613eac81613a81565b82525050565b6000602082019050613ec76000830184613ea3565b92915050565b60008115159050919050565b613ee281613ecd565b82525050565b6000602082019050613efd6000830184613ed9565b92915050565b60006040820190508181036000830152613f1d81856139c0565b90508181036020830152613f3181846139c0565b90509392505050565b613f4381613a81565b8114613f4e57600080fd5b50565b600081359050613f6081613f3a565b92915050565b60008060408385031215613f7d57613f7c6136e3565b5b600083013567ffffffffffffffff811115613f9b57613f9a6136e8565b5b613fa785828601613805565b9250506020613fb885828601613f51565b9150509250929050565b600060e0820190508181036000830152613fdc818a613d4f565b90508181036020830152613ff081896139c0565b9050818103604083015261400481886139c0565b9050818103606083015261401881876139c0565b9050818103608083015261402c8186613d4f565b905081810360a08301526140408185613d4f565b905061404f60c0830184613e42565b98975050505050505050565b600060208284031215614071576140706136e3565b5b600061407f84828501613f51565b91505092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b60006140c282613833565b91506140cd83613833565b92508282039050818111156140e5576140e4614088565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600061412582613833565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff820361415757614156614088565b5b600182019050919050565b600061416d82613833565b9150600082036141805761417f614088565b5b600182039050919050565b600061419682613833565b91506141a183613833565b92508282026141af81613833565b915082820484148315176141c6576141c5614088565b5b5092915050565b60006141d882613833565b91506141e383613833565b92508282019050808211156141fb576141fa614088565b5b92915050565b600082825260208201905092915050565b600061421d82613920565b6142278185614201565b935061423781856020860161393c565b614240816136f7565b840191505092915050565b600060a08201905081810360008301526142658188614212565b905081810360208301526142798187614212565b90506142886040830186613c4d565b6142956060830185613ea3565b6142a26080830184613c4d565b9695505050505050565b60006142b782613b5c565b91506142c283613b5c565b9250828203905060ff8111156142db576142da614088565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b6000600282049050600182168061432857607f821691505b60208210810361433b5761433a6142e1565b5b50919050565b600061434c82613b5c565b915060ff820361435f5761435e614088565b5b600182019050919050565b600061437582613b5c565b915061438083613b5c565b9250828201905060ff81111561439957614398614088565b5b92915050565b6000819050919050565b60006143c46143bf6143ba84613b5c565b61439f565b613833565b9050919050565b6143d4816143a9565b82525050565b60006060820190506143ef60008301866143cb565b81810360208301526144018185614212565b90506144106040830184613c4d565b949350505050565b600060608201905061442d6000830186613ea3565b61443a6020830185613ea3565b6144476040830184613c4d565b949350505050565b61445881613ecd565b811461446357600080fd5b50565b6000815190506144758161444f565b92915050565b600060208284031215614491576144906136e3565b5b600061449f84828501614466565b91505092915050565b600060808201905081810360008301526144c28187614212565b90506144d16020830186613ea3565b6144de6040830185613c4d565b6144eb6060830184613c4d565b95945050505050565b600081905092915050565b60008190508160005260206000209050919050565b6000815461452181614310565b61452b81866144f4565b94506001821660008114614546576001811461455b5761458e565b60ff198316865281151582028601935061458e565b614564856144ff565b60005b8381101561458657815481890152600182019150602081019050614567565b838801955050505b50505092915050565b60006145a38284614514565b915081905092915050565b600081905092915050565b60008190508160005260206000209050919050565b600081546145db81614310565b6145e581866145ae565b94506001821660008114614600576001811461461557614648565b60ff1983168652811515820286019350614648565b61461e856145b9565b60005b8381101561464057815481890152600182019150602081019050614621565b838801955050505b50505092915050565b600061465d82846145ce565b915081905092915050565b600061467382613920565b61467d81856145ae565b935061468d81856020860161393c565b80840191505092915050565b60006146a58284614668565b915081905092915050565b7f546f6b656e20616c726561647920657869737473000000000000000000000000600082015250565b60006146e6601483614201565b91506146f1826146b0565b602082019050919050565b60006020820190508181036000830152614715816146d9565b9050919050565b7f546f6b656e20496e646578206f766572666c6f77000000000000000000000000600082015250565b6000614752601483614201565b915061475d8261471c565b602082019050919050565b6000602082019050818103600083015261478181614745565b9050919050565b60006020601f8301049050919050565b600082821b905092915050565b6000600883026147d57fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82614798565b6147df8683614798565b95508019841693508086168417925050509392505050565b600061481261480d61480884613833565b61439f565b613833565b9050919050565b6000819050919050565b61482c836147f7565b61484061483882614819565b8484546147a5565b825550505050565b600090565b614855614848565b614860818484614823565b505050565b5b818110156148845761487960008261484d565b600181019050614866565b5050565b601f8211156148c95761489a816145b9565b6148a384614788565b810160208510156148b2578190505b6148c66148be85614788565b830182614865565b50505b505050565b600082821c905092915050565b60006148ec600019846008026148ce565b1980831691505092915050565b600061490583836148db565b9150826002028217905092915050565b61491e82613920565b67ffffffffffffffff81111561493757614936613708565b5b6149418254614310565b61494c828285614888565b600060209050601f83116001811461497f576000841561496d578287015190505b61497785826148f9565b8655506149df565b601f19841661498d866145b9565b60005b828110156149b557848901518255600182019150602085019450602081019050614990565b868310156149d257848901516149ce601f8916826148db565b8355505b6001600288020188555050505b505050505050565b60006080820190506149fc60008301876143cb565b8181036020830152614a0e8186614212565b9050614a1d6040830185613ea3565b614a2a6060830184613c4d565b95945050505050565b6000604082019050614a486000830185613ea3565b614a556020830184613c4d565b9392505050565b7f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160008201527f6464726573730000000000000000000000000000000000000000000000000000602082015250565b6000614ab8602683614201565b9150614ac382614a5c565b604082019050919050565b60006020820190508181036000830152614ae781614aab565b9050919050565b7f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572600082015250565b6000614b24602083614201565b9150614b2f82614aee565b602082019050919050565b60006020820190508181036000830152614b5381614b17565b905091905056fea2646970667358221220c60131c4b855ea8ba111da87d79613b55abfc0558f1a43163ecc699ad03ae36364736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 7,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 262,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "tokenInfo",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint8,t_struct(Token)226_storage)"
+      },
+      {
+        "astId": 267,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "tokens",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint8,t_contract(IERC20)193)"
+      },
+      {
+        "astId": 273,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "tokenBalanceForAddress",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_mapping(t_uint8,t_uint256))"
+      },
+      {
+        "astId": 278,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "buyToSell",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_uint8,t_array(t_uint8)dyn_storage)"
+      },
+      {
+        "astId": 283,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "ExchangeMarket",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_uint8,t_struct(Market)257_storage)"
+      },
+      {
+        "astId": 285,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "tokenIndex",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 287,
+        "contract": "contracts/Swap.sol:Swap",
+        "label": "marketIndex",
+        "offset": 1,
+        "slot": "6",
+        "type": "t_uint8"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_uint8)dyn_storage": {
+        "base": "t_uint8",
+        "encoding": "dynamic_array",
+        "label": "uint8[]",
+        "numberOfBytes": "32"
+      },
+      "t_bytes2": {
+        "encoding": "inplace",
+        "label": "bytes2",
+        "numberOfBytes": "2"
+      },
+      "t_contract(IERC20)193": {
+        "encoding": "inplace",
+        "label": "contract IERC20",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_uint8,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint8 => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint8,t_uint256)"
+      },
+      "t_mapping(t_uint256,t_struct(Order)237_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct Swap.Order)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Order)237_storage"
+      },
+      "t_mapping(t_uint8,t_array(t_uint8)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint8",
+        "label": "mapping(uint8 => uint8[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_uint8)dyn_storage"
+      },
+      "t_mapping(t_uint8,t_contract(IERC20)193)": {
+        "encoding": "mapping",
+        "key": "t_uint8",
+        "label": "mapping(uint8 => contract IERC20)",
+        "numberOfBytes": "32",
+        "value": "t_contract(IERC20)193"
+      },
+      "t_mapping(t_uint8,t_struct(Market)257_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint8",
+        "label": "mapping(uint8 => struct Swap.Market)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Market)257_storage"
+      },
+      "t_mapping(t_uint8,t_struct(Token)226_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint8",
+        "label": "mapping(uint8 => struct Swap.Token)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Token)226_storage"
+      },
+      "t_mapping(t_uint8,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint8",
+        "label": "mapping(uint8 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Market)257_storage": {
+        "encoding": "inplace",
+        "label": "struct Swap.Market",
+        "members": [
+          {
+            "astId": 253,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "buyOrderBook",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(OrderBook)250_storage"
+          },
+          {
+            "astId": 256,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "sellOrderBook",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_struct(OrderBook)250_storage"
+          }
+        ],
+        "numberOfBytes": "256"
+      },
+      "t_struct(Order)237_storage": {
+        "encoding": "inplace",
+        "label": "struct Swap.Order",
+        "members": [
+          {
+            "astId": 228,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "quantity",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 230,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "price",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 232,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "timestamp",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 234,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "user",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_address"
+          },
+          {
+            "astId": 236,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "status",
+            "offset": 20,
+            "slot": "3",
+            "type": "t_bytes2"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_struct(OrderBook)250_storage": {
+        "encoding": "inplace",
+        "label": "struct Swap.OrderBook",
+        "members": [
+          {
+            "astId": 239,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "orderIndex",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 244,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "orders",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_uint256,t_struct(Order)237_storage)"
+          },
+          {
+            "astId": 246,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "ordersCount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 249,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "ordersQueue",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)dyn_storage"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_struct(Token)226_storage": {
+        "encoding": "inplace",
+        "label": "struct Swap.Token",
+        "members": [
+          {
+            "astId": 223,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "contractAddress",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 225,
+            "contract": "contracts/Swap.sol:Swap",
+            "label": "symbolName",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}
