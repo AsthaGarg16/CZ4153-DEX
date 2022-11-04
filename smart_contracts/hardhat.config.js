@@ -35,6 +35,7 @@ module.exports = {
       // forking: {
       //   url: MAINNET_RPC_URL
       // }
+      blockGasLimit: 1000000000000000,
       chainId: 31337,
     },
     localhost: {
@@ -74,7 +75,7 @@ module.exports = {
   },
   contractSizer: {
     runOnCompile: false,
-    only: ["ArkToken"],
+    only: ["ArkToken", "Swap"],
   },
   namedAccounts: {
     deployer: {
