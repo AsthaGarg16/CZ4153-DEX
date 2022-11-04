@@ -68,6 +68,7 @@ export default function OrderBookSell(props) {
     var pl = [];
     var ql = [];
     if (ob) {
+      console.log("Got sell order book ", ob);
       var queue = ob[0];
       var prices = ob[1];
       var qty = ob[2];

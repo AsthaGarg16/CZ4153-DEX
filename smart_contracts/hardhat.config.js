@@ -35,7 +35,7 @@ module.exports = {
       // forking: {
       //   url: MAINNET_RPC_URL
       // }
-      blockGasLimit: 1000000000000000,
+      // blockGasLimit: 1000000000000000,
       chainId: 31337,
     },
     localhost: {

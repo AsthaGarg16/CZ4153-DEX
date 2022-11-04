@@ -56,19 +56,26 @@ const CreateOrder = (props) => {
     }
   }
   const onClickPlaceOrder = () => {
-    if (alignment == "buy") {
-      if (value.split(" ")[1] == "Limit") {
-        createBuyOrder();
+    if (isWeb3Enabled) {
+      if (alignment == "Buy") {
+        if (value.split(" ")[1] == "Limit") {
+          console.log("Creating buy limit order", tfValue1, tfValue2);
+          createBuyOrder();
+        } else {
+          console.log("Creating buy market order", tfValue1, tfValue2);
+          buyMarketOrder();
+        }
       } else {
-        buyMarketOrder();
-      }
-    } else {
-      if (value.split(" ")[1] == "Limit") {
-        createSellOrder();
-      } else {
-        sellMarketOrder();
+        if (value.split(" ")[1] == "Limit") {
+          console.log("Creating sell limit order", tfValue1, tfValue2);
+          createSellOrder();
+        } else {
+          console.log("Creating sell market order", tfValue1, tfValue2);
+          sellMarketOrder();
+        }
       }
     }
+
     return console.log(value, alignment, tfValue2 * 1);
   };
 
@@ -79,9 +86,8 @@ const CreateOrder = (props) => {
     params: {
       buySymbolName: buyToken,
       sellSymbolName: sellToken,
-      price: tfValue1,
-      quantity: tfValue2,
-      buyer: "0x00",
+      price: parseInt(tfValue1),
+      quantity: parseInt(tfValue2),
     },
   });
 
@@ -90,11 +96,10 @@ const CreateOrder = (props) => {
     contractAddress: swapAddress,
     functionName: "createSellOrder",
     params: {
-      buySymbolName: sellToken,
-      sellSymbolName: buyToken,
+      buySymbolName: buyToken,
+      sellSymbolName: sellToken,
       price: tfValue1,
       quantity: tfValue2,
-      buyer: "0x00",
     },
   });
 
