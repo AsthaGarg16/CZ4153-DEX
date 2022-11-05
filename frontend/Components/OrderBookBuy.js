@@ -12,8 +12,10 @@ import { useWeb3Contract, useMoralis } from "react-moralis";
 
 function renderRow(props) {
   const { data, index, style } = props;
+  useEffect(() => {}, [props.itemData]);
   const [priceList, setPriceList] = useState(data.listPrice.priceList);
   const [qtyList, setQtyList] = useState(data.listQty.qtyList);
+  console.log("in render row", priceList, qtyList);
   return (
     <div>
       <ListItem style={style} key={index} component="div" disablePadding>
@@ -42,30 +44,55 @@ export default function OrderBookBuy(props) {
   const [qtyList, setQtyList] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
-  const [buyToken, setBuyToken] = useState(buySymbol);
-  const [sellToken, setSellToken] = useState(sellSymbol);
+  // const [buyToken, setBuyToken] = useState(buySymbol);
+  // const [sellToken, setSellToken] = useState(sellSymbol);
+  const [buyTokenIndex, setBuyTokenIndex] = useState(0);
+  const [sellTokenIndex, setSellTokenIndex] = useState(0);
 
   useEffect(() => {
-    if (sellToken !== sellSymbol && buyToken !== buySymbol) {
-      console.log("Symbols are ", buySymbol, sellSymbol);
-      setBuyToken(buySymbol);
-      setSellToken(sellSymbol);
-      updateUI();
-    }
+    console.log("Symbols are ", buySymbol, sellSymbol);
+    // setBuyToken(buySymbol);
+    // setSellToken(sellSymbol);
+    updateUI();
   }, [buySymbol, sellSymbol]);
 
-  const { runContractFunction: getBuyOrderBook } = useWeb3Contract({
+  const { runContractFunction: getOrderBook } = useWeb3Contract({
     abi: swapAbi,
     contractAddress: swapAddress,
-    functionName: "getBuyOrderBook",
+    functionName: "getOrderBook",
     params: {
-      buyTokenSymbol: buySymbol,
-      sellTokenSymbol: sellSymbol,
+      buyTokenIndex: 2,
+      sellTokenIndex: 1,
+      type_of_order: 0,
+    },
+  });
+  const { runContractFunction: getBuyTokenIndex } = useWeb3Contract({
+    abi: swapAbi,
+    contractAddress: swapAddress,
+    functionName: "getTokenIndex",
+    params: {
+      symbolName: buySymbol,
+    },
+  });
+  const { runContractFunction: getSellTokenIndex } = useWeb3Contract({
+    abi: swapAbi,
+    contractAddress: swapAddress,
+    functionName: "getTokenIndex",
+    params: {
+      symbolName: sellSymbol,
     },
   });
 
   async function updateUI() {
-    var ob = await getBuyOrderBook();
+    // var ti = await getBuyTokenIndex();
+    // setBuyTokenIndex(ti);
+    // console.log("setBuyTokenIndex", ti);
+    // ti = await getSellTokenIndex();
+    // setSellTokenIndex(ti);
+    // console.log("setSellTokenIndex", ti);
+
+    var ob = await getOrderBook();
+    console.log("ob", ob);
     var pl = [];
     var ql = [];
     if (ob) {
@@ -74,13 +101,15 @@ export default function OrderBookBuy(props) {
       var prices = ob[1];
       var qty = ob[2];
       queue.forEach((item, index) => {
-        pl.push(prices[item]);
-        ql.push(qty[item]);
+        pl.push(prices[parseInt(item, 10) - 1].toNumber());
+        ql.push(qty[parseInt(item, 10) - 1].toNumber());
       });
+      console.log(" converted to ", pl, ql);
       setPriceList(pl);
       setQtyList(ql);
     }
   }
+
   return (
     <div>
       <div className="row1">

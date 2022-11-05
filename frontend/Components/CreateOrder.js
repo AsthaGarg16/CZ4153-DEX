@@ -62,16 +62,18 @@ const CreateOrder = (props) => {
           console.log("Creating buy limit order", tfValue1, tfValue2);
           createBuyOrder();
         } else {
+          setTFValue1(1000);
           console.log("Creating buy market order", tfValue1, tfValue2);
-          buyMarketOrder();
+          createBuyOrder();
         }
       } else {
         if (value.split(" ")[1] == "Limit") {
           console.log("Creating sell limit order", tfValue1, tfValue2);
           createSellOrder();
         } else {
+          setTFValue1(0);
           console.log("Creating sell market order", tfValue1, tfValue2);
-          sellMarketOrder();
+          createSellOrder();
         }
       }
     }
@@ -82,48 +84,61 @@ const CreateOrder = (props) => {
   const { runContractFunction: createBuyOrder } = useWeb3Contract({
     abi: swapAbi,
     contractAddress: swapAddress,
-    functionName: "createBuyOrder",
+    functionName: "createOrder",
     params: {
+      typeOfOrder: "0",
       buySymbolName: buyToken,
       sellSymbolName: sellToken,
       price: parseInt(tfValue1),
       quantity: parseInt(tfValue2),
     },
   });
-
   const { runContractFunction: createSellOrder } = useWeb3Contract({
     abi: swapAbi,
     contractAddress: swapAddress,
-    functionName: "createSellOrder",
+    functionName: "createOrder",
     params: {
-      buySymbolName: buyToken,
-      sellSymbolName: sellToken,
-      price: tfValue1,
-      quantity: tfValue2,
-    },
-  });
-
-  const { runContractFunction: buyMarketOrder } = useWeb3Contract({
-    abi: swapAbi,
-    contractAddress: swapAddress,
-    functionName: "buyMarketOrder",
-    params: {
-      buySymbolName: buyToken,
-      sellSymbolName: sellToken,
-      quantity: tfValue2,
-    },
-  });
-
-  const { runContractFunction: sellMarketOrder } = useWeb3Contract({
-    abi: swapAbi,
-    contractAddress: swapAddress,
-    functionName: "sellMarketOrder",
-    params: {
+      typeOfOrder: "1",
       buySymbolName: sellToken,
       sellSymbolName: buyToken,
-      quantity: tfValue2,
+      price: parseInt(tfValue1),
+      quantity: parseInt(tfValue2),
     },
   });
+
+  // const { runContractFunction: createSellOrder } = useWeb3Contract({
+  //   abi: swapAbi,
+  //   contractAddress: swapAddress,
+  //   functionName: "createSellOrder",
+  //   params: {
+  //     buySymbolName: buyToken,
+  //     sellSymbolName: sellToken,
+  //     price: tfValue1,
+  //     quantity: tfValue2,
+  //   },
+  // });
+
+  // const { runContractFunction: buyMarketOrder } = useWeb3Contract({
+  //   abi: swapAbi,
+  //   contractAddress: swapAddress,
+  //   functionName: "buyMarketOrder",
+  //   params: {
+  //     buySymbolName: buyToken,
+  //     sellSymbolName: sellToken,
+  //     quantity: tfValue2,
+  //   },
+  // });
+
+  // const { runContractFunction: sellMarketOrder } = useWeb3Contract({
+  //   abi: swapAbi,
+  //   contractAddress: swapAddress,
+  //   functionName: "sellMarketOrder",
+  //   params: {
+  //     buySymbolName: sellToken,
+  //     sellSymbolName: buyToken,
+  //     quantity: tfValue2,
+  //   },
+  // });
 
   return (
     <div>

@@ -46,25 +46,24 @@ export default function OrderBookSell(props) {
   const [sellToken, setSellToken] = useState(sellSymbol);
 
   useEffect(() => {
-    if (sellToken !== sellSymbol && buyToken !== buySymbol) {
-      setBuyToken(buySymbol);
-      setSellToken(sellSymbol);
-      updateUI();
-    }
+    setBuyToken(buySymbol);
+    setSellToken(sellSymbol);
+    updateUI();
   }, [buySymbol, sellSymbol]);
 
-  const { runContractFunction: getSellOrderBook } = useWeb3Contract({
+  const { runContractFunction: getOrderBook } = useWeb3Contract({
     abi: swapAbi,
     contractAddress: swapAddress,
-    functionName: "getSellOrderBook",
+    functionName: "getOrderBook",
     params: {
       buyTokenSymbol: buyToken,
       sellTokenSymbol: sellToken,
+      type_of_order: 1,
     },
   });
 
   async function updateUI() {
-    var ob = await getSellOrderBook();
+    var ob = await getOrderBook();
     var pl = [];
     var ql = [];
     if (ob) {

@@ -457,11 +457,13 @@ contract Swap is Ownable {
         uint8 typeOfOrder,
         Order memory toAdd
     ) private {
+        console.log("In add order");
         (, uint256[] memory prices, ) = getOrderBook(
             tokenIndex1,
             tokenIndex2,
             typeOfOrder
         );
+
         uint8 _marketIndex = getMarketIndex(tokenIndex1, tokenIndex2);
         uint256 _newOrderIndex = ++ExchangeMarket[_marketIndex]
             .Orders[typeOfOrder]
@@ -504,20 +506,22 @@ contract Swap is Ownable {
             user: msg.sender,
             timestamp: block.timestamp
         });
+
+        console.log("is order added", _isOrderAdded);
     }
 
     //0 - buy, 1- sell
     function createOrder(
         uint8 typeOfOrder, //A/B
-        string memory buySymbolName, //B
-        string memory sellSymbolName, //A
+        string memory buySymbolName, //A
+        string memory sellSymbolName, //
         uint256 price,
         uint256 quantity
     ) public {
         console.log("creating order");
         require(hasToken(buySymbolName), "Token not present");
         require(hasToken(sellSymbolName), "Token not present");
-        console.log("creating buy order");
+        console.log("creating order", typeOfOrder);
         uint8 _primaryTokenIndex;
         uint8 _secondaryTokenIndex;
         uint8 _marketIndex;
@@ -601,6 +605,7 @@ contract Swap is Ownable {
         uint8 _secondaryTokenIndex, //A
         Order memory toFulfill
     ) private returns (uint256) {
+        console.log("in fulfill order");
         uint8 _marketIndex;
         //uint256 _qty_balance = quantity;
 
@@ -707,6 +712,8 @@ contract Swap is Ownable {
             }
         }
 
+        console.log("Orders fulfilled ", _countOrderFulfiled);
+
         // update sellOrderBook - ordersBook and ordersCount
         updateOrderBook(
             _currOrdersCount,
@@ -724,6 +731,8 @@ contract Swap is Ownable {
         uint8 typeOfOrder,
         uint8 _marketIndex
     ) private {
+        //change naming
+        console.log("Updating order book");
         uint256 _newOrdersCount = _currOrdersCount - _countOrderFulfiled;
 
         uint256[] memory _newSellOrdersQueue = new uint256[](_newOrdersCount);
@@ -739,6 +748,8 @@ contract Swap is Ownable {
         ExchangeMarket[_marketIndex]
             .Orders[typeOfOrder]
             .ordersQueue = _newSellOrdersQueue;
+
+        //console.log("_newSellOrdersQueue ", _newSellOrdersQueue[0]);
     }
 
     //User's ability to cancel orders that were placed
@@ -865,6 +876,8 @@ contract Swap is Ownable {
             uint256[] memory
         )
     {
+        console.log("GetOrderbook ");
+        console.log("type_of_order", type_of_order);
         uint8 _marketIndex = getMarketIndex(buyTokenIndex, sellTokenIndex);
 
         OrderBook storage order_book = ExchangeMarket[_marketIndex].Orders[
@@ -877,6 +890,8 @@ contract Swap is Ownable {
         uint256[] memory prices = new uint256[](order_book.ordersCount);
         uint256[] memory quantity = new uint256[](order_book.ordersCount);
 
+        console.log("order_book.ordersCount", order_book.ordersCount);
+
         for (uint256 i = 1; i <= order_book.ordersCount; i++) {
             Order memory _order = order_book.orders[
                 order_book.ordersQueue[i - 1]
@@ -885,6 +900,7 @@ contract Swap is Ownable {
             prices[i - 1] = _order.price;
             quantity[i - 1] = _order.quantity;
         }
+        //console.log("entry orderbook", indexes[0], prices[0], quantity[0]);
 
         return (indexes, prices, quantity);
     }
