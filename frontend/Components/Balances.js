@@ -33,8 +33,8 @@ function renderRow(props) {
 const Balances = (props) => {
   const { swapAddress } = props;
   const { isWeb3Enabled, account } = useMoralis();
-  const [tokenList, setTokenList] = useState(["A", "B", "C"]);
-  const [qtyList, setQtyList] = useState([1, 2, 3]);
+  const [tokenList, setTokenList] = useState([]);
+  const [qtyList, setQtyList] = useState([]);
 
   const tokenAmountInUnitsToBigNumber = (amount, decimals) => {
     const decimalsPerToken = new BigNumber(10).pow(decimals);
@@ -50,14 +50,14 @@ const Balances = (props) => {
 
   async function updateUI() {
     var nb = await getAllTokenBalanceForUser();
-    var qList = [];
+    var tList = [];
     console.log("getAllTokenBalancesForUser are ", nb);
     if (nb) {
-      // nb[1].forEach((item) => {
-      //   qList.push(tokenAmountInUnitsToBigNumber(item, 18));
-      // });
+      nb[1].forEach((item) => {
+        tList.push(parseInt(item, 10));
+      });
       setTokenList(nb[0]);
-      setQtyList(nb[1]);
+      setQtyList(tList);
     }
   }
 

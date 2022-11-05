@@ -12,8 +12,10 @@ import { useWeb3Contract, useMoralis } from "react-moralis";
 
 function renderRow(props) {
   const { data, index, style } = props;
+  useEffect(() => {}, [props.itemData]);
   const [priceList, setPriceList] = useState(data.listPrice.priceList);
   const [qtyList, setQtyList] = useState(data.listQty.qtyList);
+  console.log("in render row", priceList, qtyList);
   return (
     <div>
       <ListItem style={style} key={index} component="div" disablePadding>
@@ -36,18 +38,17 @@ function renderRow(props) {
 export default function OrderBookSell(props) {
   const { swapAddress, buySymbol, sellSymbol } = props;
   const { isWeb3Enabled, account } = useMoralis();
-  const [priceList, setPriceList] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
-  const [qtyList, setQtyList] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
-  const [buyToken, setBuyToken] = useState(buySymbol);
-  const [sellToken, setSellToken] = useState(sellSymbol);
+  const [priceList, setPriceList] = useState([]);
+  const [qtyList, setQtyList] = useState([]);
+  // const [buyToken, setBuyToken] = useState(buySymbol);
+  // const [sellToken, setSellToken] = useState(sellSymbol);
+  const [buyTokenIndex, setBuyTokenIndex] = useState(0);
+  const [sellTokenIndex, setSellTokenIndex] = useState(0);
 
   useEffect(() => {
-    setBuyToken(buySymbol);
-    setSellToken(sellSymbol);
+    console.log("Symbols are ", buySymbol, sellSymbol);
+    // setBuyToken(buySymbol);
+    // setSellToken(sellSymbol);
     updateUI();
   }, [buySymbol, sellSymbol]);
 
@@ -56,25 +57,34 @@ export default function OrderBookSell(props) {
     contractAddress: swapAddress,
     functionName: "getOrderBook",
     params: {
-      buyTokenSymbol: buyToken,
-      sellTokenSymbol: sellToken,
+      buyTokenIndex: 2,
+      sellTokenIndex: 1,
       type_of_order: 1,
     },
   });
 
   async function updateUI() {
+    // var ti = await getBuyTokenIndex();
+    // setBuyTokenIndex(ti);
+    // console.log("setBuyTokenIndex", ti);
+    // ti = await getSellTokenIndex();
+    // setSellTokenIndex(ti);
+    // console.log("setSellTokenIndex", ti);
+
     var ob = await getOrderBook();
+    console.log("ob", ob);
     var pl = [];
     var ql = [];
     if (ob) {
-      console.log("Got sell order book ", ob);
+      console.log("Got order book ", ob[0], ob[1], ob[2]);
       var queue = ob[0];
       var prices = ob[1];
       var qty = ob[2];
       queue.forEach((item, index) => {
-        pl.push(prices[item]);
-        ql.push(qty[item]);
+        pl.push(prices[parseInt(item, 10) - 1].toNumber());
+        ql.push(qty[parseInt(item, 10) - 1].toNumber());
       });
+      console.log(" converted to ", pl, ql);
       setPriceList(pl);
       setQtyList(ql);
     }

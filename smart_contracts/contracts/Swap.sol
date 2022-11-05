@@ -546,13 +546,14 @@ contract Swap is Ownable {
         }
         _marketIndex = getMarketIndex(_primaryTokenIndex, _secondaryTokenIndex);
         uint8 index = typeOfOrder == 0 ? 1 : 0;
+        console.log("index", index);
         // _orderCount = ExchangeMarket[_marketIndex].Orders[index].ordersCount;
 
         if (ExchangeMarket[_marketIndex].Orders[index].ordersCount > 0) {
             // fulfil buyOrder by checking against which sell orders can be fulfil
             //update
             _qty_balance = fulfillOrder(
-                typeOfOrder,
+                index,
                 _primaryTokenIndex,
                 _secondaryTokenIndex,
                 Order({
@@ -578,13 +579,13 @@ contract Swap is Ownable {
             );
         }
         if (typeOfOrder == 0) {
-            tokenBalanceForAddress[msg.sender][_primaryTokenIndex] -=
-                price *
-                _qty_balance;
-        } else {
             tokenBalanceForAddress[msg.sender][_secondaryTokenIndex] -=
                 price *
-                _qty_balance;
+                quantity;
+        } else {
+            tokenBalanceForAddress[msg.sender][_primaryTokenIndex] -=
+                price *
+                quantity;
         }
 
         // fire event
@@ -601,18 +602,21 @@ contract Swap is Ownable {
     //Try if buy order can be immediately fulfilled even if partially
     function fulfillOrder(
         uint8 typeOfOrder, //A/B
-        uint8 _primaryTokenIndex, //B
-        uint8 _secondaryTokenIndex, //A
+        uint8 _primaryTokenIndex, //A
+        uint8 _secondaryTokenIndex, //B
         Order memory toFulfill
     ) private returns (uint256) {
         console.log("in fulfill order");
-        uint8 _marketIndex;
+        uint8 _marketIndex = getMarketIndex(
+            _primaryTokenIndex,
+            _secondaryTokenIndex
+        );
         //uint256 _qty_balance = quantity;
 
         uint256 _currOrdersCount = ExchangeMarket[_marketIndex]
             .Orders[typeOfOrder]
             .ordersCount;
-
+        console.log("_currOrdersCount", _currOrdersCount);
         uint256 _countOrderFulfiled = 0;
         for (uint256 i = 0; i < _currOrdersCount; i++) {
             if (toFulfill.quantity == 0) break;
@@ -629,9 +633,14 @@ contract Swap is Ownable {
                 .Orders[typeOfOrder]
                 .orders[_orderIndex]
                 .user;
-
+            console.log(
+                "In fulfillOrder",
+                _orderIndex,
+                _orderAmount,
+                _orderOwner
+            );
             if (
-                typeOfOrder == 0 &&
+                typeOfOrder == 1 &&
                 toFulfill.price <
                 ExchangeMarket[_marketIndex]
                     .Orders[typeOfOrder]
@@ -639,7 +648,7 @@ contract Swap is Ownable {
                     .price
             ) break;
             else if (
-                typeOfOrder == 1 &&
+                typeOfOrder == 0 &&
                 toFulfill.price >
                 ExchangeMarket[_marketIndex]
                     .Orders[typeOfOrder]
@@ -663,20 +672,27 @@ contract Swap is Ownable {
                     _orderAmount,
                     block.timestamp
                 );
-                if (typeOfOrder == 0) {
-                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] +=
-                        toFulfill.price *
-                        _orderAmount;
-                    tokenBalanceForAddress[msg.sender][
-                        _primaryTokenIndex
-                    ] += _orderAmount;
-                } else {
+                if (typeOfOrder == 1) {
+                    //price is fixed
                     tokenBalanceForAddress[_orderOwner][_primaryTokenIndex] +=
                         toFulfill.price *
                         _orderAmount;
                     tokenBalanceForAddress[msg.sender][
                         _secondaryTokenIndex
                     ] += _orderAmount;
+                    tokenBalanceForAddress[msg.sender][_primaryTokenIndex] -=
+                        toFulfill.price *
+                        _orderAmount;
+                } else {
+                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] +=
+                        toFulfill.price *
+                        _orderAmount;
+                    tokenBalanceForAddress[msg.sender][
+                        _primaryTokenIndex
+                    ] += _orderAmount;
+                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] -=
+                        toFulfill.price *
+                        _orderAmount;
                 }
             } else {
                 ExchangeMarket[_marketIndex]
@@ -692,20 +708,20 @@ contract Swap is Ownable {
                     block.timestamp
                 );
 
-                if (typeOfOrder == 0) {
-                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] +=
-                        toFulfill.price *
-                        toFulfill.quantity;
-                    tokenBalanceForAddress[msg.sender][
-                        _primaryTokenIndex
-                    ] += _orderAmount;
-                } else {
+                if (typeOfOrder == 1) {
                     tokenBalanceForAddress[_orderOwner][_primaryTokenIndex] +=
                         toFulfill.price *
                         toFulfill.quantity;
                     tokenBalanceForAddress[msg.sender][
                         _secondaryTokenIndex
-                    ] += _orderAmount;
+                    ] += toFulfill.quantity;
+                } else {
+                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] +=
+                        toFulfill.price *
+                        toFulfill.quantity;
+                    tokenBalanceForAddress[msg.sender][
+                        _primaryTokenIndex
+                    ] += toFulfill.quantity;
                 }
 
                 toFulfill.quantity = 0;

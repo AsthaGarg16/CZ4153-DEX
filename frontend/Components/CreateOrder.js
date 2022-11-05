@@ -64,7 +64,7 @@ const CreateOrder = (props) => {
         } else {
           setTFValue1(1000);
           console.log("Creating buy market order", tfValue1, tfValue2);
-          createBuyOrder();
+          createBuyMarketOrder();
         }
       } else {
         if (value.split(" ")[1] == "Limit") {
@@ -73,7 +73,7 @@ const CreateOrder = (props) => {
         } else {
           setTFValue1(0);
           console.log("Creating sell market order", tfValue1, tfValue2);
-          createSellOrder();
+          createSellMarketOrder();
         }
       }
     }
@@ -102,6 +102,31 @@ const CreateOrder = (props) => {
       buySymbolName: sellToken,
       sellSymbolName: buyToken,
       price: parseInt(tfValue1),
+      quantity: parseInt(tfValue2),
+    },
+  });
+  const { runContractFunction: createSellMarketOrder } = useWeb3Contract({
+    abi: swapAbi,
+    contractAddress: swapAddress,
+    functionName: "createOrder",
+    params: {
+      typeOfOrder: "1",
+      buySymbolName: sellToken,
+      sellSymbolName: buyToken,
+      price: parseInt(1000000),
+      quantity: parseInt(tfValue2),
+    },
+  });
+
+  const { runContractFunction: createBuyMarketOrder } = useWeb3Contract({
+    abi: swapAbi,
+    contractAddress: swapAddress,
+    functionName: "createOrder",
+    params: {
+      typeOfOrder: "0",
+      buySymbolName: buyToken,
+      sellSymbolName: sellToken,
+      price: parseInt(0),
       quantity: parseInt(tfValue2),
     },
   });

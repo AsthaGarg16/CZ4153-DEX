@@ -38,12 +38,8 @@ function renderRow(props) {
 export default function OrderBookBuy(props) {
   const { swapAddress, buySymbol, sellSymbol } = props;
   const { isWeb3Enabled, account } = useMoralis();
-  const [priceList, setPriceList] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
-  const [qtyList, setQtyList] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
+  const [priceList, setPriceList] = useState([]);
+  const [qtyList, setQtyList] = useState([]);
   // const [buyToken, setBuyToken] = useState(buySymbol);
   // const [sellToken, setSellToken] = useState(sellSymbol);
   const [buyTokenIndex, setBuyTokenIndex] = useState(0);
