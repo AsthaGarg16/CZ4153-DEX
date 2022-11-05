@@ -516,7 +516,8 @@ contract Swap is Ownable {
         string memory buySymbolName, //A
         string memory sellSymbolName, //
         uint256 price,
-        uint256 quantity
+        uint256 quantity,
+        bool isMarketOrder
     ) public {
         console.log("creating order");
         require(hasToken(buySymbolName), "Token not present");
@@ -531,16 +532,18 @@ contract Swap is Ownable {
             _primaryTokenIndex = getTokenIndex(buySymbolName);
             _secondaryTokenIndex = getTokenIndex(sellSymbolName);
             require(
-                tokenBalanceForAddress[msg.sender][_secondaryTokenIndex] >=
-                    price * quantity,
+                (!isMarketOrder &&
+                    tokenBalanceForAddress[msg.sender][_secondaryTokenIndex] >=
+                    price * quantity) || isMarketOrder,
                 "Not enough funds"
             );
         } else {
             _primaryTokenIndex = getTokenIndex(sellSymbolName); //A
             _secondaryTokenIndex = getTokenIndex(buySymbolName); //B
             require(
-                tokenBalanceForAddress[msg.sender][_primaryTokenIndex] >=
-                    price * quantity,
+                (!isMarketOrder &&
+                    tokenBalanceForAddress[msg.sender][_primaryTokenIndex] >=
+                    price * quantity) || isMarketOrder,
                 "Not enough funds"
             );
         }
@@ -561,7 +564,8 @@ contract Swap is Ownable {
                     price: price,
                     timestamp: block.timestamp,
                     user: msg.sender
-                })
+                }),
+                isMarketOrder
             );
         }
         if (_qty_balance > 0) {
@@ -571,21 +575,23 @@ contract Swap is Ownable {
                 timestamp: block.timestamp,
                 user: msg.sender
             });
-            addOrder(
-                _primaryTokenIndex,
-                _secondaryTokenIndex,
-                typeOfOrder,
-                toAdd
-            );
+            if (!isMarketOrder) {
+                addOrder(
+                    _primaryTokenIndex,
+                    _secondaryTokenIndex,
+                    typeOfOrder,
+                    toAdd
+                );
+            }
         }
         if (typeOfOrder == 0) {
             tokenBalanceForAddress[msg.sender][_secondaryTokenIndex] -=
                 price *
-                quantity;
+                _qty_balance;
         } else {
             tokenBalanceForAddress[msg.sender][_primaryTokenIndex] -=
                 price *
-                quantity;
+                _qty_balance;
         }
 
         // fire event
@@ -604,7 +610,8 @@ contract Swap is Ownable {
         uint8 typeOfOrder, //A/B
         uint8 _primaryTokenIndex, //A
         uint8 _secondaryTokenIndex, //B
-        Order memory toFulfill
+        Order memory toFulfill,
+        bool isMarketOrder
     ) private returns (uint256) {
         console.log("in fulfill order");
         uint8 _marketIndex = getMarketIndex(
@@ -645,7 +652,8 @@ contract Swap is Ownable {
                 ExchangeMarket[_marketIndex]
                     .Orders[typeOfOrder]
                     .orders[_orderIndex]
-                    .price
+                    .price &&
+                !isMarketOrder
             ) break;
             else if (
                 typeOfOrder == 0 &&
@@ -653,7 +661,8 @@ contract Swap is Ownable {
                 ExchangeMarket[_marketIndex]
                     .Orders[typeOfOrder]
                     .orders[_orderIndex]
-                    .price
+                    .price &&
+                !isMarketOrder
             ) break;
 
             if (toFulfill.quantity >= _orderAmount) {
@@ -674,25 +683,31 @@ contract Swap is Ownable {
                 );
                 if (typeOfOrder == 1) {
                     //price is fixed
-                    tokenBalanceForAddress[_orderOwner][_primaryTokenIndex] +=
-                        toFulfill.price *
+                    tokenBalanceForAddress[_orderOwner][
+                        _secondaryTokenIndex
+                    ] += _orderAmount;
+                    tokenBalanceForAddress[msg.sender][_primaryTokenIndex] +=
+                        ExchangeMarket[_marketIndex]
+                            .Orders[typeOfOrder]
+                            .orders[_orderIndex]
+                            .price *
                         _orderAmount;
                     tokenBalanceForAddress[msg.sender][
                         _secondaryTokenIndex
-                    ] += _orderAmount;
-                    tokenBalanceForAddress[msg.sender][_primaryTokenIndex] -=
-                        toFulfill.price *
-                        _orderAmount;
+                    ] -= _orderAmount;
                 } else {
-                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] +=
-                        toFulfill.price *
+                    tokenBalanceForAddress[_orderOwner][
+                        _primaryTokenIndex
+                    ] += _orderAmount;
+                    tokenBalanceForAddress[msg.sender][_secondaryTokenIndex] +=
+                        ExchangeMarket[_marketIndex]
+                            .Orders[typeOfOrder]
+                            .orders[_orderIndex]
+                            .price *
                         _orderAmount;
                     tokenBalanceForAddress[msg.sender][
                         _primaryTokenIndex
-                    ] += _orderAmount;
-                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] -=
-                        toFulfill.price *
-                        _orderAmount;
+                    ] -= _orderAmount;
                 }
             } else {
                 ExchangeMarket[_marketIndex]
@@ -709,19 +724,31 @@ contract Swap is Ownable {
                 );
 
                 if (typeOfOrder == 1) {
-                    tokenBalanceForAddress[_orderOwner][_primaryTokenIndex] +=
-                        toFulfill.price *
-                        toFulfill.quantity;
-                    tokenBalanceForAddress[msg.sender][
+                    tokenBalanceForAddress[_orderOwner][
                         _secondaryTokenIndex
                     ] += toFulfill.quantity;
-                } else {
-                    tokenBalanceForAddress[_orderOwner][_secondaryTokenIndex] +=
-                        toFulfill.price *
+                    tokenBalanceForAddress[msg.sender][_primaryTokenIndex] +=
+                        ExchangeMarket[_marketIndex]
+                            .Orders[typeOfOrder]
+                            .orders[_orderIndex]
+                            .price *
                         toFulfill.quantity;
-                    tokenBalanceForAddress[msg.sender][
+                    tokenBalanceForAddress[_orderOwner][
+                        _secondaryTokenIndex
+                    ] -= toFulfill.quantity;
+                } else {
+                    tokenBalanceForAddress[_orderOwner][
                         _primaryTokenIndex
                     ] += toFulfill.quantity;
+                    tokenBalanceForAddress[msg.sender][_secondaryTokenIndex] +=
+                        ExchangeMarket[_marketIndex]
+                            .Orders[typeOfOrder]
+                            .orders[_orderIndex]
+                            .price *
+                        toFulfill.quantity;
+                    tokenBalanceForAddress[_orderOwner][
+                        _primaryTokenIndex
+                    ] -= toFulfill.quantity;
                 }
 
                 toFulfill.quantity = 0;
@@ -756,6 +783,7 @@ contract Swap is Ownable {
             _newSellOrdersQueue[i] = ExchangeMarket[_marketIndex]
                 .Orders[typeOfOrder]
                 .ordersQueue[i + _countOrderFulfiled];
+            console.log("_newSellOrdersQueue[i]", _newSellOrdersQueue[i]);
         }
 
         ExchangeMarket[_marketIndex]
@@ -764,6 +792,9 @@ contract Swap is Ownable {
         ExchangeMarket[_marketIndex]
             .Orders[typeOfOrder]
             .ordersQueue = _newSellOrdersQueue;
+        ExchangeMarket[_marketIndex]
+            .Orders[typeOfOrder]
+            .orderIndex = _newOrdersCount;
 
         //console.log("_newSellOrdersQueue ", _newSellOrdersQueue[0]);
     }
@@ -915,6 +946,12 @@ contract Swap is Ownable {
             indexes[i - 1] = order_book.ordersQueue[i - 1];
             prices[i - 1] = _order.price;
             quantity[i - 1] = _order.quantity;
+            console.log(
+                "entry orderbook",
+                indexes[i - 1],
+                prices[i - 1],
+                quantity[i - 1]
+            );
         }
         //console.log("entry orderbook", indexes[0], prices[0], quantity[0]);
 

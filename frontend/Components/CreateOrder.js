@@ -91,6 +91,7 @@ const CreateOrder = (props) => {
       sellSymbolName: sellToken,
       price: parseInt(tfValue1),
       quantity: parseInt(tfValue2),
+      isMarketOrder: false,
     },
   });
   const { runContractFunction: createSellOrder } = useWeb3Contract({
@@ -103,6 +104,7 @@ const CreateOrder = (props) => {
       sellSymbolName: buyToken,
       price: parseInt(tfValue1),
       quantity: parseInt(tfValue2),
+      isMarketOrder: false,
     },
   });
   const { runContractFunction: createSellMarketOrder } = useWeb3Contract({
@@ -113,8 +115,9 @@ const CreateOrder = (props) => {
       typeOfOrder: "1",
       buySymbolName: sellToken,
       sellSymbolName: buyToken,
-      price: parseInt(1000000),
+      price: parseInt(0),
       quantity: parseInt(tfValue2),
+      isMarketOrder: true,
     },
   });
 
@@ -126,8 +129,9 @@ const CreateOrder = (props) => {
       typeOfOrder: "0",
       buySymbolName: buyToken,
       sellSymbolName: sellToken,
-      price: parseInt(0),
+      price: parseInt(100000000),
       quantity: parseInt(tfValue2),
+      isMarketOrder: true,
     },
   });
 
