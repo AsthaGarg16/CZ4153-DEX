@@ -39,7 +39,7 @@ yarn install
   ```shell
   yarn hardhat test
   ```
-  To deploy the contracts to the local hardhat chain. The deployment is done as described in the smart_contracts/deploy scripts. First all three custom tokens are deployed, followed by the Swap.sol contract. Next for testing purposes, the three tokens are added to the contract and dummy users 'user1' and 'user2' as defined by hardhat local chain are transferred 50 of each type of tokens.
+  To deploy the contracts to the local hardhat chain. The deployment is done as described in the smart_contracts/deploy scripts. First all three custom tokens are deployed, followed by the Swap.sol contract. Next for testing purposes, the three tokens are added to the contract and dummy users 'user1' and 'user2' as defined by hardhat local chain are transferred 50 of each type of tokens. A local chain is also started.
    ```shell
   yarn hardhat node
   ```
@@ -49,6 +49,30 @@ yarn install
   yarn dev
   ```
   Then you can go to <http://localhost:3000/>
+  
+* For testnet deployment
+  ```shell
+  cd smart_contracts
+  ```
+  To compile the contracts
+  ```shell
+  yarn hardhat compile
+  ```
+  To run the test cases
+  ```shell
+  yarn hardhat test
+  ```
+  The deployment is done as described in the smart_contracts/deploy scripts. The tags in the script differentiate which scripts should be run.
+   ```shell
+  yarn hardhat deploy --network goerli --tags testnet
+  ```
+* To add custom tokens to your metamask wallet
+  Reference: [Adding custom tokens to Metamask](https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-View-See-Your-Tokens-in-Metamask)
+      | Contract Address                           | Symbol Name | Decimals |
+      |--------------------------------------------|-------------|----------|
+      | (address of ArkToken contract deployed) | ARK         | 8        |
+      | (address of KarToken contract deployed) | KAR         | 8        |
+      | (address of RakToken contract deployed) | RAK         | 8        |
   
   
   
