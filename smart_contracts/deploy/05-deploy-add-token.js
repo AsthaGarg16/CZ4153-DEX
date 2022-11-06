@@ -1,7 +1,7 @@
 const { network, ethers } = require("hardhat");
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
-  const { deployer, user1 } = await getNamedAccounts();
+  const { deployer, user1, user2 } = await getNamedAccounts();
   const chainId = network.config.chainId;
 
   // Tokens deployed
@@ -43,6 +43,21 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   await transfer3Tx.wait(1);
   console.log(`RAK token was transferred ${await rakToken.balanceOf(user1)}`);
+
+  const transfer4Tx = await arkToken.transfer(user2, 50000000000000000000n);
+
+  await transfer4Tx.wait(1);
+  console.log(`ARK token was transferred ${await arkToken.balanceOf(user2)}`);
+
+  const transfer5Tx = await karToken.transfer(user2, 50000000000000000000n);
+
+  await transfer5Tx.wait(1);
+  console.log(`KAR token was transferred ${await karToken.balanceOf(user2)}`);
+
+  const transfer6Tx = await rakToken.transfer(user2, 50000000000000000000n);
+
+  await transfer6Tx.wait(1);
+  console.log(`RAK token was transferred ${await rakToken.balanceOf(user2)}`);
 
   // const transfer4Tx = await swap.depositToken("ARK", 30000000000000000000n);
   // await transfer4Tx.wait(1);
