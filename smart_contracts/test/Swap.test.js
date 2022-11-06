@@ -9,11 +9,12 @@ describe("Swap Unit Test", function () {
     user1 = accounts.user1;
     user2 = accounts.user2;
 
-    await deployments.fixture("all");
+    await deployments.fixture("test");
     exchange = await ethers.getContract("Swap", deployer);
     arkToken = await ethers.getContract("ArkToken", deployer);
     karToken = await ethers.getContract("KarToken", deployer);
     rakToken = await ethers.getContract("RakToken", deployer);
+
     const token1Tx = await exchange.addToken("ARK", arkToken.address);
     await token1Tx.wait(1);
     const token2Tx = await exchange.addToken("KAR", rakToken.address);
@@ -32,9 +33,6 @@ describe("Swap Unit Test", function () {
       assert(exchange.hasToken("ARK"));
       assert(exchange.hasToken("KAR"));
       assert(exchange.hasToken("RAK"));
-    });
-    it("Should have added 3 markets", async () => {
-      assert(exchange.marketIndex == 3);
     });
   });
 });
