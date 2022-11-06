@@ -68,11 +68,13 @@ yarn install
   ```
 * To add custom tokens to your metamask wallet
   Reference: [Adding custom tokens to Metamask](https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-View-See-Your-Tokens-in-Metamask)
+      
       | Contract Address                           | Symbol Name | Decimals |
       |--------------------------------------------|-------------|----------|
       | (address of ArkToken contract deployed) | ARK         | 8        |
       | (address of KarToken contract deployed) | KAR         | 8        |
       | (address of RakToken contract deployed) | RAK         | 8        |
   
+You can now use the application to trade assets.
   
   
