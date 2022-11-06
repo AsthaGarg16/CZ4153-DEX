@@ -2,15 +2,22 @@ import React from "react";
 import { useEffect, useState } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import networkMapping from "../constants/networkMapping.json";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import swapAbi from "../constants/Swap.json";
+import arkAbi from "../constants/ArkToken.json";
+import karAbi from "../constants/KarToken.json";
+import rakAbi from "../constants/RakToken.json";
 // import networkMapping from "../constants/networkMapping.json";
 import { ethers } from "ethers";
 import { useWeb3Contract, useMoralis } from "react-moralis";
 
 const DepositWithdraw = (props) => {
+  const { Moralis, isWeb3Enabled, chainId: chainIdHex } = useMoralis();
+  const chainId = parseInt(chainIdHex);
   const { swapAddress, tokensList } = props;
+  const [tokenName, setTokenName] = useState("ArkToken");
 
   const [value, setOption] = useState(tokensList[0]);
   const handleChange = (e) => {
@@ -27,24 +34,46 @@ const DepositWithdraw = (props) => {
   async function updateBalances(align) {
     if (align == "Deposit") {
       console.log("Depositing");
-      const res = await depositToken();
-      if (res) {
-        //trigger balances update
-        setTFValue2(0);
+      const appr = await approve();
+      console.log(appr);
+      if (appr) {
+        const res = await depositToken();
+        if (res) {
+          //trigger balances update
+          setTFValue2(0);
+        }
       }
     } else {
       console.log("Withdrawing");
-      const res = await withdrawToken();
-      if (res) {
-        //trigger balances update
-        setTFValue2(0);
+      const appr = await approve();
+      console.log(appr);
+      if (appr) {
+        const res = await withdrawToken();
+        if (res) {
+          //trigger balances update
+          setTFValue2(0);
+        }
       }
     }
   }
   const onClickSubmit = () => {
+    setTokenName(
+      value == "ARK" ? "ArkToken" : value == "KAR" ? "KarToken" : "RakToken"
+    );
     updateBalances(alignment);
     return console.log(value, alignment, tfValue2 * 1);
   };
+
+  const { runContractFunction: approve } = useWeb3Contract({
+    abi: arkAbi,
+    contractAddress:
+      chainId in networkMapping ? networkMapping[chainId][tokenName][0] : null,
+    functionName: "approve",
+    params: {
+      spender: swapAddress,
+      amount: tfValue2,
+    },
+  });
 
   const { runContractFunction: depositToken } = useWeb3Contract({
     abi: swapAbi,
