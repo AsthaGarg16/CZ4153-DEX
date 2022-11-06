@@ -114,7 +114,11 @@ export default function OrderBookBuy(props) {
         <h4 className="customh4">Total</h4>
       </div>
       <div className="heightgapnew"></div>
+<<<<<<< Updated upstream
       <Box sx={{ bgcolor: "background.paper", borderRadius: "10px" }}>
+=======
+      <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+>>>>>>> Stashed changes
         <FixedSizeList
           height={240}
           width={280}

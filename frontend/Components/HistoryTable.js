@@ -331,7 +331,11 @@ export default function HistoryTable(props) {
         </div>
       </div>
       <Box
+<<<<<<< Updated upstream
         sx={{ bgcolor: "background.paper", width: 800, borderRadius: "10px" }}
+=======
+        sx={{ bgcolor: "#2a2a2a", width: 800, borderRadius: "10px" }}
+>>>>>>> Stashed changes
       >
         <AppBar
           position="static"
@@ -375,7 +379,11 @@ export default function HistoryTable(props) {
               <h4 className="customh4newnew">Qty</h4>
               <h4 className="customh4newnewnew2">Cancel</h4>
             </div>
+<<<<<<< Updated upstream
             <Box sx={{ bgcolor: "background.paper", borderRadius: "10px" }}>
+=======
+            <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+>>>>>>> Stashed changes
               <FixedSizeList
                 height={140}
                 width={780}
@@ -404,7 +412,11 @@ export default function HistoryTable(props) {
               <h4 className="customh4new">Price</h4>
               <h4 className="customh4new">Qty</h4>
             </div>
+<<<<<<< Updated upstream
             <Box sx={{ bgcolor: "background.paper", borderRadius: "10px" }}>
+=======
+            <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+>>>>>>> Stashed changes
               <FixedSizeList
                 height={140}
                 width={780}
@@ -424,7 +436,11 @@ export default function HistoryTable(props) {
               <h4 className="customh4new">Price</h4>
               <h4 className="customh4new">Qty</h4>
             </div>
+<<<<<<< Updated upstream
             <Box sx={{ bgcolor: "background.paper", borderRadius: "10px" }}>
+=======
+            <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+>>>>>>> Stashed changes
               <FixedSizeList
                 height={140}
                 width={780}

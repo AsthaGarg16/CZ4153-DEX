@@ -43,6 +43,10 @@ async function updateAbi() {
 
 async function updateContractAddresses() {
   const chainId = network.config.chainId.toString();
+<<<<<<< Updated upstream
+=======
+  console.log("chain id ", chainId);
+>>>>>>> Stashed changes
   const swap = await ethers.getContract("Swap");
   var contractAddresses = JSON.parse(
     fs.readFileSync(frontEndContractsFile, "utf8")

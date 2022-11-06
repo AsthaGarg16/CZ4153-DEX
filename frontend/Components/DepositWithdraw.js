@@ -113,7 +113,11 @@ const DepositWithdraw = (props) => {
             </div>
             <div className="widthgap"></div>
             <TextField
+<<<<<<< Updated upstream
               sx={{ backgroundColor: "#d3b7ff", borderRadius: "5px" }}
+=======
+              sx={{ backgroundColor: "#d7c5fc", borderRadius: "5px" }}
+>>>>>>> Stashed changes
               onChange={(newValue) => setTFValue2(newValue.target.value)}
               value={tfValue2}
               type="number"
@@ -126,7 +130,11 @@ const DepositWithdraw = (props) => {
       </div>
       <div className="centertext">
         <button className="button-33" onClick={onClickSubmit}>
+<<<<<<< Updated upstream
           Submit!
+=======
+          Submit
+>>>>>>> Stashed changes
         </button>
       </div>
     </div>

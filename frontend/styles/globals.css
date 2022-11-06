@@ -7,64 +7,105 @@ body {
 }
 
 h1 {
+<<<<<<< Updated upstream
   color: #8c00ff;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 40px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 15px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+  /* color: #e1e0e0; */
+>>>>>>> Stashed changes
   align-items: center;
 }
 
 h3 {
+<<<<<<< Updated upstream
   color: #8c00ff;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 25px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 0;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 h4 {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 15px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   padding-right: 10px;
 }
 h5 {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 18px;
   font-weight: normal;
   line-height: 15px;
   margin: 0 0 0 0px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
 }
 h6 {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 18px;
   font-weight: normal;
   line-height: 15px;
   margin: 0 0 0 0px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -75,107 +116,171 @@ h6 {
   align-items: center;
 }
 .customh4 {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 15px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 12px;
 }
 .customh4balance {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 23px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 17px;
 }
 .customh4new {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color:rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 43px 0 60px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 18px;
 }
 .customh4newnew {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 43px 0 60px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 12px;
 }
 .customh4newnewnew1 {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 43px 0 60px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 0px;
 }
 .customh4newnewnew2 {
+<<<<<<< Updated upstream
   color: #000000;
+=======
+  color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 43px 0 0px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   /* text-shadow: 1px 1px 2px #fab4b4;   */
   align-items: center;
   padding-right: 10px;
   /* padding-left:12px; */
 }
 .customh4sell {
+<<<<<<< Updated upstream
   color: #ca0c0c;
+=======
+  color: #ff0000de;
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 0px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 15px;
 }
 
 .customh4buy {
+<<<<<<< Updated upstream
   color: #03ac00;
+=======
+  color: #04ff00cd;
+>>>>>>> Stashed changes
   font-family: "Georgia";
   font-size: 22px;
   font-weight: normal;
   line-height: 30px;
   margin: 0 0 0 0px;
   text-align: center;
+<<<<<<< Updated upstream
   text-shadow: 1px 1px 2px #00ddff;
+=======
+  text-shadow: 1px 1px 2px #00ddffd3;
+>>>>>>> Stashed changes
   align-items: center;
   /* padding-right:10px; */
   padding-left: 15px;
@@ -214,7 +319,12 @@ h6 {
   border-radius: 10px;
   /* justify-content: space-between; */
   /* align-items: center; */
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255)); */
+>>>>>>> Stashed changes
   /* display: grid;
   grid-template-columns: repeat(3, 1fr);
   display: flex; */
@@ -234,7 +344,12 @@ h6 {
   padding: 2px;
   margin: 20px 20px 20px 10px;
   border-radius: 10px;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255)); */
+>>>>>>> Stashed changes
   /* grid-template-rows: repeat(2, 1fr); */
 }
 .threerow2 {
@@ -243,7 +358,12 @@ h6 {
   padding: 2px;
   margin: 20px 20px 20px 10px;
   border-radius: 10px;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255)); */
+>>>>>>> Stashed changes
   /* grid-template-rows: repeat(2, 1fr); */
 }
 
@@ -253,7 +373,13 @@ h6 {
   padding: 2px;
   margin: 20px 20px 20px 10px;
   border-radius: 10px;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-color: rgb(65, 0, 204); */
+  /* linear-gradient(to right, #8f1cfa, rgb(81, 0, 255)); */
+>>>>>>> Stashed changes
   /* grid-template-rows: repeat(2, 1fr); */
 }
 
@@ -263,7 +389,12 @@ h6 {
   padding: 3px;
   margin: 20px 20px 20px 20px;
   border-radius: 10px;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255)); */
+>>>>>>> Stashed changes
   /* grid-template-rows: repeat(2, 1fr); */
 }
 .onerow2 {
@@ -272,7 +403,12 @@ h6 {
   padding: 3px;
   margin: 20px 20px 20px 20px;
   border-radius: 10px;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255)); */
+>>>>>>> Stashed changes
   /* grid-template-rows: repeat(2, 1fr); */
 }
 
@@ -299,8 +435,8 @@ a {
 
 @media (prefers-color-scheme: dark) {
   body {
-    color: black;
-    background: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background: rgb(42, 42, 42);
   }
 }
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap");
@@ -325,8 +461,15 @@ nav {
   padding: 16px;
   /* justify-content: space-between; */
   align-items: center;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #ffdd00, rgb(255, 157, 0));
+=======
+  background-color: 'black';
+  /* background-image: linear-gradient(to top, #000, rgb(140, 9, 255));  */
+>>>>>>> Stashed changes
 }
+/* #ffdd00 */
+/* rgb(255, 157, 0) */
 
 .gap {
   padding: 10px;
@@ -339,11 +482,20 @@ nav {
   border-radius: 10px;
   /* justify-content: space-between; */
   align-items: center;
+<<<<<<< Updated upstream
   background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255));
 }
 
 .button-81 {
   width: 110px;
+=======
+  background-image: linear-gradient(to top, rgba(74, 0, 178, 0.9), rgba(111, 9, 255, 0.843)); 
+  /* background-image: linear-gradient(to right, #affff8, rgb(194, 165, 255)); */
+}
+
+.button-81 {
+  width: 130px;
+>>>>>>> Stashed changes
   border: 0 solid #e2e8f0;
   border-radius: 1.5rem;
   box-sizing: border-box;
@@ -364,13 +516,13 @@ nav {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  background-color: #7700ff;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.749);
+  color: #7700ff;
 }
 
 .button-81:hover {
-  background-color: #fff;
-  color: #000000;
+  background-color: rgb(42, 42, 42);
+  color: rgb(215, 197, 252);
 }
 
 @media (min-width: 768px) {
@@ -404,13 +556,13 @@ nav {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  background-color: #7700ff;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.749);
+  color: #7700ff;
 }
 
 .button-85:hover {
-  background-color: #fff;
-  color: #000000;
+  background-color: rgb(42, 42, 42);
+  color: rgb(215, 197, 252);
 }
 
 @media (min-width: 768px) {
@@ -444,13 +596,13 @@ nav {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  background-color: #7700ff;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.749);
+  color: #7700ff;
 }
 
 .button-89:hover {
-  background-color: #fff;
-  color: #000000;
+  background-color: rgb(42, 42, 42);
+  color: rgb(215, 197, 252);
 }
 
 @media (min-width: 768px) {
@@ -462,11 +614,15 @@ nav {
 
 .button-82 {
   width: 130px;
+<<<<<<< Updated upstream
   background-color: #fff;
+=======
+  background-color: rgba(255, 255, 255, 0.749);
+>>>>>>> Stashed changes
   border: 0 solid #e2e8f0;
   /* border-radius: 1.5rem; */
   box-sizing: border-box;
-  color: #000000;
+  color: rgba(255, 255, 255, 0.749);;
   cursor: pointer;
   display: inline-block;
   font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
@@ -488,8 +644,8 @@ nav {
 }
 
 .button-82:hover {
-  background-color: #7700ff;
-  color: #fff;
+  background-color: #7700ff; 
+  color: rgb(215, 197, 252);
 }
 
 @media (min-width: 768px) {
@@ -540,7 +696,7 @@ nav {
 /* .menu > li {
   margin: 0;
 
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.749);
 }
 
 .menu > li:hover {
@@ -563,7 +719,7 @@ nav {
 /* .dropdown {
   width: 300px;
   display: inline-block;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.749);
   border-radius: 2px;
   box-shadow: 0 0 2px rgb(204, 204, 204);
   transition: all .5s ease;
@@ -603,7 +759,7 @@ nav {
 }
 .dropdown .dropdown-menu {
     position: absolute;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.749);
     width: 100%;
     left: 0;
     margin-top: 1px;
@@ -725,10 +881,17 @@ nav {
   background-color: #c2fbd7;
   margin: 7px 0 0 0px;
   border-radius: 100px;
+<<<<<<< Updated upstream
   box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
     rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
     rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
     rgba(44, 187, 99, 0.15) 0 16px 32px;
+=======
+  /* box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
+    rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
+    rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
+    rgba(44, 187, 99, 0.15) 0 16px 32px; */
+>>>>>>> Stashed changes
   color: green;
   cursor: pointer;
   display: inline-block;
