@@ -4,7 +4,7 @@
 BlockByBlock DEX is a dApp with an intuitive front-end website made using Next.js,
 which supports listing of available asset tokens on the marketplace, submission of trading order, matching and execution
 of orders (i.e., swapping/exchanging/trading assets), and most importantly, in our DEX, users have the ultimate control
-of his/her own digital assets. The smart contracts are written in solidity with hardhat for deployment.
+of his/her own digital assets. The smart contracts are written in solidity with hardhat for deployment. 
 
 The requirements for the project are -
 * npm (v8.5.1)
@@ -77,5 +77,6 @@ yarn install
   (address of RakToken contract deployed) | RAK         | 18       |
   
 You can now use the application to trade assets.
+Note - The graph in the dApp frontend is for easy visualizations and uses dummy values. In the future, we can use off-chain solutions to capture events emitted from the contract and accordingly display the result.
   
   
