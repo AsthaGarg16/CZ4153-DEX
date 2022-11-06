@@ -24,3 +24,14 @@ yarn install
 ### Usage
 
 * Add .env file
+  Refer to smart_contracts/.env.example to create a .env file.
+  Add API keys for the testnet RPC URL, and etherscan for testnet deployment. These keys are not necessary for local deployment.
+  
+* For local deployment
+  ```shell
+  cd smart_contracts
+  yarn hardhat compile
+  yarn hardhat test
+  yarn hardhat node
+  ```
+  
