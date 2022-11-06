@@ -68,6 +68,7 @@ yarn install
   ```
 * To add custom ERC20 tokens to your metamask wallet
   Reference: [Adding custom tokens to Metamask](https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-View-See-Your-Tokens-in-Metamask)
+  ![image info](./metamask_tokens.png)
       
   Contract Address                        | Symbol Name | Decimals |
   ----------------------------------------|-------------|----------|

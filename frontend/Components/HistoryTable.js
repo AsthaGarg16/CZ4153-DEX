@@ -62,23 +62,25 @@ const renderRowOpenOrder = (props) => {
   const [indexes, setIndexesList] = useState(data.indexesList);
   const [swapAddress, setSwapAddress] = useState(data.swapAddress);
 
-  const [buyToken, setBuyToken] = useState("");
-  const [sellToken, setSellToken] = useState("");
+  const [buyToken, setBuyToken] = useState("KAR");
+  const [sellToken, setSellToken] = useState("ARK");
   const [oI, setoI] = useState(0);
 
-  const { runContractFunction: cancelBuyOrder } = useWeb3Contract({
+  const { runContractFunction: cancelOrder } = useWeb3Contract({
     abi: swapAbi,
     contractAddress: swapAddress,
-    functionName: "cancelBuyOrder",
+    functionName: "cancelOrder",
     params: {
-      buyTokenSymbol: buyToken,
-      sellTokenSymbol: sellToken,
+      typeOfOrder: 1,
+      buyTokenSymbol: 2,
+      sellTokenSymbol: 1,
       orderIndex: oI,
     },
   });
 
-  async function cancelOrder(i_remove) {
-    const res = await cancelBuyOrder();
+  async function cancelOrders(i_remove) {
+    const res = await cancelOrder();
+    console.log(res);
     data.deleteRow(i_remove);
     if (res) {
       // console.log(res);
@@ -113,7 +115,7 @@ const renderRowOpenOrder = (props) => {
     setSellToken(marketList[i].split("/")[1]);
     setoI(indexes[i]);
     console.log(i);
-    cancelOrder(i);
+    cancelOrders(i);
   };
   //key={index}
   return (
@@ -244,19 +246,19 @@ export default function HistoryTable(props) {
     "Buy",
     "Sell",
   ]);
-  const [priceList, setPriceList] = useState([]);
-  const [qtyList, setQtyList] = useState([]);
-  const [indexesList, setIndexesList] = useState([]);
+  const [priceList, setPriceList] = useState([3, 2]);
+  const [qtyList, setQtyList] = useState([2, 1]);
+  const [indexesList, setIndexesList] = useState([1, 2]);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const { swapAddress } = props;
 
-  const { runContractFunction: getOpenOrdersForUser } = useWeb3Contract({
-    abi: swapAbi,
-    contractAddress: swapAddress,
-    functionName: "getOpenOrdersForUser",
-    params: {},
-  });
+  // const { runContractFunction: getOpenOrdersForUser } = useWeb3Contract({
+  //   abi: swapAbi,
+  //   contractAddress: swapAddress,
+  //   functionName: "getOpenOrdersForUser",
+  //   params: {},
+  // });
 
   const deleteRow = (inde) => {
     var ind = [];
@@ -311,7 +313,7 @@ export default function HistoryTable(props) {
 
   useEffect(() => {
     if (isWeb3Enabled) {
-      updateUI();
+      //updateUI();
     }
   }, [isWeb3Enabled]);
 
@@ -330,9 +332,7 @@ export default function HistoryTable(props) {
           <h3>All Markets</h3>
         </div>
       </div>
-      <Box
-        sx={{ bgcolor: "#2a2a2a", width: 800, borderRadius: "10px" }}
-      >
+      <Box sx={{ bgcolor: "#2a2a2a", width: 800, borderRadius: "10px" }}>
         <AppBar
           position="static"
           sx={{ bgcolor: "#7700ff", width: 800, borderRadius: "10px" }}
@@ -375,7 +375,13 @@ export default function HistoryTable(props) {
               <h4 className="customh4newnew">Qty</h4>
               <h4 className="customh4newnewnew2">Cancel</h4>
             </div>
-            <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+            <Box
+              sx={{
+                bgcolor: "#2a2a2a",
+                borderRadius: "10px",
+                color: "#e1e0e0",
+              }}
+            >
               <FixedSizeList
                 height={140}
                 width={780}
@@ -404,7 +410,13 @@ export default function HistoryTable(props) {
               <h4 className="customh4new">Price</h4>
               <h4 className="customh4new">Qty</h4>
             </div>
-            <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+            <Box
+              sx={{
+                bgcolor: "#2a2a2a",
+                borderRadius: "10px",
+                color: "#e1e0e0",
+              }}
+            >
               <FixedSizeList
                 height={140}
                 width={780}
@@ -424,7 +436,13 @@ export default function HistoryTable(props) {
               <h4 className="customh4new">Price</h4>
               <h4 className="customh4new">Qty</h4>
             </div>
-            <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+            <Box
+              sx={{
+                bgcolor: "#2a2a2a",
+                borderRadius: "10px",
+                color: "#e1e0e0",
+              }}
+            >
               <FixedSizeList
                 height={140}
                 width={780}
