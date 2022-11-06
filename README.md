@@ -21,3 +21,6 @@ cd ..
 cd smart_contracts
 yarn install
 ```
+### Usage
+
+* Add .env file
