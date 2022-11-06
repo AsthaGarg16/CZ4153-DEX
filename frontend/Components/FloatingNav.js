@@ -16,11 +16,7 @@ const FloatingNav = (props) => {
   const { Moralis, isWeb3Enabled, chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex);
   const swap_address =
-<<<<<<< Updated upstream
-    chainId in networkMapping ? networkMapping[chainId]["Swap"][0] : null;
-=======
     chainId in networkMapping ? networkMapping[chainId]["Swap"][0] :null;
->>>>>>> Stashed changes
   console.log("Swap address ", swap_address);
   const [marketPrice, setMarketPrice] = useState(0);
   const [listofMarkets, setMarketList] = useState(["A/B", "B/C", "C/A"]); //to update
@@ -119,11 +115,7 @@ const FloatingNav = (props) => {
       <div className="two">
         <h3>Order Book</h3>
         <div className="heightgap"></div>
-<<<<<<< Updated upstream
-        <h4 className="customh4buy">BUY</h4>
-=======
         <h4 className="customh4buy">BID</h4>
->>>>>>> Stashed changes
         <OrderBookBuy
           swapAddress={swap_address}
           buySymbol={value.split("/")[0]}
@@ -131,11 +123,7 @@ const FloatingNav = (props) => {
         />
         <div className="heightgap"></div>
         <div className="heightgap"></div>
-<<<<<<< Updated upstream
-        <h4 className="customh4sell">SELL</h4>
-=======
         <h4 className="customh4sell">ASK</h4>
->>>>>>> Stashed changes
         <OrderBookSell
           swapAddress={swap_address}
           buySymbol={value.split("/")[0]}

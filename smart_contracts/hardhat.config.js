@@ -36,17 +36,10 @@ module.exports = {
       //   url: MAINNET_RPC_URL
       // }
       // blockGasLimit: 1000000000000000,
-<<<<<<< Updated upstream
-      chainId: 31337,
-    },
-    localhost: {
-      chainId: 31337,
-=======
       chainId: 1337,
     },
     localhost: {
       chainId: 1337,
->>>>>>> Stashed changes
     },
     goerli: {
       url: GOERLI_RPC_URL,

@@ -62,7 +62,7 @@ const CreateOrder = (props) => {
           console.log("Creating buy limit order", tfValue1, tfValue2);
           createBuyOrder();
         } else {
-          setTFValue1(1000);
+          //setTFValue1(1000);
           console.log("Creating buy market order", tfValue1, tfValue2);
           createBuyMarketOrder();
         }
@@ -71,7 +71,7 @@ const CreateOrder = (props) => {
           console.log("Creating sell limit order", tfValue1, tfValue2);
           createSellOrder();
         } else {
-          setTFValue1(0);
+          //setTFValue1(0);
           console.log("Creating sell market order", tfValue1, tfValue2);
           createSellMarketOrder();
         }
@@ -190,17 +190,10 @@ const CreateOrder = (props) => {
           aria-label="Platform"
         >
           <ToggleButton value="Buy">
-<<<<<<< Updated upstream
-            <h4>Buy</h4>
-          </ToggleButton>
-          <ToggleButton value="Sell">
-            <h4>Sell</h4>
-=======
             <h4>Bid</h4>
           </ToggleButton>
           <ToggleButton value="Sell">
             <h4>Ask</h4>
->>>>>>> Stashed changes
           </ToggleButton>
         </ToggleButtonGroup>
         {/* <p>{`You selected ${alignment}`}</p> */}
@@ -217,11 +210,7 @@ const CreateOrder = (props) => {
           <div className="row11">
             <TextField
               disabled={value.split(" ")[1] == "Market" ? true : false}
-<<<<<<< Updated upstream
-              sx={{ backgroundColor: "#d3b7ff", borderRadius: "5px" }}
-=======
               sx={{ backgroundColor: "#d7c5fc", borderRadius: "5px" }}
->>>>>>> Stashed changes
               onChange={(newValue) => setTFValue1(newValue.target.value)}
               value={tfValue1}
               type="number"
@@ -231,11 +220,7 @@ const CreateOrder = (props) => {
             />
             <div className="widthgap"></div>
             <TextField
-<<<<<<< Updated upstream
-              sx={{ backgroundColor: "#d3b7ff", borderRadius: "5px" }}
-=======
               sx={{ backgroundColor: "#d7c5fc", borderRadius: "5px" }}
->>>>>>> Stashed changes
               onChange={(newValue) => setTFValue2(newValue.target.value)}
               value={tfValue2}
               type="number"
@@ -249,11 +234,7 @@ const CreateOrder = (props) => {
       <h5>{`Total: ${tfValue1 * tfValue2}`}</h5>
       <div className="centertext">
         <button className="button-33" onClick={onClickPlaceOrder}>
-<<<<<<< Updated upstream
-          Place Order!
-=======
           Place Order
->>>>>>> Stashed changes
         </button>
       </div>
     </div>
