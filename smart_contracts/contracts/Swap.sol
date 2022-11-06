@@ -195,19 +195,10 @@ contract Swap is Ownable {
         );
         uint8 _tokenIndex = getTokenIndex(symbolName);
         tokenBalanceForAddress[msg.sender][_tokenIndex] += amount;
-        // IERC20 token = IERC20(tokenInfo[_tokenIndex].contractAddress);
-        //require(
-        //     tokens[_tokenIndex].transferFrom(
-        //         msg.sender,
-        //         address(this),
-        //         amount
-        //     ) == true,
-        //     "Transfer could not happen"
-        // );
-        //need to approve
-        console.log(
-            "token balance",
-            tokenBalanceForAddress[msg.sender][_tokenIndex]
+        IERC20 token = IERC20(tokenInfo[_tokenIndex].contractAddress);
+        require(
+            token.transferFrom(msg.sender, address(this), amount) == true,
+            "Transfer could not happen"
         );
         emit LogDepositToken(symbolName, msg.sender, amount, block.timestamp);
         return getTokenBalanceForUser(symbolName);

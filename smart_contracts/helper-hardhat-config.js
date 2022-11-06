@@ -1,5 +1,5 @@
 const networkConfig = {
-  1337: {
+  31337: {
     name: "localhost",
   },
   // Price Feed Address, values can be obtained at https://docs.chain.link/docs/reference-contracts
