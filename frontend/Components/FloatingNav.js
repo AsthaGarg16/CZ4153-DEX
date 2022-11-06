@@ -97,8 +97,6 @@ const FloatingNav = (props) => {
               </div>
             </div>
             <div className="widthgapnew"></div>
-            <h3>Market Price: </h3>
-            <h4>{marketPrice}</h4>
             {/* <button onClick={handleChangeMP}>blabla</button> */}
           </div>
         </div>

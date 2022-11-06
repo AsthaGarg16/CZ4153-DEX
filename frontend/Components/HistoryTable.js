@@ -246,9 +246,9 @@ export default function HistoryTable(props) {
     "Buy",
     "Sell",
   ]);
-  const [priceList, setPriceList] = useState([3, 2]);
-  const [qtyList, setQtyList] = useState([2, 1]);
-  const [indexesList, setIndexesList] = useState([1, 2]);
+  const [priceList, setPriceList] = useState([]);
+  const [qtyList, setQtyList] = useState([]);
+  const [indexesList, setIndexesList] = useState([]);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const { swapAddress } = props;
