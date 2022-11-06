@@ -17,12 +17,12 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   log(`Swap deployed at ${exchange.address}`);
 
-  //   if (
-  //     !developmentChains.includes(network.name) &&
-  //     process.env.ETHERSCAN_API_KEY
-  //   ) {
-  //     await verify(ourToken.address, [INITIAL_SUPPLY]);
-  //   }
+  if (
+    !developmentChains.includes(network.name) &&
+    process.env.ETHERSCAN_API_KEY
+  ) {
+    await verify(ourToken.address, [INITIAL_SUPPLY]);
+  }
 };
 
-module.exports.tags = ["all", "swap", "test"];
+module.exports.tags = ["all", "swap", "test", "testnet"];

@@ -23,10 +23,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   await addRAKTx.wait(1);
   console.log(`RAK token added to contract ${await swap.hasToken("RAK")}`);
 
-  // // const marketTx = await swap.getAllMarkets();
-  // // // await marketTx.wait(1);
-  //console.log(`${await swap.getAllMarkets()}`);
-
   console.log(`${await arkToken.balanceOf(deployer)}`);
 
   const transferTx = await arkToken.transfer(user1, 50000000000000000000n);
@@ -58,25 +54,5 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   await transfer6Tx.wait(1);
   console.log(`RAK token was transferred ${await rakToken.balanceOf(user2)}`);
-
-  // const transfer4Tx = await swap.depositToken("ARK", 30000000000000000000n);
-  // await transfer4Tx.wait(1);
-  // console.log(
-  //   `ARK token was deposited  ${await swap.getTokenBalanceForUser("ARK")}`
-  // );
-
-  // const transfer5Tx = await swap.depositToken("KAR", 30000000000000000000n);
-  // await transfer5Tx.wait(1);
-  // console.log(
-  //   `ARK token was deposited  ${await swap.getTokenBalanceForUser("KAR")}`
-  // );
-
-  // const transfer6Tx = await swap.depositToken("RAK", 30000000000000000000n);
-  // await transfer6Tx.wait(1);
-  // console.log(
-  //   `ARK token was deposited  ${await swap.getTokenBalanceForUser("RAK")}`
-  // );
-
-  //   console.log(`Basic NFT index 0 tokenURI: ${await basicNft.tokenURI(0)}`);
 };
 module.exports.tags = ["all", "addTokens"];

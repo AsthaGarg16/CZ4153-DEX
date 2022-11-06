@@ -11,7 +11,9 @@ describe("Swap Unit Test", function () {
 
     await deployments.fixture("test");
     exchange = await ethers.getContract("Swap", deployer);
+    exchange2 = await ethers.getContract("Swap", user1);
     arkToken = await ethers.getContract("ArkToken", deployer);
+    arkToken2 = await ethers.getContract("ArkToken", user1);
     karToken = await ethers.getContract("KarToken", deployer);
     rakToken = await ethers.getContract("RakToken", deployer);
 
@@ -28,11 +30,10 @@ describe("Swap Unit Test", function () {
     assert(rakToken.address);
     assert(exchange.address);
   });
-  describe("initial", () => {
-    it("Should have added 3 tokens", async () => {
-      assert(exchange.hasToken("ARK"));
-      assert(exchange.hasToken("KAR"));
-      assert(exchange.hasToken("RAK"));
-    });
+
+  it("Should have added 3 tokens", async () => {
+    assert(exchange.hasToken("ARK"));
+    assert(exchange.hasToken("KAR"));
+    assert(exchange.hasToken("RAK"));
   });
 });
