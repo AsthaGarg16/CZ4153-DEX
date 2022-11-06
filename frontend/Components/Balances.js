@@ -6,7 +6,6 @@ import ListItemText from "@mui/material/ListItemText";
 import { FixedSizeList } from "react-window";
 import Box from "@mui/material/Box";
 import swapAbi from "../constants/Swap.json";
-// import networkMapping from "../constants/networkMapping.json";
 import { ethers } from "ethers";
 import { useWeb3Contract, useMoralis } from "react-moralis";
 
@@ -67,18 +66,6 @@ const Balances = (props) => {
       updateUI();
     }
   }, [isWeb3Enabled]);
-
-  // const [tfValue1, setTFValue1] = useState("");
-  // const [tfValue2, setTFValue2] = useState("");
-
-  // const [alignment, setAlignment] = React.useState('Deposit');
-
-  // const handleChangeButton = (event, newAlignment) => {
-  //   setAlignment(newAlignment);
-  // };
-  // const onClickPlaceOrder = () => {
-  //   return console.log(value.slice(7,-6), alignment, tfValue1*tfValue2);
-  // };
 
   return (
     <div>

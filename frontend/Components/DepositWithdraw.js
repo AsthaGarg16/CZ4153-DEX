@@ -39,7 +39,6 @@ const DepositWithdraw = (props) => {
       if (appr) {
         const res = await depositToken();
         if (res) {
-          //trigger balances update
           setTFValue2(0);
         }
       }
@@ -50,7 +49,6 @@ const DepositWithdraw = (props) => {
       if (appr) {
         const res = await withdrawToken();
         if (res) {
-          //trigger balances update
           setTFValue2(0);
         }
       }

@@ -40,21 +40,21 @@ const CreateOrder = (props) => {
     }
   }, [buySymbol, sellSymbol]);
 
-  async function updateBalances(align) {
-    if (align == "Deposit") {
-      const res = await depositToken();
-      if (res) {
-        //trigger balances update
-        setTFValue2(0);
-      }
-    } else {
-      const res = await withdrawToken();
-      if (res) {
-        //trigger balances update
-        setTFValue2(0);
-      }
-    }
-  }
+  // async function updateBalances(align) {
+  //   if (align == "Deposit") {
+  //     const res = await depositToken();
+  //     if (res) {
+  //       //trigger balances update
+  //       setTFValue2(0);
+  //     }
+  //   } else {
+  //     const res = await withdrawToken();
+  //     if (res) {
+  //       //trigger balances update
+  //       setTFValue2(0);
+  //     }
+  //   }
+  // }
   const onClickPlaceOrder = () => {
     if (isWeb3Enabled) {
       if (alignment == "Buy") {
@@ -62,7 +62,6 @@ const CreateOrder = (props) => {
           console.log("Creating buy limit order", tfValue1, tfValue2);
           createBuyOrder();
         } else {
-          //setTFValue1(1000);
           console.log("Creating buy market order", tfValue1, tfValue2);
           createBuyMarketOrder();
         }
@@ -71,7 +70,6 @@ const CreateOrder = (props) => {
           console.log("Creating sell limit order", tfValue1, tfValue2);
           createSellOrder();
         } else {
-          //setTFValue1(0);
           console.log("Creating sell market order", tfValue1, tfValue2);
           createSellMarketOrder();
         }
@@ -134,40 +132,6 @@ const CreateOrder = (props) => {
       isMarketOrder: true,
     },
   });
-
-  // const { runContractFunction: createSellOrder } = useWeb3Contract({
-  //   abi: swapAbi,
-  //   contractAddress: swapAddress,
-  //   functionName: "createSellOrder",
-  //   params: {
-  //     buySymbolName: buyToken,
-  //     sellSymbolName: sellToken,
-  //     price: tfValue1,
-  //     quantity: tfValue2,
-  //   },
-  // });
-
-  // const { runContractFunction: buyMarketOrder } = useWeb3Contract({
-  //   abi: swapAbi,
-  //   contractAddress: swapAddress,
-  //   functionName: "buyMarketOrder",
-  //   params: {
-  //     buySymbolName: buyToken,
-  //     sellSymbolName: sellToken,
-  //     quantity: tfValue2,
-  //   },
-  // });
-
-  // const { runContractFunction: sellMarketOrder } = useWeb3Contract({
-  //   abi: swapAbi,
-  //   contractAddress: swapAddress,
-  //   functionName: "sellMarketOrder",
-  //   params: {
-  //     buySymbolName: sellToken,
-  //     sellSymbolName: buyToken,
-  //     quantity: tfValue2,
-  //   },
-  // });
 
   return (
     <div>

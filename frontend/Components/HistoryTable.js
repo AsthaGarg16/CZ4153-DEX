@@ -253,13 +253,6 @@ export default function HistoryTable(props) {
   const [value, setValue] = React.useState(0);
   const { swapAddress } = props;
 
-  // const { runContractFunction: getOpenOrdersForUser } = useWeb3Contract({
-  //   abi: swapAbi,
-  //   contractAddress: swapAddress,
-  //   functionName: "getOpenOrdersForUser",
-  //   params: {},
-  // });
-
   const deleteRow = (inde) => {
     var ind = [];
     var mar = [];

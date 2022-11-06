@@ -19,15 +19,11 @@ const FloatingNav = (props) => {
     chainId in networkMapping ? networkMapping[chainId]["Swap"][0] : null;
   console.log("Swap address ", swap_address);
   const [marketPrice, setMarketPrice] = useState(0);
-  const [listofMarkets, setMarketList] = useState(["A/B", "B/C", "C/A"]); //to update
+  const [listofMarkets, setMarketList] = useState(["A/B", "B/C", "C/A"]);
   const [ordersIndex, setOrdersIndex] = useState();
   const [ordersPrice, setOrdersPrice] = useState();
   const [ordersQty, setOrdersQty] = useState();
 
-  // const getInitialState = () => {
-  //   const value = "A/B";
-  //   return value;
-  // };
   const [value, setOption] = useState("A/B");
 
   const handleChange = (e) => {
@@ -35,7 +31,7 @@ const FloatingNav = (props) => {
   };
 
   const handleChangeMP = (e) => {
-    setMarketPrice(marketPrice); // from backend
+    setMarketPrice(marketPrice);
     // console.log(marketPrice)
   };
 
