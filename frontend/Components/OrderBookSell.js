@@ -6,7 +6,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { FixedSizeList } from "react-window";
 import swapAbi from "../constants/Swap.json";
-// import networkMapping from "../constants/networkMapping.json";
 import { ethers } from "ethers";
 import { useWeb3Contract, useMoralis } from "react-moralis";
 
@@ -40,15 +39,25 @@ export default function OrderBookSell(props) {
   const { isWeb3Enabled, account } = useMoralis();
   const [priceList, setPriceList] = useState([]);
   const [qtyList, setQtyList] = useState([]);
-  // const [buyToken, setBuyToken] = useState(buySymbol);
-  // const [sellToken, setSellToken] = useState(sellSymbol);
-  const [buyTokenIndex, setBuyTokenIndex] = useState(0);
-  const [sellTokenIndex, setSellTokenIndex] = useState(0);
+  const [buyTokenIndex, setBuyTokenIndex] = useState(convertToIndex(buySymbol));
+  const [sellTokenIndex, setSellTokenIndex] = useState(
+    convertToIndex(sellSymbol)
+  );
+
+  function convertToIndex(symbol) {
+    if (symbol == "ARK") {
+      return 1;
+    }
+    if (symbol == "KAR") {
+      return 2;
+    }
+    if (symbol == "RAK") {
+      return 3;
+    }
+  }
 
   useEffect(() => {
     console.log("Symbols are ", buySymbol, sellSymbol);
-    // setBuyToken(buySymbol);
-    // setSellToken(sellSymbol);
     updateUI();
   }, [buySymbol, sellSymbol]);
 
@@ -57,20 +66,13 @@ export default function OrderBookSell(props) {
     contractAddress: swapAddress,
     functionName: "getOrderBook",
     params: {
-      buyTokenIndex: 2,
-      sellTokenIndex: 1,
+      buyTokenIndex: convertToIndex(buySymbol),
+      sellTokenIndex: convertToIndex(sellSymbol),
       type_of_order: 1,
     },
   });
 
   async function updateUI() {
-    // var ti = await getBuyTokenIndex();
-    // setBuyTokenIndex(ti);
-    // console.log("setBuyTokenIndex", ti);
-    // ti = await getSellTokenIndex();
-    // setSellTokenIndex(ti);
-    // console.log("setSellTokenIndex", ti);
-
     var ob = await getOrderBook();
     console.log("ob", ob);
     var pl = [];
@@ -97,7 +99,7 @@ export default function OrderBookSell(props) {
         <h4 className="customh4">Total</h4>
       </div>
       <div className="heightgapnew"></div>
-      <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color:'#e1e0e0'}}>
+      <Box sx={{ bgcolor: "#2a2a2a", borderRadius: "10px", color: "#e1e0e0" }}>
         <FixedSizeList
           height={240}
           width={280}
