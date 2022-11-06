@@ -30,8 +30,25 @@ yarn install
 * For local deployment
   ```shell
   cd smart_contracts
+  ```
+  To compile the contracts
+  ```shell
   yarn hardhat compile
+  ```
+  To run the test cases
+  ```shell
   yarn hardhat test
+  ```
+  To deploy the contracts to the local hardhat chain. The deployment is done as described in the smart_contracts/deploy scripts. First all three custom tokens are deployed, followed by the Swap.sol contract. Next for testing purposes, the three tokens are added to the contract and dummy users 'user1' and 'user2' as defined by hardhat local chain are transferred 50 of each type of tokens.
+   ```shell
   yarn hardhat node
   ```
+  To run the frontend 
+    ```shell
+  cd frontend
+  yarn dev
+  ```
+  Then you can go to <http://localhost:3000/>
+  
+  
   
