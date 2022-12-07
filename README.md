@@ -79,10 +79,12 @@ yarn install
   
 You can now use the application to trade assets.
 
-###Contributors
+### Contributors
 * Astha Garg (@AsthaGarg16)
 * Kushal Gunturi Sai (@kush0511)
 * Rachita Agrawal (@rachita7)
+
+
 Note - The graph in the dApp frontend is for easy visualizations and uses dummy values. In the future, we can use off-chain solutions to capture events emitted from the contract and accordingly display the result.
 Some transactions take longer to go through and the updates might not be reflected immediately. In such cases, refresh might be needed to get latest updates.
 
